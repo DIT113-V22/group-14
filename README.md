@@ -2,6 +2,7 @@
 
 ![field](https://user-images.githubusercontent.com/43864105/160417539-6d0dca70-90d3-4687-89ff-4b0266f12a33.png)
 
+[Logo Source](https://www.flaticon.com/free-icon/field_3442662)
 
 ## What are we going to create?
 A smart application that can assist gardeners and farmers in tracking the health and ripeness status of plants with the help of a smarcar that provides a camera feed of the greenhouse/garden.
