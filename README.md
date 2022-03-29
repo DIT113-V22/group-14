@@ -26,6 +26,8 @@ The database entries connected to the QR codes will contain information for that
 - C++
 - JavaFX
 - Java
+- SMCE
+- Godot
 
 
 ## Who are we
