@@ -78,6 +78,7 @@ void handleInput()
                 car.setSpeed(0);
                 car.setAngle(0);
                 reverse = false;
+				break;
         }
     }
 }
