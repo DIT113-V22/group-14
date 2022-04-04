@@ -7,7 +7,7 @@ const int rightDegrees = 75;  // degrees to turn right
 const int distanceToObject = 70; //distance to object when the car stops
 bool reverse = false;
 
-// Copied from Dimitrios blog
+// Copied from Dimitrios blog, initiates parts of the car
 ArduinoRuntime arduinoRuntime;
 BrushedMotor leftMotor(arduinoRuntime, smartcarlib::pins::v2::leftMotorPins);
 BrushedMotor rightMotor(arduinoRuntime, smartcarlib::pins::v2::rightMotorPins);
@@ -27,11 +27,25 @@ void setup() {
 }
 void loop() {
   // put your main code here, to run repeatedly:
-  delay(1);
-  handleInput();
 
+  handleInput();            //car controls
+  obstacleDetection();      //obstacle detection
+  delay(1);                 //delay for emulators sake
+  //Serial.println(front.getDistance()); //if we want to output the front distance in serial
 }
 
+//Obstacle detection through the ultrasonic sensor. Milestone says to stop 15cm from an obstacle
+void obstacleDetection()
+{
+    const auto distance = front.getDistance();
+    if(reverse == false ) {
+        if (distance > 0 && distance < distanceToObject) {
+            car.setSpeed(0);
+        }
+    }
+}
+
+//Handles input through the serial port
 void handleInput()
 {
     if(Serial.available())
@@ -43,6 +57,7 @@ void handleInput()
             case 'l':
                 car.setSpeed(forwardSpeed);
                 car.setAngle(leftDegrees);
+                reverse = false;
                 break;
             case 'r':
                 car.setSpeed(forwardSpeed);
@@ -52,14 +67,17 @@ void handleInput()
             case 'f':
                 car.setSpeed(forwardSpeed);
                 car.setAngle(0);
+                reverse = false;
                 break;
             case 'b':
                 car.setSpeed(reverseSpeed);
                 car.setAngle(0);
+                reverse = true;
                 break;
             default:
                 car.setSpeed(0);
                 car.setAngle(0);
+                reverse = false;
         }
     }
 }
