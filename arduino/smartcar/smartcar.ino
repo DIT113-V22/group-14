@@ -5,7 +5,7 @@ const int reverseSpeed   = -70; // 70% of the full speed backward
 const int leftDegrees = -75; // degrees to turn left
 const int rightDegrees = 75;  // degrees to turn right
 const int distanceToObject = 70; //distance to object when the car stops
-bool reverse = false;
+bool movingBackwards = false;
 
 // Copied from Dimitrios blog, initiates parts of the car
 ArduinoRuntime arduinoRuntime;
@@ -38,7 +38,7 @@ void loop() {
 void obstacleDetection()
 {
     const auto distance = front.getDistance();
-    if(reverse == false ) {
+    if(movingBackwards == false ) {
         if (distance > 0 && distance < distanceToObject) {
             car.setSpeed(0);
         }
@@ -57,27 +57,27 @@ void handleInput()
             case 'l':
                 car.setSpeed(forwardSpeed);
                 car.setAngle(leftDegrees);
-                reverse = false;
+                movingBackwards = false;
                 break;
             case 'r':
                 car.setSpeed(forwardSpeed);
                 car.setAngle(rightDegrees);
-                reverse = false;
+                movingBackwards = false;
                 break;
             case 'f':
                 car.setSpeed(forwardSpeed);
                 car.setAngle(0);
-                reverse = false;
+                movingBackwards = false;
                 break;
             case 'b':
                 car.setSpeed(reverseSpeed);
                 car.setAngle(0);
-                reverse = true;
+                movingBackwards = true;
                 break;
             default:
                 car.setSpeed(0);
                 car.setAngle(0);
-                reverse = false;
+                movingBackwards = false;
         }
     }
 }
