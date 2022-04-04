@@ -4,8 +4,8 @@ const int forwardSpeed = 70; // 70% of the full speed forward
 const int reverseSpeed   = -70; // 70% of the full speed backward
 const int leftDegrees = -75; // degrees to turn left
 const int rightDegrees = 75;  // degrees to turn right
-
-
+const int distanceToObject = 70; //distance to object when the car stops
+bool reverse = false;
 
 // Copied from Dimitrios blog
 ArduinoRuntime arduinoRuntime;
@@ -14,6 +14,12 @@ BrushedMotor rightMotor(arduinoRuntime, smartcarlib::pins::v2::rightMotorPins);
 DifferentialControl control(leftMotor, rightMotor);
 
 SimpleCar car(control);
+
+const int triggerPin           = 6; // D6
+const int echoPin              = 7; // D7
+const unsigned int maxDistance = 100;
+
+SR04 front{arduinoRuntime, triggerPin, echoPin, maxDistance};
 
 void setup() {
   // put your setup code here, to run once:
@@ -41,6 +47,7 @@ void handleInput()
             case 'r':
                 car.setSpeed(forwardSpeed);
                 car.setAngle(rightDegrees);
+                reverse = false;
                 break;
             case 'f':
                 car.setSpeed(forwardSpeed);
