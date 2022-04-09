@@ -1,0 +1,22 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+[application]
+
+config/name="smcegd_mod_example"
+run/main_scene="res://src/environments/example/Example.tscn"
+
+[physics]
+
+3d/physics_engine="GodotPhysics"
+
+[rendering]
+
+environment/default_environment="res://default_env.tres"
