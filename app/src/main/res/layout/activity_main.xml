@@ -11,22 +11,23 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/imageView"
+        <ImageButton
+            android:id="@+id/imageButton"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.3"
-            android:contentDescription="cameraView" />
+            android:scaleType="fitStart"
+            app:srcCompat="@drawable/plinder_4" />
 
         <Button
             android:id="@+id/button11"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.3"
-            android:textColor="#FAFAFA"
             android:backgroundTint="#616161"
             android:onClick="moveForward"
-            android:text="Forward" />
+            android:text="notBackwards"
+            android:textColor="#FAFAFA" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -73,5 +74,12 @@
             android:backgroundTint="#616161"
             android:onClick="moveBackward"
             android:text="Backward" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.3"
+            app:srcCompat="@drawable/plinder_4" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
