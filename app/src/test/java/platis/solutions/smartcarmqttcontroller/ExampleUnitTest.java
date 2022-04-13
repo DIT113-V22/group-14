@@ -1,4 +1,4 @@
-package com.example.group14_app;
+package platis.solutions.smartcarmqttcontroller;
 
 import org.junit.Test;
 
