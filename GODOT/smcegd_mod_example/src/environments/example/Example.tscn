@@ -19,18 +19,18 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.23913, 0 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 40.478, -1.76421, -35.849 )
 
 [node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
-transform = Transform( 509.336, 0, 0, 0, 4, 0, 0, 0, 541.767, 40.977, 0.883967, -35.662 )
+transform = Transform( 509.336, 0, 0, 0, 4, 0, 0, 0, 541.767, 40.977, -1.76076, -35.662 )
 shape = SubResource( 2 )
 
 [node name="OmniLight" type="OmniLight" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 31.8069, 68.9993, 25.033 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 31.8069, 122.011, -28.8287 )
 visible = false
 light_color = Color( 0.980392, 1, 0.890196, 1 )
-light_energy = 9.0
+light_energy = 5.037
 light_indirect_energy = 1.147
 shadow_enabled = true
 shadow_color = Color( 0.254902, 0.254902, 0.254902, 1 )
-omni_range = 177.729
+omni_range = 207.086
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.857068, 0.515203, 0, -0.515203, 0.857068, 0, 17.6375, 9.8625 )
@@ -65,8 +65,6 @@ light_energy = 1.734
 light_indirect_energy = 0.0
 spot_range = 1831.8
 spot_angle = 54.86
-
-[node name="Hedge" type="Spatial" parent="."]
 
 [node name="SpotLight2" type="SpotLight" parent="."]
 transform = Transform( 0.825188, 0.557424, 0.0913446, -0.477577, 0.602142, 0.639801, 0.301638, -0.57158, 0.763093, 6.82535, 22.9808, 44.5979 )
@@ -115,7 +113,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.2415, 0, 0.301941 )
 transform = Transform( 51.556, 0, 0, 0, 5.1287, 0, 0, 0, 1, 7.45872, 0.950709, 0.238663 )
 
 [node name="CollisionShape2" type="CollisionShape" parent="hedge2/StaticBody"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 
 [node name="hedge3" parent="." instance=ExtResource( 4 )]
 transform = Transform( -4.37114e-07, 0, 1, 0, 10, 0, -10, 0, -4.37114e-08, -58.9067, -1.32809, 36.4117 )
