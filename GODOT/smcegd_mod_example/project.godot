@@ -10,8 +10,8 @@ config_version=4
 
 [application]
 
-config/name="smcegd_mod_example"
-run/main_scene="res://src/environments/example/Example.tscn"
+config/name="smcegd_mod_plant_garden"
+run/main_scene="res://src/environments/plant_garden/main_plant_garden.tscn"
 
 [physics]
 
