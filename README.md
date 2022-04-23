@@ -24,10 +24,11 @@ The database entries connected to the QR codes will contain information for that
 ## What kind of technology will we be using
 - Arduino IDE
 - C++
-- JavaFX
 - Java
+- Android Studio
 - SMCE
 - Godot
+- MQTT
 
 
 ## Who are we
