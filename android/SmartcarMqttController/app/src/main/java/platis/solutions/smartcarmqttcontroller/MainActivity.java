@@ -2,11 +2,13 @@ package platis.solutions.smartcarmqttcontroller;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -43,6 +45,15 @@ public class MainActivity extends AppCompatActivity {
         mCameraView = findViewById(R.id.imageView);
 
         connectToMqttBroker();
+
+        Button takePicture = findViewById(R.id.takePicture);
+        takePicture.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this,StatusScreen.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override

@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeScreen">
+    tools:context=".HomeScreen"
+    android:background="@color/teal_700">
 
     <Button
         android:id="@+id/manualButton"
@@ -13,11 +14,15 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_marginStart="68dp"
-        android:layout_marginTop="404dp"
         android:text="SCAN"
-        android:textColor="#A6BCD0"
+        android:textColor="#FAFAFA"
+        android:backgroundTint="#616161"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/homeButton"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.576"
         tools:ignore="MissingConstraints" />
 
     <Button
@@ -25,23 +30,25 @@
         android:layout_width="100dp"
         android:layout_height="60dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="64dp"
-        android:layout_marginTop="404dp"
+        android:layout_marginStart="68dp"
         android:text="INFO"
-        android:textColor="#A6BCD0"
+        android:textColor="#FAFAFA"
+        android:backgroundTint="#616161"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.576"
         tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="100dp"
         android:layout_height="19dp"
-        android:layout_marginEnd="256dp"
         android:text="MAIN MENU"
-        android:textColor="#0F2EDD"
+        android:textColor="#A6BCD0"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.238" />
 
@@ -49,10 +56,12 @@
         android:id="@+id/imageView2"
         android:layout_width="270dp"
         android:layout_height="150dp"
-        android:layout_marginEnd="28dp"
-        android:layout_marginBottom="376dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.439"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.352"
         app:srcCompat="@drawable/field" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
