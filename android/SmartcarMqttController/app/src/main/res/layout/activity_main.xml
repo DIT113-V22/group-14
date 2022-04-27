@@ -6,86 +6,152 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/teal_700"
         android:gravity="center"
         android:orientation="vertical">
 
+
         <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="0dp" app:srcCompat="@drawable/logo" android:id="@+id/imageView4"
-                android:layout_weight="0.3"/>
-
-        <Button
-                android:id="@+id/button11"
-                android:layout_width="119dp"
-                android:layout_height="0dp"
-                android:layout_weight="0.3"
-                android:backgroundTint="#616161"
-                android:onClick="moveForward"
-                android:text="FORWARD"
-                android:textColor="#FAFAFA"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
+            android:id="@+id/imageView4"
+            android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_weight="0.3"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/button15"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:textColor="#FAFAFA"
-                android:backgroundTint="#616161"
-                android:onClick="moveForwardLeft"
-                android:text="Left" />
-
-            <Button
-                android:id="@+id/button14"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:textColor="#FAFAFA"
-                android:backgroundTint="#212121"
-                android:onClick="stop"
-                android:text="Stop" />
-
-            <Button
-                android:id="@+id/button13"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:textColor="#FAFAFA"
-                android:backgroundTint="#616161"
-                android:onClick="moveForwardRight"
-                android:text="Right" />
-        </LinearLayout>
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="6dp"
+            android:layout_marginBottom="21dp"
+            app:layout_constraintBottom_toTopOf="@+id/imageView"
+            app:layout_constraintEnd_toStartOf="@+id/button12"
+            app:layout_constraintStart_toStartOf="@+id/imageView"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/logo" />
 
         <Button
-                android:id="@+id/button12"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_weight="0.3"
-                android:textColor="#FAFAFA"
-                android:backgroundTint="#616161"
-                android:onClick="moveBackward"
-                android:text="Backward"/>
+            android:id="@+id/button11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="101dp"
+            android:layout_marginEnd="111dp"
+            android:layout_marginBottom="17dp"
+            android:backgroundTint="#616161"
+            android:onClick="moveForward"
+            android:text="FORWARD"
+            android:textColor="#FAFAFA"
+            app:layout_constraintBottom_toTopOf="@+id/button14"
+            app:layout_constraintEnd_toStartOf="@+id/imageButton"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/button15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="221dp"
+            android:backgroundTint="#616161"
+            android:onClick="moveForwardLeft"
+            android:text="Left"
+            android:textColor="#FAFAFA"
+            app:layout_constraintBaseline_toBaselineOf="@+id/button14"
+            app:layout_constraintEnd_toStartOf="@+id/rabbitButton"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/button14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="12dp"
+            android:backgroundTint="#212121"
+            android:onClick="stop"
+            android:text="Stop"
+            android:textColor="#FAFAFA"
+            app:layout_constraintBottom_toTopOf="@+id/button12"
+            app:layout_constraintStart_toEndOf="@+id/button15" />
+
+        <Button
+            android:id="@+id/button13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#616161"
+            android:onClick="moveForwardRight"
+            android:text="Right"
+            android:textColor="#FAFAFA"
+            app:layout_constraintBaseline_toBaselineOf="@+id/button14"
+            app:layout_constraintStart_toEndOf="@+id/button12" />
+
+        <Button
+            android:id="@+id/button12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="81dp"
+            android:layout_marginBottom="42dp"
+            android:backgroundTint="#616161"
+            android:onClick="moveBackward"
+            android:text="Backward"
+            android:textColor="#FAFAFA"
+            app:layout_constraintBottom_toTopOf="@+id/takePicture"
+            app:layout_constraintStart_toStartOf="@+id/button15" />
+
         <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="0dp" app:srcCompat="@android:drawable/ic_menu_slideshow"
-                android:id="@+id/imageView" android:layout_weight="0.3"/>
+            android:id="@+id/imageView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="110dp"
+            android:layout_marginEnd="2dp"
+            android:layout_marginBottom="132dp"
+            app:layout_constraintBottom_toTopOf="@+id/rabbitButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@android:drawable/ic_menu_slideshow" />
 
         <Button
             android:id="@+id/takePicture"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.3"
-            android:textColor="#FAFAFA"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="52dp"
+            android:layout_marginBottom="99dp"
             android:backgroundTint="#616161"
-            android:text="Take Picture" />
+            android:text="Take Picture"
+            android:textColor="#FAFAFA"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-    </LinearLayout>
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="77dp"
+            android:layout_height="72dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="297dp"
+            android:background="@drawable/turtle_button"
+            android:onClick="moveForward"
+            android:scaleType="fitCenter"
+            android:src="@drawable/turtle2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/button11"
+            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+        <ImageButton
+            android:id="@+id/rabbitButton"
+            android:layout_width="76dp"
+            android:layout_height="79dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="195dp"
+            android:adjustViewBounds="true"
+            android:background="@drawable/rabbit_button"
+            android:onClick="moveBackward"
+            android:scaleType="fitCenter"
+            android:src="@drawable/rabbit"
+            android:text="ToggleButton"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/button15"
+            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
