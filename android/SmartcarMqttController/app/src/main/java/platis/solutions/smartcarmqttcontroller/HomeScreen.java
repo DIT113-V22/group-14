@@ -9,13 +9,18 @@ import android.view.View;
 import android.widget.Button;
 
 public class HomeScreen extends AppCompatActivity {
+    private static final String TAG = "HomeScreen";
 
     Button manualButton;
+    private Firebase firebase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
+        firebase = new Firebase();
+
+        firebase.readWrite();
 
         manualButton = (Button) findViewById(R.id.manualButton);
 
