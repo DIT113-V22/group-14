@@ -5,4 +5,7 @@
         android:startColor="@color/black"
         android:endColor="@color/black"
         android:angle="270" />
+    <stroke
+        android:color="@color/black"/>
+
 </shape>
