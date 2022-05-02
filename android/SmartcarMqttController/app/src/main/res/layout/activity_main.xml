@@ -12,7 +12,9 @@
         android:layout_height="match_parent"
         android:background="@color/teal_700"
         android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="-26dp">
 
 
         <ImageView
@@ -41,7 +43,7 @@
             android:text="FORWARD"
             android:textColor="#FAFAFA"
             app:layout_constraintBottom_toTopOf="@+id/button14"
-            app:layout_constraintEnd_toStartOf="@+id/imageButton"
+            app:layout_constraintEnd_toStartOf="@+id/turtleButton"
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
@@ -122,13 +124,12 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <ImageButton
-            android:id="@+id/imageButton"
+            android:id="@+id/turtleButton"
             android:layout_width="77dp"
             android:layout_height="72dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="297dp"
-            android:background="@drawable/button_selector"
-            android:onClick="moveSlower"
+            android:background="@drawable/button_select_states"
             android:scaleType="fitCenter"
             android:src="@drawable/turtle2"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -143,8 +144,7 @@
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="195dp"
             android:adjustViewBounds="true"
-            android:background="@drawable/rabbit_button"
-            android:onClick="moveBackward"
+            android:background="@drawable/button_select_states"
             android:scaleType="fitCenter"
             android:src="@drawable/rabbit"
             android:text="ToggleButton"

@@ -7,7 +7,6 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -27,8 +26,9 @@ public class MainActivity extends AppCompatActivity {
     private static final String MQTT_SERVER = "tcp://" + LOCALHOST + ":1883";
     private static final String THROTTLE_CONTROL = "/smartcar/control/throttle";
     private static final String STEERING_CONTROL = "/smartcar/control/steering";
-    private static final int MOVEMENT_SPEED = 70;
+    private static final int MOVEMENT_SPEED = 50;
     private static final int LOWER_MOVEMENT_SPEED = 30;
+    private static final int FASTER_MOVEMENT_SPEED = 70;
     private static final int IDLE_SPEED = 0;
     private static final int STRAIGHT_ANGLE = 0;
     private static final int STEERING_ANGLE = 50;
@@ -47,22 +47,40 @@ public class MainActivity extends AppCompatActivity {
         mMqttClient = new MqttClient(getApplicationContext(), MQTT_SERVER, TAG);
         mCameraView = findViewById(R.id.imageView);
 
-        ImageButton imageButton = findViewById(R.id.imageButton);
-        imageButton.setOnClickListener(new View.OnClickListener() {
+        connectToMqttBroker();
+
+        ImageButton turtleButton = findViewById(R.id.turtleButton);
+        ImageButton rabbitButton = findViewById(R.id.rabbitButton);
+
+        turtleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*view.setSelected((!view.isSelected()));
+                view.setSelected(!view.isSelected());
                 if(view.isSelected()){
-                    view.setEnabled(false);
+                    drive(LOWER_MOVEMENT_SPEED, STRAIGHT_ANGLE, "Moving slower");
+                    view.setSelected(true);
+                    rabbitButton.setSelected(false);
                 }else{
-                    view.setEnabled(true);
-                }*/
-                imageButton.setSelected(false);
-                view.setSelected(true);
+                    drive(MOVEMENT_SPEED, STRAIGHT_ANGLE, "Moving forward");
+                    view.setSelected(false);
+                }
             }
         });
 
-        connectToMqttBroker();
+        rabbitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                view.setSelected(!view.isSelected());
+                if(view.isSelected()){
+                    drive(FASTER_MOVEMENT_SPEED, STRAIGHT_ANGLE, "Moving faster");
+                    view.setSelected(true);
+                    turtleButton.setSelected(false);
+                }else{
+                    drive(MOVEMENT_SPEED, STRAIGHT_ANGLE, "Moving forward");
+                    view.setSelected(false);
+                }
+            }
+        });
 
         Button takePicture = findViewById(R.id.takePicture);
         takePicture.setOnClickListener(new View.OnClickListener() {
@@ -186,8 +204,5 @@ public class MainActivity extends AppCompatActivity {
 
     public void moveBackward(View view) {
         drive(-MOVEMENT_SPEED, STRAIGHT_ANGLE, "Moving backward");
-    }
-    public void moveSlower(View view){
-        drive(LOWER_MOVEMENT_SPEED, STEERING_ANGLE, "Moving slower");
     }
 }
