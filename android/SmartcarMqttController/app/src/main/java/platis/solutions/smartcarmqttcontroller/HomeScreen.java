@@ -21,11 +21,8 @@ public class HomeScreen extends AppCompatActivity {
         firebase = new Firebase();
 
      /* firebase.writeNewPlant("7522007913","Tomato",4, 65,"Unhealthy");
-        firebase.writeNewPlant("1305167209","Tomato",1, 23,"Healthy");
-        firebase.writeNewPlant("1846973667","Tomato",10, 14,"KeepTrackOn");
-        firebase.writeNewPlant("4770449838","Tomato",2, 32,"Ripe");
 
-        //This will add new plants each time we run the project if not commented out.
+        This is an example of how to add new plants add new plants.
 */
 
         manualButton = (Button) findViewById(R.id.manualButton);
