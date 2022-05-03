@@ -20,14 +20,17 @@ public class HomeScreen extends AppCompatActivity {
         setContentView(R.layout.activity_home_screen);
         firebase = new Firebase();
 
-        /*firebase.writeNewPlant("7522007913","Tomato",4, 65,"Unhealthy");
+        //firebase.updatePlantHealth("7522007913");
+     /* firebase.writeNewPlant("7522007913","Tomato",4, 65,"Unhealthy");
         firebase.writeNewPlant("1305167209","Tomato",1, 23,"Healthy");
         firebase.writeNewPlant("1846973667","Tomato",10, 14,"KeepTrackOn");
         firebase.writeNewPlant("4770449838","Tomato",2, 32,"Ripe");
 
-        This will add new plants each time we run the project if not commented out.
 
-        */
+        //This will add new plants each time we run the project if not commented out.
+*/
+
+
 
         manualButton = (Button) findViewById(R.id.manualButton);
 
