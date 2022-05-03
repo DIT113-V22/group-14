@@ -1,6 +1,7 @@
 package platis.solutions.smartcarmqttcontroller;
 
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -39,9 +40,10 @@ public class Firebase extends AppCompatActivity {
 
     }
 
-    public void updatePlantHealth(String ID){
+    public void updatePlantHealth(String ID, String status){
         getDatabase();
-        myDatabase.child(ID).child("health").setValue("healthy");
+        myDatabase.child(ID).child("health").setValue(status);
+
     }
 
 }
