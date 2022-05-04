@@ -8,11 +8,11 @@
 
 #include <Smartcar.h>
 
-const int forwardSpeed = 70; // 70% of the full speed forward
+const int forwardSpeed = 50; // 70% of the full speed forward
 const int reverseSpeed   = -70; // 70% of the full speed backward
 const int leftDegrees = -75; // degrees to turn left
 const int rightDegrees = 75;  // degrees to turn right
-const auto distanceToObject = 75; //distance to object when the car stops
+const auto distanceToObject = 45; //distance to object when the car stops
 bool movingBackwards = false;
 bool ableToMove = true;
 
@@ -155,44 +155,48 @@ void loop() {
       static auto previousTransmission = 0UL;
       if (currentTime - previousTransmission >= oneSecond) {
         previousTransmission = currentTime;
-        float CurrentSpeed = car.getSpeed();
-        const auto distance = front.getDistance();
-         /* if (distance > 0 && distance < distanceToObject) { //Obstacle detection through the ultrasonic sensor.
-            if(ableToMove) {
-                car.setSpeed(0);
-                Serial.println("Obstacle successfully avoided.");
-                }
-                ableToMove = false;
-            } else {
-                ableToMove = true;
-                } */
-                   
-          if(distance < distanceToObject && distance > 0) {
-            if (CurrentSpeed > 0) {
-              car.setSpeed(0);
-              Serial.println("You are in the danger zone");
-            }
-            if (CurrentSpeed == 0) {
-               car.setSpeed(-1);
-              }
+        const float currentSpeed = car.getSpeed();
+        auto frontDistance = front.getDistance();
+        // auto backDistance = rear.getDistance();
+        Serial.println("The current speed is");
+        Serial.println(currentSpeed);
+        Serial.println("Distance to object is");
+        Serial.println(frontDistance);
 
-           /* const auto frontDistance = front.getDistance();
-            const auto rearDistance = rear.getDistance();
-              if(frontDistance < distanceToObject && frontDistance > 0 && car.getSpeed > 0 && car.getSpeed < 90) { //allows for reverse and rotation above 90 throttle
-                car.setSpeed(0);
-                Serial.println("You are in the danger zone")
-                Serial.println(front.getDistance()); //if we want to output the front distance in serial
-                }
-              if(rearDistance < distanceToObject && rearDistance > 0 && car.getSpeed < 0 && car.getSpeed > 90) { //allows for forward and rotation above 90 throttle
-                car.setSpeed(0);
-                Serial.println("You are in the rear danger zone")
-                Serial.println(rear.getDistance()); //if we want to output the rear distance in serial
-                }*/
-                mqtt.publish("/smartcar/ultrasound/front", String(distance));
+     /* TO TEST
+          if(frontDistance < distanceToObject && frontDistance > 0) {
+            if (currentSpeed > 0) {
+              car.setSpeed(0);
+              ableToMove = false;
+              Serial.println("You are in the danger zone");
+              }
+            } else if (backDistance > distanceToObject && backDistance > 0) {
+                if (currentSpeed == 0) {
+                ableToMove = true;
+                Serial.println("You are out of the danger zone");
+            }
+          }
+
+        */
+           if(frontDistance < distanceToObject && frontDistance > 0) {
+                frontDanger = true;
+           } else {
+                frontDanger = false;
+           }
+/*
+              LEAVE THIS DRAGOS
+           if(rearDistanceDistance < distanceToObject && rearDistance > 0) {
+                   rearDanger = true;
+           } else {
+                   rearDanger = false;
+           }
+           */
+
+                mqtt.publish("/smartcar/ultrasound/front", String(frontDistance));
       }
     }
   #ifdef __SMCE__
     delay(1);                 //delay for emulators sake
   #endif
   }
-} 
+
