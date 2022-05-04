@@ -15,6 +15,8 @@ const int rightDegrees = 75;  // degrees to turn right
 const auto distanceToObject = 45; //distance to object when the car stops
 bool movingBackwards = false;
 bool ableToMove = true;
+bool frontDanger = false;
+bool rearDanger = false;
 
 
 MQTTClient mqtt;
@@ -87,6 +89,11 @@ void setup() {
       mqtt.subscribe("/smartcar/control/#", 1);
       mqtt.onMessage([](String topic, String message) {
         if (topic == "/smartcar/control/throttle") {
+           /* if (frontDanger = true && message.toInt() > 0 ) {
+               car.setSpeed(0);
+            } else {
+             car.setSpeed(message.toInt());
+         } */
           car.setSpeed(message.toInt());
         } else if (topic == "/smartcar/control/steering") {
           car.setAngle(message.toInt());
