@@ -27,10 +27,11 @@ public class MainActivity extends AppCompatActivity {
     private static final String MQTT_SERVER = "tcp://" + LOCALHOST + ":1883";
     private static final String THROTTLE_CONTROL = "/smartcar/control/throttle";
     private static final String STEERING_CONTROL = "/smartcar/control/steering";
-    private static final int MOVEMENT_SPEED = 50;
-    private static final int LOWER_MOVEMENT_SPEED = 30;
-    private static final int FASTER_MOVEMENT_SPEED = 70;
+    private static final int MOVEMENT_SPEED = 30;
+    private static final int LOWER_MOVEMENT_SPEED = 10;
+    private static final int FASTER_MOVEMENT_SPEED = 50;
     private static final int IDLE_SPEED = 0;
+    private static final int TURNING_SPEED = 0;    //new variable for turning in tank mode
     private static final int STRAIGHT_ANGLE = 0;
     private static final int STEERING_ANGLE = 50;
     private static final int QOS = 1;
@@ -65,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
                 view.setSelected(!view.isSelected());
                 if(view.isSelected()){
                     speedMode = LOWER_MOVEMENT_SPEED;
+                    //THROTTLE_CONTROL = String.valueOf(LOWER_MOVEMENT_SPEED);
                     view.setSelected(true);
                     rabbitButton.setSelected(false);
                     slowModeActive = true;
@@ -73,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
                     view.setSelected(false);
                     slowModeActive = false;
                     speedMode = MOVEMENT_SPEED;
+                    //THROTTLE_CONTROL = String.valueOf(MOVEMENT_SPEED);
                     drive(speedMode, STRAIGHT_ANGLE, "Normal speed");
                 }
             }
@@ -85,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
                 view.setSelected(!view.isSelected());
                 if(view.isSelected()){
                     speedMode = FASTER_MOVEMENT_SPEED;
+                    //THROTTLE_CONTROL = String.valueOf(FASTER_MOVEMENT_SPEED);
                     view.setSelected(true);
                     turtleButton.setSelected(false);
                     fastModeActive = true;
@@ -93,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
                     view.setSelected(false);
                     fastModeActive = false;
                     speedMode = MOVEMENT_SPEED;
+                    //THROTTLE_CONTROL = String.valueOf(MOVEMENT_SPEED);
                     drive(speedMode, STRAIGHT_ANGLE, "Normal speed");
                 }
             }
@@ -215,12 +220,12 @@ public class MainActivity extends AppCompatActivity {
             speed = -speedMode;
         }else if (actionDescription == "Stopping"){
             speed = IDLE_SPEED;
-        /*}else if (actionDescription == "Moving forward"){
+        }else if (actionDescription == "Moving forward"){
             speed = speedMode;
         }else if (actionDescription == "Moving forward left"){
-            speed = speedMode;
+            speed = TURNING_SPEED;
         }else if (actionDescription == "Moving forward right"){
-            speed = speedMode;*/
+            speed = TURNING_SPEED;
         }else{
             speed = speedMode;
         }
@@ -236,16 +241,16 @@ public class MainActivity extends AppCompatActivity {
         drive(speedMode, STRAIGHT_ANGLE, "Moving forward");
     }
 
-    public void moveForwardLeft(View view) {
-        drive(speedMode, -STEERING_ANGLE, "Moving forward left");
+    public void turnLeft(View view) {
+        drive(TURNING_SPEED, -STEERING_ANGLE, "Moving forward left");
     }
 
     public void stop(View view) {
         drive(IDLE_SPEED, STRAIGHT_ANGLE, "Stopping");
     }
 
-    public void moveForwardRight(View view) {
-        drive(speedMode, STEERING_ANGLE, "Moving forward right");
+    public void turnRight(View view) {
+        drive(TURNING_SPEED, STEERING_ANGLE, "Moving forward right");
     }
 
     public void moveBackward(View view) {
