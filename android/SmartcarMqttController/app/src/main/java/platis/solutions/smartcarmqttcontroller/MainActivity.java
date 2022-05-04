@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.eclipse.paho.client.mqttv3.IMqttActionListener;
@@ -40,6 +41,11 @@ public class MainActivity extends AppCompatActivity {
     private boolean isConnected = false;
     private ImageView mCameraView;
 
+    //New variables to control the speed mode (turtle slower, rabbit faster or normal)
+    private boolean slowModeActive = false;
+    private boolean fastModeActive = false;
+    private int speedMode;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,32 +58,42 @@ public class MainActivity extends AppCompatActivity {
         ImageButton turtleButton = findViewById(R.id.turtleButton);
         ImageButton rabbitButton = findViewById(R.id.rabbitButton);
 
+        //action when the turtle button is clicked
         turtleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 view.setSelected(!view.isSelected());
                 if(view.isSelected()){
-                    drive(LOWER_MOVEMENT_SPEED, STRAIGHT_ANGLE, "Moving slower");
+                    speedMode = LOWER_MOVEMENT_SPEED;
                     view.setSelected(true);
                     rabbitButton.setSelected(false);
+                    slowModeActive = true;
+                    drive(speedMode, STRAIGHT_ANGLE, "Lower speed");
                 }else{
-                    drive(MOVEMENT_SPEED, STRAIGHT_ANGLE, "Moving forward");
                     view.setSelected(false);
+                    slowModeActive = false;
+                    speedMode = MOVEMENT_SPEED;
+                    drive(speedMode, STRAIGHT_ANGLE, "Normal speed");
                 }
             }
         });
 
+        //action when the rabbit button for faster is activated
         rabbitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 view.setSelected(!view.isSelected());
                 if(view.isSelected()){
-                    drive(FASTER_MOVEMENT_SPEED, STRAIGHT_ANGLE, "Moving faster");
+                    speedMode = FASTER_MOVEMENT_SPEED;
                     view.setSelected(true);
                     turtleButton.setSelected(false);
+                    fastModeActive = true;
+                    drive(speedMode, STRAIGHT_ANGLE, "Faster speed");
                 }else{
-                    drive(MOVEMENT_SPEED, STRAIGHT_ANGLE, "Moving forward");
                     view.setSelected(false);
+                    fastModeActive = false;
+                    speedMode = MOVEMENT_SPEED;
+                    drive(speedMode, STRAIGHT_ANGLE, "Normal speed");
                 }
             }
         });
@@ -90,6 +106,10 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        //Experiment to get the speed value on the screen. Not working properly yet
+        TextView textView = (TextView) findViewById(R.id.realSpeed);
+        textView.setText(Integer.toString(speedMode));
     }
 
     @Override
@@ -181,17 +201,43 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), notConnected, Toast.LENGTH_SHORT).show();
             return;
         }
+        //check if any speed mode is selected and change the speed
+        if(slowModeActive){
+            speedMode = LOWER_MOVEMENT_SPEED;
+        }else if(fastModeActive){
+            speedMode = FASTER_MOVEMENT_SPEED;
+        }else{
+            speedMode = MOVEMENT_SPEED;
+        }
+        //apply the driving direction to the speed mode that is selected
+        int speed;
+        if(actionDescription == "Moving backward"){
+            speed = -speedMode;
+        }else if (actionDescription == "Stopping"){
+            speed = IDLE_SPEED;
+        /*}else if (actionDescription == "Moving forward"){
+            speed = speedMode;
+        }else if (actionDescription == "Moving forward left"){
+            speed = speedMode;
+        }else if (actionDescription == "Moving forward right"){
+            speed = speedMode;*/
+        }else{
+            speed = speedMode;
+        }
+
+        throttleSpeed = speed;
+
         Log.i(TAG, actionDescription);
         mMqttClient.publish(THROTTLE_CONTROL, Integer.toString(throttleSpeed), QOS, null);
         mMqttClient.publish(STEERING_CONTROL, Integer.toString(steeringAngle), QOS, null);
     }
 
     public void moveForward(View view) {
-        drive(MOVEMENT_SPEED, STRAIGHT_ANGLE, "Moving forward");
+        drive(speedMode, STRAIGHT_ANGLE, "Moving forward");
     }
 
     public void moveForwardLeft(View view) {
-        drive(MOVEMENT_SPEED, -STEERING_ANGLE, "Moving forward left");
+        drive(speedMode, -STEERING_ANGLE, "Moving forward left");
     }
 
     public void stop(View view) {
@@ -199,10 +245,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void moveForwardRight(View view) {
-        drive(MOVEMENT_SPEED, STEERING_ANGLE, "Moving forward left");
+        drive(speedMode, STEERING_ANGLE, "Moving forward right");
     }
 
     public void moveBackward(View view) {
-        drive(-MOVEMENT_SPEED, STRAIGHT_ANGLE, "Moving backward");
+        drive(-speedMode, STRAIGHT_ANGLE, "Moving backward");
     }
 }
