@@ -8,15 +8,17 @@
 
 #include <Smartcar.h>
 
-const int forwardSpeed = 50; // 70% of the full speed forward
-const int reverseSpeed   = -70; // 70% of the full speed backward
-const int leftDegrees = -75; // degrees to turn left
-const int rightDegrees = 75;  // degrees to turn right
+const int forwardSpeed = 50; // % of the full speed forward used in serial steering
+const int reverseSpeed   = -70; // % of the full speed backward used in serial steering
+const int leftDegrees = -75; // degrees to turn left used in serial steering
+const int rightDegrees = 75;  // degrees to turn right used in serial steering
+bool movingBackwards = false; //used in serial steering
+
 const auto distanceToObject = 45; //distance to object when the car stops
-bool movingBackwards = false;
-bool ableToMove = true;
 bool frontDanger = false;
 bool rearDanger = false;
+int currentThrottle = 0;        //keeps track of current throttle/ "speed"
+int currentSteeringAngle = 0;   //keeps track of if we are turning or not
 
 
 MQTTClient mqtt;
@@ -44,7 +46,7 @@ DirectionlessOdometer rightOdometer(
  
 SmartCar car(arduinoRuntime, control, gyroscope, leftOdometer, rightOdometer);
 
-const auto oneSecond = 100UL;
+const auto oneSecond = 20UL;
 #ifdef __SMCE__
 const auto triggerPin = 6;
 const auto echoPin = 7;
@@ -62,6 +64,8 @@ std::vector<char> frameBuffer;
 void setup() {
   // put your setup code here, to run once:
     Serial.begin(9600); //starts and waits for some time to sensors to start
+
+    //the following part connects to wifi and sends the camera feed over the broker
     #ifdef __SMCE__
       Camera.begin(QVGA, RGB888, 15);
       frameBuffer.resize(Camera.width() * Camera.height() * Camera.bytesPerPixel());
@@ -85,18 +89,27 @@ void setup() {
         Serial.print(".");
         delay(1000);
       }
-
+       //Subscribes to the following broker channels
       mqtt.subscribe("/smartcar/control/#", 1);
+
+      //interprets broker messages from subscribed channels
       mqtt.onMessage([](String topic, String message) {
+
         if (topic == "/smartcar/control/throttle") {
-           /* if (frontDanger = true && message.toInt() > 0 ) {
-               car.setSpeed(0);
+           if (frontDanger == true && message.toInt() > 0 ) {
+               currentThrottle = 0;
+               car.setSpeed(currentThrottle);
             } else {
-             car.setSpeed(message.toInt());
-         } */
-          car.setSpeed(message.toInt());
+             currentThrottle = message.toInt();
+             car.setSpeed(currentThrottle);
+            }
         } else if (topic == "/smartcar/control/steering") {
-          car.setAngle(message.toInt());
+            currentSteeringAngle = message.toInt();
+            if (currentSteeringAngle < 0) {
+            car.overrideMotorSpeed(-50, 50);
+            } else if (currentSteeringAngle > 0) {
+            car.overrideMotorSpeed(50, -50);
+            }
         } else {
           Serial.println(topic + " " + message);
         }
@@ -143,10 +156,10 @@ void handleInput()
         }
     }
 }
+//main loop that runs repetedly
 void loop() {
-  // put your main code here, to run repeatedly:
+  handleInput();            //car controls via serial
 
-  handleInput();            //car controls
   if (mqtt.connected()) {
       mqtt.loop();
       const auto currentTime = millis();
@@ -162,43 +175,27 @@ void loop() {
       static auto previousTransmission = 0UL;
       if (currentTime - previousTransmission >= oneSecond) {
         previousTransmission = currentTime;
-        const float currentSpeed = car.getSpeed();
         auto frontDistance = front.getDistance();
-        // auto backDistance = rear.getDistance();
-        Serial.println("The current speed is");
-        Serial.println(currentSpeed);
-        Serial.println("Distance to object is");
-        Serial.println(frontDistance);
+        // auto backDistance = rear.getDistance(); //for future reverse obstacle detection
 
-     /* TO TEST
-          if(frontDistance < distanceToObject && frontDistance > 0) {
-            if (currentSpeed > 0) {
-              car.setSpeed(0);
-              ableToMove = false;
-              Serial.println("You are in the danger zone");
-              }
-            } else if (backDistance > distanceToObject && backDistance > 0) {
-                if (currentSpeed == 0) {
-                ableToMove = true;
-                Serial.println("You are out of the danger zone");
-            }
-          }
 
-        */
-           if(frontDistance < distanceToObject && frontDistance > 0) {
+           // handles obstacle detection when steering over android
+           if(frontDistance < distanceToObject && frontDistance > 0 && currentThrottle > 0 && currentSteeringAngle == 0) {
                 frontDanger = true;
+                car.setSpeed(0);
+                currentThrottle = 0;
            } else {
                 frontDanger = false;
            }
-/*
-              LEAVE THIS DRAGOS
+            /*
+              // for future reverse obstacle detection
            if(rearDistanceDistance < distanceToObject && rearDistance > 0) {
                    rearDanger = true;
            } else {
                    rearDanger = false;
            }
            */
-
+                //publishes front distance to broker, not currently used
                 mqtt.publish("/smartcar/ultrasound/front", String(frontDistance));
       }
     }

@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String MQTT_SERVER = "tcp://" + LOCALHOST + ":1883";
     private static final String THROTTLE_CONTROL = "/smartcar/control/throttle";
     private static final String STEERING_CONTROL = "/smartcar/control/steering";
-    private static final int MOVEMENT_SPEED = 70;
+    private static final int MOVEMENT_SPEED = 30;
     private static final int IDLE_SPEED = 0;
     private static final int STRAIGHT_ANGLE = 0;
     private static final int STEERING_ANGLE = 50;
@@ -154,16 +154,18 @@ public class MainActivity extends AppCompatActivity {
         drive(MOVEMENT_SPEED, STRAIGHT_ANGLE, "Moving forward");
     }
 
+    //name of function need to be updated
     public void moveForwardLeft(View view) {
-        drive(MOVEMENT_SPEED, -STEERING_ANGLE, "Moving forward left");
+        drive(0, -STEERING_ANGLE, "Moving forward left");
     }
 
     public void stop(View view) {
         drive(IDLE_SPEED, STRAIGHT_ANGLE, "Stopping");
     }
 
+    //name of function need to be updated
     public void moveForwardRight(View view) {
-        drive(MOVEMENT_SPEED, STEERING_ANGLE, "Moving forward left");
+        drive(0, STEERING_ANGLE, "Moving forward left");
     }
 
     public void moveBackward(View view) {
