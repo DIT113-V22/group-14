@@ -4,6 +4,7 @@ package platis.solutions.smartcarmqttcontroller;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -24,6 +25,7 @@ public class HomeScreen extends AppCompatActivity {
 
         This is an example of how to add new plants add new plants.
 */
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
         manualButton = (Button) findViewById(R.id.manualButton);
 
