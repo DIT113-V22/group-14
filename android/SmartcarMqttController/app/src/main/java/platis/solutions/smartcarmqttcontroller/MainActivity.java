@@ -3,6 +3,7 @@ package platis.solutions.smartcarmqttcontroller;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -54,11 +55,25 @@ public class MainActivity extends AppCompatActivity {
         mMqttClient = new MqttClient(getApplicationContext(), MQTT_SERVER, TAG);
         mCameraView = findViewById(R.id.imageView);
 
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
         connectToMqttBroker();
 
         ImageButton turtleButton = findViewById(R.id.turtleButton);
         ImageButton rabbitButton = findViewById(R.id.rabbitButton);
+
+        Button menuButton;
+
+        menuButton = (Button) findViewById(R.id.menuButton);
+
+        menuButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, HomeScreen.class);
+                startActivity(intent);
+            }
+        });
+
 
         //action when the turtle button is clicked
         turtleButton.setOnClickListener(new View.OnClickListener() {
@@ -114,8 +129,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //Experiment to get the speed value on the screen. Not working properly yet
-        TextView textView = (TextView) findViewById(R.id.realSpeed);
-        textView.setText(Integer.toString(speedMode));
+       // TextView textView = (TextView) findViewById(R.id.realSpeed);
+        //textView.setText(Integer.toString(speedMode));
     }
 
     @Override
