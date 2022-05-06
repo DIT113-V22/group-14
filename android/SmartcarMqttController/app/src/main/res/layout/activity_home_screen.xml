@@ -4,64 +4,71 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeScreen"
-    android:background="@color/teal_700">
+    android:background="@color/white"
+    tools:context=".HomeScreen">
 
     <Button
         android:id="@+id/manualButton"
-        android:layout_width="100dp"
-        android:layout_height="60dp"
+        android:layout_width="115dp"
+        android:layout_height="75dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_marginStart="68dp"
+        android:backgroundTint="#4CAF50"
         android:text="SCAN"
         android:textColor="#FAFAFA"
-        android:backgroundTint="#616161"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.046"
         app:layout_constraintStart_toEndOf="@+id/homeButton"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.576"
+        app:layout_constraintVertical_bias="0.777"
         tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/homeButton"
-        android:layout_width="100dp"
-        android:layout_height="60dp"
+        android:layout_width="115dp"
+        android:layout_height="75dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="68dp"
+        android:layout_marginStart="48dp"
+        android:backgroundTint="#4CAF50"
         android:text="INFO"
-        android:textColor="#FAFAFA"
-        android:backgroundTint="#616161"
+        android:textColor="#E0ECE0"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.576"
+        app:layout_constraintVertical_bias="0.777"
         tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="100dp"
-        android:layout_height="19dp"
+        android:layout_width="200dp"
+        android:layout_height="70dp"
         android:text="MAIN MENU"
-        android:textColor="#A6BCD0"
+        android:textColor="#05010E"
+        android:textSize="34sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.075"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.238" />
+        app:layout_constraintVertical_bias="0.163" />
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="270dp"
-        android:layout_height="150dp"
+        android:layout_width="290dp"
+        android:layout_height="320dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.439"
+        app:layout_constraintHorizontal_bias="0.644"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.352"
+        app:layout_constraintVertical_bias="0.408"
         app:srcCompat="@drawable/field" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,66 +8,47 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/linearLayout"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@color/teal_700"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
         android:gravity="center"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="-26dp">
 
-
-        <ImageView
-            android:id="@+id/imageView4"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="6dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="6dp"
-            android:layout_marginBottom="21dp"
-            app:layout_constraintBottom_toTopOf="@+id/imageView"
-            app:layout_constraintEnd_toStartOf="@+id/button12"
-            app:layout_constraintStart_toStartOf="@+id/imageView"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/logo" />
 
         <Button
             android:id="@+id/button11"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="101dp"
-            android:layout_marginEnd="111dp"
+            android:layout_marginStart="100dp"
             android:layout_marginBottom="17dp"
             android:backgroundTint="#616161"
             android:onClick="moveForward"
             android:text="FORWARD"
             android:textColor="#FAFAFA"
             app:layout_constraintBottom_toTopOf="@+id/button14"
-            app:layout_constraintEnd_toStartOf="@+id/turtleButton"
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
             android:id="@+id/button15"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="221dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginBottom="28dp"
             android:backgroundTint="#616161"
             android:onClick="turnLeft"
             android:text="Left"
             android:textColor="#FAFAFA"
-            app:layout_constraintBaseline_toBaselineOf="@+id/button14"
-            app:layout_constraintEnd_toStartOf="@+id/rabbitButton"
+            app:layout_constraintBottom_toTopOf="@+id/button12"
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
             android:id="@+id/button14"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginBottom="12dp"
+            android:layout_marginStart="7dp"
+            android:layout_marginBottom="28dp"
             android:backgroundTint="#212121"
             android:onClick="stop"
             android:text="Stop"
@@ -79,49 +60,65 @@
             android:id="@+id/button13"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginBottom="113dp"
             android:backgroundTint="#616161"
             android:onClick="turnRight"
             android:text="Right"
             android:textColor="#FAFAFA"
-            app:layout_constraintBaseline_toBaselineOf="@+id/button14"
-            app:layout_constraintStart_toEndOf="@+id/button12" />
+            app:layout_constraintBottom_toTopOf="@+id/information"
+            app:layout_constraintStart_toEndOf="@+id/button14" />
 
         <Button
             android:id="@+id/button12"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="81dp"
-            android:layout_marginBottom="42dp"
+            android:layout_marginStart="89dp"
+            android:layout_marginBottom="37dp"
             android:backgroundTint="#616161"
             android:onClick="moveBackward"
             android:text="Backward"
             android:textColor="#FAFAFA"
             app:layout_constraintBottom_toTopOf="@+id/takePicture"
-            app:layout_constraintStart_toStartOf="@+id/button15" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="350dp"
+            android:layout_height="370dp"
             android:layout_marginStart="2dp"
             android:layout_marginTop="110dp"
             android:layout_marginEnd="2dp"
             android:layout_marginBottom="132dp"
             app:layout_constraintBottom_toTopOf="@+id/rabbitButton"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.491"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.215"
             app:srcCompat="@android:drawable/ic_menu_slideshow" />
 
         <Button
             android:id="@+id/takePicture"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="52dp"
-            android:layout_marginBottom="99dp"
-            android:backgroundTint="#616161"
+            android:layout_marginStart="24dp"
+            android:layout_marginBottom="40dp"
+            android:backgroundTint="#54871A"
             android:text="Take Picture"
             android:textColor="#FAFAFA"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/information"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="192dp"
+            android:layout_marginBottom="40dp"
+            android:backgroundTint="#FDFDFD"
+            android:text="INFORMATION"
+            android:textColor="#090909"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -129,42 +126,57 @@
             android:id="@+id/turtleButton"
             android:layout_width="77dp"
             android:layout_height="72dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="297dp"
+            android:layout_marginStart="111dp"
+            android:layout_marginBottom="37dp"
             android:background="@drawable/button_select_states"
             android:scaleType="fitCenter"
             android:src="@drawable/turtle2"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/button11"
-            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+            app:layout_constraintBottom_toTopOf="@+id/information"
+            app:layout_constraintStart_toEndOf="@+id/button12" />
 
         <ImageButton
             android:id="@+id/rabbitButton"
             android:layout_width="76dp"
             android:layout_height="79dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="195dp"
+            android:layout_marginEnd="17dp"
+            android:layout_marginBottom="29dp"
             android:adjustViewBounds="true"
             android:background="@drawable/button_select_states"
             android:scaleType="fitCenter"
+
             android:src="@drawable/rabbit"
             android:text="ToggleButton"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/button15"
-            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+            app:layout_constraintBottom_toTopOf="@+id/turtleButton"
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <TextView
-            android:id="@+id/realSpeed"
-            android:layout_width="128dp"
-            android:layout_height="0dp"
-            android:layout_marginEnd="26dp"
-            android:layout_marginBottom="22dp"
-            android:text="TextView"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="25dp"
+            android:text="SCAN MODE"
+            android:textColor="#050505"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/menuButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="43dp"
+            android:layout_marginBottom="37dp"
+            android:background="#69A525"
+            android:backgroundTint="#69B118"
+            android:text="MENU"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/imageView"
+            app:layout_constraintStart_toEndOf="@+id/textView3" />
+
+
+
+     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

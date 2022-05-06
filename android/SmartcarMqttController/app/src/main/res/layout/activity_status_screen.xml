@@ -4,55 +4,59 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".StatusScreen"
-    android:background="@color/teal_700">
+    android:background="@color/white"
+    tools:context=".StatusScreen">
 
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="167dp"
-        android:layout_height="261dp"
+        android:layout_width="250dp"
+        android:layout_height="450dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.336"
+        app:layout_constraintHorizontal_bias="0.037"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="0.33"
         app:srcCompat="@drawable/tomato" />
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="113dp"
+        android:layout_width="60dp"
         android:layout_height="54dp"
-        android:text="Plant ID: 34 Status: unknown"
+        android:text="Plant ID:          Status: "
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.244"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView3"
-        app:layout_constraintVertical_bias="0.06" />
+        app:layout_constraintVertical_bias="0.373" />
 
     <Button
         android:id="@+id/back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="23dp"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="#616161"
         android:text="Go Back"
         android:textColor="#FAFAFA"
-        android:backgroundTint="#616161"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.948"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/unhealthy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="86dp"
+        android:layout_marginBottom="35dp"
+        android:backgroundTint="#5A3A2F"
         android:text="Unhealthy"
         android:textColor="#FAFAFA"
-        android:backgroundTint="#616161"
+        app:layout_constraintBottom_toTopOf="@+id/healthy"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.517"
+        app:layout_constraintHorizontal_bias="0.93"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/back" />
 
@@ -60,12 +64,12 @@
         android:id="@+id/healthy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="25dp"
+        android:backgroundTint="#D6C52E"
         android:text="Healthy"
         android:textColor="#FAFAFA"
-        android:backgroundTint="#616161"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.912"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/unhealthy" />
 
@@ -73,12 +77,12 @@
         android:id="@+id/keepTrack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="Keep Track On"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#F39407"
+        android:text="Keep Track"
         android:textColor="#FAFAFA"
-        android:backgroundTint="#616161"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.943"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/healthy" />
 
@@ -86,13 +90,14 @@
         android:id="@+id/ripe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="#616161"
+        android:backgroundTint="#0A9A10"
         android:text="Ripe"
         android:textColor="#FAFAFA"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.916"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/keepTrack"
-        app:layout_constraintVertical_bias="0.238" />
+        app:layout_constraintVertical_bias="0.081" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

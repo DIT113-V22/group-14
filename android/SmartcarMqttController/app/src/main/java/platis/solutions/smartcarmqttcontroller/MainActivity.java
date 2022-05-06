@@ -60,6 +60,19 @@ public class MainActivity extends AppCompatActivity {
         ImageButton turtleButton = findViewById(R.id.turtleButton);
         ImageButton rabbitButton = findViewById(R.id.rabbitButton);
 
+        Button menuButton;
+
+        menuButton = (Button) findViewById(R.id.menuButton);
+
+        menuButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, HomeScreen.class);
+                startActivity(intent);
+            }
+        });
+
+
         //action when the turtle button is clicked
         turtleButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,8 +127,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //Experiment to get the speed value on the screen. Not working properly yet
-        TextView textView = (TextView) findViewById(R.id.realSpeed);
-        textView.setText(Integer.toString(speedMode));
+       // TextView textView = (TextView) findViewById(R.id.realSpeed);
+        //textView.setText(Integer.toString(speedMode));
     }
 
     @Override
