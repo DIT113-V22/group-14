@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
         mMqttClient = new MqttClient(getApplicationContext(), MQTT_SERVER, TAG);
         mCameraView = findViewById(R.id.imageView);
 
+
         connectToMqttBroker();
 
         ImageButton turtleButton = findViewById(R.id.turtleButton);
