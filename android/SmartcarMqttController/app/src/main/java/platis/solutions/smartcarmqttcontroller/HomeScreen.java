@@ -13,12 +13,15 @@ public class HomeScreen extends AppCompatActivity {
 
     Button manualButton;
     private Firebase firebase;
+    // private QrCodeTest qrCodeTest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
         firebase = new Firebase();
+        // qrCodeTest = new QrCodeTest();
+        // qrCodeTest.decodeQRImage();
 
      /* firebase.writeNewPlant("7522007913","Tomato",4, 65,"Unhealthy");
 
