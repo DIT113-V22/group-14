@@ -30,6 +30,10 @@ public class HomeScreen extends AppCompatActivity {
 */
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
+        getWindow().getDecorView().getWindowInsetsController().hide(
+                android.view.WindowInsets.Type.statusBars()
+        );
+
         manualButton = (Button) findViewById(R.id.manualButton);
 
         manualButton.setOnClickListener(new View.OnClickListener() {

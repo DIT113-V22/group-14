@@ -20,7 +20,10 @@
         <activity
             android:name=".MainActivity"
             android:exported="false" />
-        <activity android:name=".HomeScreen">
+        <activity
+            android:name=".HomeScreen"
+            android:exported="false" />
+        <activity android:name=".LoginScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

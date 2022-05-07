@@ -57,6 +57,10 @@ public class MainActivity extends AppCompatActivity {
 
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
+        getWindow().getDecorView().getWindowInsetsController().hide(
+                android.view.WindowInsets.Type.statusBars()
+        );
+
         connectToMqttBroker();
 
         ImageButton turtleButton = findViewById(R.id.turtleButton);
