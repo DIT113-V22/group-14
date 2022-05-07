@@ -23,6 +23,10 @@
         <activity
             android:name=".HomeScreen"
             android:exported="false" />
+        <activity
+            android:name=".Pop"
+            android:theme="@style/Theme.SmartcarMqttController.popupTheme"
+            android:exported="false" />
         <activity android:name=".LoginScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
