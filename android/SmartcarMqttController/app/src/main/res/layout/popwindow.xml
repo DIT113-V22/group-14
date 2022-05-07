@@ -8,10 +8,12 @@
 
     <TextView
         android:id="@+id/textView6"
-        android:layout_width="161dp"
-        android:layout_height="42dp"
+        android:layout_width="190dp"
+        android:layout_height="61dp"
         android:gravity="center"
         android:text="Please enter a valid E-Mail and password"
+        android:textAllCaps="false"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
