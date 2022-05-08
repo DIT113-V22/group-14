@@ -8,6 +8,7 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -61,10 +62,11 @@ public class MainActivity extends AppCompatActivity {
 
         ImageButton turtleButton = findViewById(R.id.turtleButton);
         ImageButton rabbitButton = findViewById(R.id.rabbitButton);
-
-        Button menuButton;
-
-        menuButton = (Button) findViewById(R.id.menuButton);
+        Button moveForward = (Button) findViewById(R.id.forward);
+        Button moveBackward = findViewById(R.id.backward);
+        Button moveRight = findViewById(R.id.right);
+        Button moveLeft = findViewById(R.id.left);
+        Button menuButton = (Button) findViewById(R.id.menuButton);
 
         menuButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,6 +76,53 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        moveForward.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent event) {
+                if(event.getAction() == MotionEvent.ACTION_DOWN){
+                    drive(speedMode, STRAIGHT_ANGLE, "Moving forward");
+                }else if(event.getAction() == MotionEvent.ACTION_UP){
+                    drive(IDLE_SPEED, STRAIGHT_ANGLE, "Stopping");
+                }
+                return true;
+            }
+        });
+
+        moveBackward.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent event) {
+                if(event.getAction() == MotionEvent.ACTION_DOWN){
+                    drive(-speedMode, STRAIGHT_ANGLE, "Moving backward");
+                }else if(event.getAction() == MotionEvent.ACTION_UP){
+                    drive(IDLE_SPEED, STRAIGHT_ANGLE, "Stopping");
+                }
+                return true;
+            }
+        });
+
+        moveLeft.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent event) {
+                if(event.getAction() == MotionEvent.ACTION_DOWN){
+                    drive(TURNING_SPEED, -STEERING_ANGLE, "Moving forward left");
+                }else if (event.getAction() == MotionEvent.ACTION_UP){
+                    drive(IDLE_SPEED, STRAIGHT_ANGLE, "Stopping");
+                }
+                return true;
+            }
+        });
+
+        moveRight.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent event) {
+                if(event.getAction() == MotionEvent.ACTION_DOWN){
+                    drive(TURNING_SPEED, STEERING_ANGLE, "Moving forward right");
+                }else if(event.getAction() == MotionEvent.ACTION_UP){
+                    drive(IDLE_SPEED, STRAIGHT_ANGLE, "Stopping");
+                }
+                return true;
+            }
+        });
 
         //action when the turtle button is clicked
         turtleButton.setOnClickListener(new View.OnClickListener() {
@@ -86,13 +135,13 @@ public class MainActivity extends AppCompatActivity {
                     view.setSelected(true);
                     rabbitButton.setSelected(false);
                     slowModeActive = true;
-                    drive(speedMode, STRAIGHT_ANGLE, "Lower speed");
+                    //drive(speedMode, STRAIGHT_ANGLE, "Lower speed");
                 }else{
                     view.setSelected(false);
                     slowModeActive = false;
                     speedMode = MOVEMENT_SPEED;
                     //THROTTLE_CONTROL = String.valueOf(MOVEMENT_SPEED);
-                    drive(speedMode, STRAIGHT_ANGLE, "Normal speed");
+                    //drive(speedMode, STRAIGHT_ANGLE, "Normal speed");
                 }
             }
         });
@@ -108,13 +157,13 @@ public class MainActivity extends AppCompatActivity {
                     view.setSelected(true);
                     turtleButton.setSelected(false);
                     fastModeActive = true;
-                    drive(speedMode, STRAIGHT_ANGLE, "Faster speed");
+                    //drive(speedMode, STRAIGHT_ANGLE, "Faster speed");
                 }else{
                     view.setSelected(false);
                     fastModeActive = false;
                     speedMode = MOVEMENT_SPEED;
                     //THROTTLE_CONTROL = String.valueOf(MOVEMENT_SPEED);
-                    drive(speedMode, STRAIGHT_ANGLE, "Normal speed");
+                    //drive(speedMode, STRAIGHT_ANGLE, "Normal speed");
                 }
             }
         });
@@ -254,23 +303,23 @@ public class MainActivity extends AppCompatActivity {
         mMqttClient.publish(STEERING_CONTROL, Integer.toString(steeringAngle), QOS, null);
     }
 
-    public void moveForward(View view) {
+    /*public void moveForward(View view) {
         drive(speedMode, STRAIGHT_ANGLE, "Moving forward");
-    }
+    }*/
 
-    public void turnLeft(View view) {
+    /*public void turnLeft(View view) {
         drive(TURNING_SPEED, -STEERING_ANGLE, "Moving forward left");
-    }
+    }*/
 
     public void stop(View view) {
         drive(IDLE_SPEED, STRAIGHT_ANGLE, "Stopping");
     }
 
-    public void turnRight(View view) {
+    /*public void turnRight(View view) {
         drive(TURNING_SPEED, STEERING_ANGLE, "Moving forward right");
-    }
+    }*/
 
-    public void moveBackward(View view) {
+    /*public void moveBackward(View view) {
         drive(-speedMode, STRAIGHT_ANGLE, "Moving backward");
-    }
+    }*/
 }

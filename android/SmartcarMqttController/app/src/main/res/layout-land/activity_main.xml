@@ -18,7 +18,7 @@
 
 
         <Button
-            android:id="@+id/button11"
+            android:id="@+id/forward"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="88dp"
@@ -27,11 +27,11 @@
             android:onClick="moveForward"
             android:text="FORWARD"
             android:textColor="#FAFAFA"
-            app:layout_constraintBottom_toTopOf="@+id/button14"
+            app:layout_constraintBottom_toTopOf="@+id/stop"
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
-            android:id="@+id/button15"
+            android:id="@+id/left"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="12dp"
@@ -40,11 +40,11 @@
             android:onClick="turnLeft"
             android:text="Left"
             android:textColor="#FAFAFA"
-            app:layout_constraintBottom_toTopOf="@+id/button12"
-            app:layout_constraintEnd_toStartOf="@+id/button14" />
+            app:layout_constraintBottom_toTopOf="@+id/backward"
+            app:layout_constraintEnd_toStartOf="@+id/stop" />
 
         <Button
-            android:id="@+id/button14"
+            android:id="@+id/stop"
             android:layout_width="92dp"
             android:layout_height="50dp"
             android:layout_marginStart="102dp"
@@ -53,11 +53,11 @@
             android:onClick="stop"
             android:text="Stop"
             android:textColor="#FAFAFA"
-            app:layout_constraintBottom_toTopOf="@+id/button12"
+            app:layout_constraintBottom_toTopOf="@+id/backward"
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
-            android:id="@+id/button13"
+            android:id="@+id/right"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
@@ -66,11 +66,11 @@
             android:onClick="turnRight"
             android:text="Right"
             android:textColor="#FAFAFA"
-            app:layout_constraintBottom_toTopOf="@+id/button12"
-            app:layout_constraintStart_toEndOf="@+id/button14" />
+            app:layout_constraintBottom_toTopOf="@+id/backward"
+            app:layout_constraintStart_toEndOf="@+id/stop" />
 
         <Button
-            android:id="@+id/button12"
+            android:id="@+id/backward"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="84dp"
