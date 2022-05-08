@@ -5,12 +5,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.PopupWindow;
 
 public class LoginScreen extends AppCompatActivity {
+
+    boolean passwordVisible;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,13 +27,38 @@ public class LoginScreen extends AppCompatActivity {
                 android.view.WindowInsets.Type.statusBars()
         );
 
-
-
         Button login = findViewById(R.id.login);
         EditText emailText = (EditText) findViewById(R.id.editTextTextEmailAddress);
         EditText passwordText = (EditText) findViewById(R.id.editTextTextPassword);
 
-
+        //method for hiding and showing password when clicking on the view toggle
+        passwordText.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                final int Right = 2;
+                if (motionEvent.getAction()== MotionEvent.ACTION_UP){
+                    if(motionEvent.getRawX()>=passwordText.getRight()-passwordText.getCompoundDrawables()[Right].getBounds().width()){
+                        int selection = passwordText.getSelectionEnd();
+                        if(passwordVisible){
+                            //set drawable image
+                            passwordText.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,R.drawable.ic_baseline_visibility_off_24, 0);
+                            //hide password
+                            passwordText.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                            passwordVisible = false;
+                        }else{
+                            //set deawable image
+                            passwordText.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,R.drawable.ic_baseline_visibility_24, 0);
+                            //showing password
+                            passwordText.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                            passwordVisible = true;
+                        }
+                        passwordText.setSelection(selection);
+                        return true;
+                    }
+                }
+                return false;
+            }
+        });
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
