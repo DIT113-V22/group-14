@@ -63,6 +63,7 @@ public class LoginScreen extends AppCompatActivity {
             }
         });
 
+            //login button that checks if password and/or email textfields are empty, if they are shows a popup.
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -72,7 +73,6 @@ public class LoginScreen extends AppCompatActivity {
                     Intent intent = new Intent(LoginScreen.this, HomeScreen.class);
                     startActivity(intent);
                 }
-
             }
         });
 
