@@ -79,6 +79,25 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo" />
-    
+
+    <TextView
+        android:id="@+id/forgotPasswordText"
+        android:layout_width="159dp"
+        android:layout_height="23dp"
+        android:layout_marginStart="116dp"
+        android:layout_marginBottom="20dp"
+        android:text="FORGOT PASSWORD?"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/joinText"
+        android:layout_width="159dp"
+        android:layout_height="23dp"
+        android:layout_marginStart="180dp"
+        android:layout_marginBottom="20dp"
+        android:text="JOIN NOW"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/forgotPasswordText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
