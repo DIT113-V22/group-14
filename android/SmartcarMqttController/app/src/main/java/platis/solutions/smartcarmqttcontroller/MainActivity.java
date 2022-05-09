@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "SmartcarMqttController";
     private static final String EXTERNAL_MQTT_BROKER = "aerostun.dev";
     private static final String LOCALHOST = "10.0.2.2";  //"192.168.0.45"
-    private static final String MQTT_SERVER = "tcp://" + LOCALHOST + ":1883";  
+    private static final String MQTT_SERVER = "tcp://" + LOCALHOST + ":1883";
     private static final String THROTTLE_CONTROL = "/smartcar/control/throttle";
     private static final String STEERING_CONTROL = "/smartcar/control/steering";
     private static final int MOVEMENT_SPEED = 30;
@@ -56,6 +56,10 @@ public class MainActivity extends AppCompatActivity {
         mCameraView = findViewById(R.id.imageView);
 
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+
+        getWindow().getDecorView().getWindowInsetsController().hide(
+                android.view.WindowInsets.Type.statusBars()
+        );
 
         connectToMqttBroker();
 
@@ -128,9 +132,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //Experiment to get the speed value on the screen. Not working properly yet
-       // TextView textView = (TextView) findViewById(R.id.realSpeed);
-        //textView.setText(Integer.toString(speedMode));
     }
 
     @Override
