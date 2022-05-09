@@ -72,6 +72,7 @@ public class LoginScreen extends AppCompatActivity {
                 } else {
                     Intent intent = new Intent(LoginScreen.this, HomeScreen.class);
                     startActivity(intent);
+                    passwordText.setText("");
                 }
             }
         });
