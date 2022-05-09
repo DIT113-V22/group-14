@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String MQTT_SERVER = "tcp://" + LOCALHOST + ":1883";
     private static final String THROTTLE_CONTROL = "/smartcar/control/throttle";
     private static final String STEERING_CONTROL = "/smartcar/control/steering";
-    private static final int MOVEMENT_SPEED = 30;
+    private static final int MOVEMENT_SPEED = 30;  //initial speed
     private static final int LOWER_MOVEMENT_SPEED = 10;
     private static final int FASTER_MOVEMENT_SPEED = 50;
     private static final int IDLE_SPEED = 0;
@@ -44,10 +44,8 @@ public class MainActivity extends AppCompatActivity {
     private boolean isConnected = false;
     private ImageView mCameraView;
 
-    //New variables to control the speed mode (turtle slower, rabbit faster or normal)
-    private boolean slowModeActive = false;
-    private boolean fastModeActive = false;
-    private int speedMode;
+    //New variable to save the last speed selected (turtle slower, rabbit faster or normal). The initial speed is the normal (30)
+    private int speedMode = MOVEMENT_SPEED;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -135,17 +133,11 @@ public class MainActivity extends AppCompatActivity {
                 view.setSelected(!view.isSelected());
                 if(view.isSelected()){
                     speedMode = LOWER_MOVEMENT_SPEED;
-                    //THROTTLE_CONTROL = String.valueOf(LOWER_MOVEMENT_SPEED);
                     view.setSelected(true);
                     rabbitButton.setSelected(false);
-                    slowModeActive = true;
-                    //drive(speedMode, STRAIGHT_ANGLE, "Lower speed");
                 }else{
                     view.setSelected(false);
-                    slowModeActive = false;
                     speedMode = MOVEMENT_SPEED;
-                    //THROTTLE_CONTROL = String.valueOf(MOVEMENT_SPEED);
-                    //drive(speedMode, STRAIGHT_ANGLE, "Normal speed");
                 }
             }
         });
@@ -157,17 +149,11 @@ public class MainActivity extends AppCompatActivity {
                 view.setSelected(!view.isSelected());
                 if(view.isSelected()){
                     speedMode = FASTER_MOVEMENT_SPEED;
-                    //THROTTLE_CONTROL = String.valueOf(FASTER_MOVEMENT_SPEED);
                     view.setSelected(true);
                     turtleButton.setSelected(false);
-                    fastModeActive = true;
-                    //drive(speedMode, STRAIGHT_ANGLE, "Faster speed");
                 }else{
                     view.setSelected(false);
-                    fastModeActive = false;
                     speedMode = MOVEMENT_SPEED;
-                    //THROTTLE_CONTROL = String.valueOf(MOVEMENT_SPEED);
-                    //drive(speedMode, STRAIGHT_ANGLE, "Normal speed");
                 }
             }
         });
@@ -273,31 +259,6 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), notConnected, Toast.LENGTH_SHORT).show();
             return;
         }
-        //check if any speed mode is selected and change the speed
-        if(slowModeActive){
-            speedMode = LOWER_MOVEMENT_SPEED;
-        }else if(fastModeActive){
-            speedMode = FASTER_MOVEMENT_SPEED;
-        }else{
-            speedMode = MOVEMENT_SPEED;
-        }
-        //apply the driving direction to the speed mode that is selected
-        int speed;
-        if(actionDescription == "Moving backward"){
-            speed = -speedMode;
-        }else if (actionDescription == "Stopping"){
-            speed = IDLE_SPEED;
-        }else if (actionDescription == "Moving forward"){
-            speed = speedMode;
-        }else if (actionDescription == "Moving forward left"){
-            speed = TURNING_SPEED;
-        }else if (actionDescription == "Moving forward right"){
-            speed = TURNING_SPEED;
-        }else{
-            speed = speedMode;
-        }
-
-        throttleSpeed = speed;
 
         Log.i(TAG, actionDescription);
         mMqttClient.publish(THROTTLE_CONTROL, Integer.toString(throttleSpeed), QOS, null);
@@ -312,9 +273,9 @@ public class MainActivity extends AppCompatActivity {
         drive(TURNING_SPEED, -STEERING_ANGLE, "Moving forward left");
     }*/
 
-    public void stop(View view) {
+    /*public void stop(View view) {
         drive(IDLE_SPEED, STRAIGHT_ANGLE, "Stopping");
-    }
+    }*/
 
     /*public void turnRight(View view) {
         drive(TURNING_SPEED, STEERING_ANGLE, "Moving forward right");
