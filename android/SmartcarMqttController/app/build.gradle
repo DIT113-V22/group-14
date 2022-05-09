@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId "platis.solutions.smartcarmqttcontroller"
-        minSdkVersion 30
+        minSdkVersion 29
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
