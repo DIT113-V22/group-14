@@ -17,6 +17,10 @@ public class StatusScreen extends AppCompatActivity {
         setContentView(R.layout.activity_status_screen);
         firebase = new Firebase();
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+
+        getWindow().getDecorView().getWindowInsetsController().hide(
+                android.view.WindowInsets.Type.statusBars()
+        );
         Button back = findViewById(R.id.back);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
