@@ -44,5 +44,5 @@ jobs:
       - name: Run instrumented tests for SmartcarMqttController
         uses: reactivecircus/android-emulator-runner@v2
         with:
-          api-level: 29
+          api-level: 30
           script: cd android/SmartcarMqttController && ./gradlew connectedAndroidTest
