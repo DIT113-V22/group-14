@@ -21,10 +21,7 @@ public class HomeScreen extends AppCompatActivity {
         setContentView(R.layout.activity_home_screen);
         firebase = new Firebase();
 
-     /* firebase.writeNewPlant("7522007913","Tomato",4, 65,"Unhealthy");
 
-        This is an example of how to add new plants add new plants.
-*/
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
         getWindow().getDecorView().getWindowInsetsController().hide(
