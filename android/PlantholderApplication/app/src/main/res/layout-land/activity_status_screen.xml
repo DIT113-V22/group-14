@@ -21,16 +21,70 @@
         app:srcCompat="@drawable/tomato" />
 
     <TextView
-        android:id="@+id/textView2"
-        android:layout_width="199dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="336dp"
-        android:layout_marginTop="80dp"
-        android:text="Plant ID: 8549321501   Plant type: Tomato          Status: Healthy"
+        android:id="@+id/plantIdTextView"
+        android:layout_width="180dp"
+        android:layout_height="27dp"
+        android:text="error"
         android:textSize="16sp"
         android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/plantRowTextView"
+        app:layout_constraintTop_toBottomOf="@+id/plantStatusTitle" />
+
+    <TextView
+        android:id="@+id/plantStatusTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="27dp"
+        android:text="Plant information:"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.687"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.166" />
+
+    <TextView
+        android:id="@+id/plantRowTextView"
+        android:layout_width="88dp"
+        android:layout_height="27dp"
+        android:layout_marginEnd="112dp"
+        android:text="nope"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/plantStatusTitle" />
+
+    <TextView
+        android:id="@+id/plantColumnTextView"
+        android:layout_width="88dp"
+        android:layout_height="27dp"
+        android:layout_marginEnd="112dp"
+        android:text="nope"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/plantRowTextView" />
+
+    <TextView
+        android:id="@+id/plantTypeTextView"
+        android:layout_width="180dp"
+        android:layout_height="27dp"
+        android:text="nope"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/plantColumnTextView"
+        app:layout_constraintTop_toBottomOf="@+id/plantIdTextView" />
+
+    <TextView
+        android:id="@+id/plantStatusTextView"
+        android:layout_width="180dp"
+        android:layout_height="27dp"
+        android:text="nope"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/plantColumnTextView"
+        app:layout_constraintTop_toBottomOf="@+id/plantTypeTextView" />
 
     <Button
         android:id="@+id/back"
@@ -47,51 +101,50 @@
 
     <Button
         android:id="@+id/unhealthy"
-        android:layout_width="130dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="128dp"
+        android:layout_width="128dp"
+        android:layout_height="74dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="20dp"
         android:backgroundTint="#5A3A2F"
         android:text="Unhealthy"
         android:textColor="#FAFAFA"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.559"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/back" />
+        app:layout_constraintEnd_toStartOf="@+id/keepTrack"
+        app:layout_constraintTop_toBottomOf="@+id/plantStatusTextView" />
 
     <Button
         android:id="@+id/healthy"
         android:layout_width="130dp"
-        android:layout_height="wrap_content"
+        android:layout_height="74dp"
         android:layout_marginTop="40dp"
+        android:layout_marginEnd="20dp"
         android:backgroundTint="#D6C52E"
         android:text="Healthy"
         android:textColor="#FAFAFA"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.559"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/ripe"
         app:layout_constraintTop_toBottomOf="@+id/unhealthy" />
 
     <Button
         android:id="@+id/keepTrack"
         android:layout_width="130dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="192dp"
+        android:layout_height="74dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="112dp"
         android:backgroundTint="#F39407"
         android:text="Keep Track"
         android:textColor="#FAFAFA"
-        app:layout_constraintStart_toEndOf="@+id/unhealthy"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/plantStatusTextView" />
 
     <Button
         android:id="@+id/ripe"
         android:layout_width="130dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
+        android:layout_height="74dp"
         android:layout_marginTop="40dp"
+        android:layout_marginEnd="112dp"
         android:backgroundTint="#0A9A10"
         android:text="Ripe"
         android:textColor="#FAFAFA"
-        app:layout_constraintStart_toEndOf="@+id/healthy"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/keepTrack" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
