@@ -22,7 +22,7 @@ import org.eclipse.paho.client.mqttv3.MqttCallback;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 
 public class MainActivity extends AppCompatActivity {
-    private static final String TAG = "SmartcarMqttController";
+    private static final String TAG = "Plantholder";
     private static final String EXTERNAL_MQTT_BROKER = "aerostun.dev";
     private static final String LOCALHOST = "10.0.2.2";  //"192.168.0.45"
     private static final String MQTT_SERVER = "tcp://" + LOCALHOST + ":1883";

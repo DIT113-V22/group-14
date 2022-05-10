@@ -13,7 +13,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.SmartcarMqttController" >
+        android:theme="@style/Theme.Plantholder" >
         <activity
             android:name=".StatusScreen"
             android:exported="false" />
@@ -25,7 +25,7 @@
             android:exported="false" />
         <activity
             android:name=".Pop"
-            android:theme="@style/Theme.SmartcarMqttController.popupTheme"
+            android:theme="@style/Theme.Plantholder.popupTheme"
             android:exported="false" />
         <activity android:name=".LoginScreen">
             <intent-filter>
