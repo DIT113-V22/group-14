@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="plantholder.application">
 
     <uses-permission android:name="android.permission.WAKE_LOCK" />
@@ -16,21 +17,37 @@
         android:theme="@style/Theme.Plantholder">
         <activity
             android:name=".AddPlantScreen"
+            android:configChanges="orientation"
+            android:screenOrientation= "sensorLandscape"
+            tools:ignore="LockedOrientationActivity"
             android:exported="false" />
         <activity
             android:name=".StatusScreen"
+            android:configChanges="orientation"
+            android:screenOrientation= "sensorLandscape"
+            tools:ignore="LockedOrientationActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
+            android:configChanges="orientation"
+            android:screenOrientation= "sensorLandscape"
+            tools:ignore="LockedOrientationActivity"
             android:exported="false" />
         <activity
             android:name=".HomeScreen"
+            android:configChanges="orientation"
+            android:screenOrientation= "sensorLandscape"
+            tools:ignore="LockedOrientationActivity"
             android:exported="false" />
         <activity
             android:name=".Pop"
             android:exported="false"
             android:theme="@style/Theme.Plantholder.popupTheme" />
-        <activity android:name=".LoginScreen">
+        <activity android:name=".LoginScreen"
+            android:exported="true"
+            android:configChanges="orientation"
+            android:screenOrientation= "sensorLandscape"
+            tools:ignore="LockedOrientationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
