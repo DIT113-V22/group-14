@@ -9,7 +9,7 @@ android {
     defaultConfig {
         applicationId "plantholder.app" //was platis.solutions.smartcarmqttcontroller
         minSdkVersion 29
-        targetSdkVersion 30
+        targetSdkVersion 32
         versionCode 1
         versionName "1.0"
 
