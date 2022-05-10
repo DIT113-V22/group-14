@@ -18,33 +18,32 @@
 
 
         <Button
-            android:id="@+id/button11"
+            android:id="@+id/forward"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="100dp"
             android:layout_marginBottom="8dp"
             android:backgroundTint="#616161"
-            android:onClick="moveForward"
             android:text="FORWARD"
             android:textColor="#FAFAFA"
-            app:layout_constraintBottom_toTopOf="@+id/button14"
+            app:layout_constraintBottom_toTopOf="@+id/stop"
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
-            android:id="@+id/button15"
+            android:id="@+id/left"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
             android:layout_marginBottom="4dp"
             android:backgroundTint="#616161"
-            android:onClick="turnLeft"
+
             android:text="Left"
             android:textColor="#FAFAFA"
-            app:layout_constraintBottom_toTopOf="@+id/button12"
+            app:layout_constraintBottom_toTopOf="@+id/backward"
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
-            android:id="@+id/button14"
+            android:id="@+id/stop"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
@@ -53,30 +52,30 @@
             android:onClick="stop"
             android:text="Stop"
             android:textColor="#FAFAFA"
-            app:layout_constraintBottom_toTopOf="@+id/button12"
-            app:layout_constraintStart_toEndOf="@+id/button15" />
+            app:layout_constraintBottom_toTopOf="@+id/backward"
+            app:layout_constraintStart_toEndOf="@+id/left" />
 
         <Button
-            android:id="@+id/button13"
+            android:id="@+id/right"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginBottom="64dp"
             android:backgroundTint="#616161"
-            android:onClick="turnRight"
+
             android:text="Right"
             android:textColor="#FAFAFA"
             app:layout_constraintBottom_toTopOf="@+id/information"
-            app:layout_constraintStart_toEndOf="@+id/button14" />
+            app:layout_constraintStart_toEndOf="@+id/stop" />
 
         <Button
-            android:id="@+id/button12"
+            android:id="@+id/backward"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="100dp"
             android:layout_marginBottom="12dp"
             android:backgroundTint="#616161"
-            android:onClick="moveBackward"
+
             android:text="Backward"
             android:textColor="#FAFAFA"
             app:layout_constraintBottom_toTopOf="@+id/takePicture"
@@ -132,7 +131,7 @@
             android:scaleType="fitCenter"
             android:src="@drawable/turtle2"
             app:layout_constraintBottom_toTopOf="@+id/information"
-            app:layout_constraintStart_toEndOf="@+id/button12" />
+            app:layout_constraintStart_toEndOf="@+id/backward" />
 
         <ImageButton
             android:id="@+id/rabbitButton"
