@@ -40,7 +40,8 @@
 build/
 
 # Local configuration file (sdk path, etc)
-android/SmartcarMqttController/local.properties
+android/PlantholderApplication/local.properties
+android/local.properties
 
 # Log/OS Files
 *.log
