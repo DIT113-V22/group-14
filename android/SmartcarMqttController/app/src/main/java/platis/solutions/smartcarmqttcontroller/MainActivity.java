@@ -264,24 +264,4 @@ public class MainActivity extends AppCompatActivity {
         mMqttClient.publish(THROTTLE_CONTROL, Integer.toString(throttleSpeed), QOS, null);
         mMqttClient.publish(STEERING_CONTROL, Integer.toString(steeringAngle), QOS, null);
     }
-
-    /*public void moveForward(View view) {
-        drive(speedMode, STRAIGHT_ANGLE, "Moving forward");
-    }*/
-
-    /*public void turnLeft(View view) {
-        drive(TURNING_SPEED, -STEERING_ANGLE, "Moving forward left");
-    }*/
-
-    /*public void stop(View view) {
-        drive(IDLE_SPEED, STRAIGHT_ANGLE, "Stopping");
-    }*/
-
-    /*public void turnRight(View view) {
-        drive(TURNING_SPEED, STEERING_ANGLE, "Moving forward right");
-    }*/
-
-    /*public void moveBackward(View view) {
-        drive(-speedMode, STRAIGHT_ANGLE, "Moving backward");
-    }*/
 }
