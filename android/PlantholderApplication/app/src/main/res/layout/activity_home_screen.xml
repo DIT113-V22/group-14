@@ -13,7 +13,6 @@
         android:layout_height="75dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginStart="68dp"
         android:backgroundTint="#4CAF50"
         android:text="SCAN"
         android:textColor="#FAFAFA"
@@ -21,25 +20,6 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.046"
-        app:layout_constraintStart_toEndOf="@+id/homeButton"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.777"
-        tools:ignore="MissingConstraints" />
-
-    <Button
-        android:id="@+id/homeButton"
-        android:layout_width="115dp"
-        android:layout_height="75dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="48dp"
-        android:backgroundTint="#4CAF50"
-        android:text="INFO"
-        android:textColor="#E0ECE0"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.777"
         tools:ignore="MissingConstraints" />

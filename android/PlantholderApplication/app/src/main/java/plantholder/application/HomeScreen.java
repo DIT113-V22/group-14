@@ -13,6 +13,7 @@ public class HomeScreen extends AppCompatActivity {
     private static final String TAG = "HomeScreen";
 
     Button manualButton;
+    Button buttonAddPlant;
     private Firebase firebase;
 
     @Override
@@ -37,6 +38,17 @@ public class HomeScreen extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-    }
 
+
+        buttonAddPlant = (Button) findViewById(R.id.buttonAddPlant);
+
+        buttonAddPlant.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(HomeScreen.this, AddPlantScreen.class);
+                startActivity(intent);
+            }
+        });
+
+    }
 }

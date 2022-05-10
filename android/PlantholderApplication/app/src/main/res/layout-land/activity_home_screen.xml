@@ -13,18 +13,15 @@
         android:layout_height="75dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginStart="68dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginBottom="72dp"
         android:backgroundTint="#4CAF50"
         android:text="SCAN"
         android:textColor="#FAFAFA"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.023"
-        app:layout_constraintStart_toEndOf="@+id/homeButton"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.776"
+        app:layout_constraintStart_toEndOf="@+id/buttonAddPlant"
         tools:ignore="MissingConstraints" />
 
     <Button
@@ -32,7 +29,8 @@
         android:layout_width="115dp"
         android:layout_height="75dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="48dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginBottom="72dp"
         android:backgroundTint="#4CAF50"
         android:text="INFO"
         android:textColor="#E0ECE0"
@@ -40,9 +38,22 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.777"
         tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/buttonAddPlant"
+        android:layout_width="115dp"
+        android:layout_height="75dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginBottom="72dp"
+        android:backgroundTint="#4CAF50"
+        android:text="Add Plant"
+        android:textColor="#E0ECE0"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/homeButton" />
 
     <TextView
         android:id="@+id/textView"
@@ -54,10 +65,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.075"
+        app:layout_constraintHorizontal_bias="0.192"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.163" />
+        app:layout_constraintVertical_bias="0.387" />
 
     <ImageView
         android:id="@+id/imageView2"
