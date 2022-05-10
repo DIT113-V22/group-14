@@ -1,4 +1,4 @@
-package platis.solutions.smartcarmqttcontroller;
+package plantholder.application;
 
 import android.os.Bundle;
 import android.widget.Button;

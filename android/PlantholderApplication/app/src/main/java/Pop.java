@@ -1,4 +1,4 @@
-package platis.solutions.smartcarmqttcontroller;
+package plantholder.application;
 
 import android.app.Activity;
 import android.os.Bundle;
