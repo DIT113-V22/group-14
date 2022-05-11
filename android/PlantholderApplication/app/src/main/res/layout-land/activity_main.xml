@@ -16,67 +16,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         tools:layout_editor_absoluteX="0dp">
 
-
-        <!--Button
-            android:id="@+id/forward"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="88dp"
-            android:layout_marginBottom="12dp"
-            android:backgroundTint="#616161"
-            android:text="FORWARD"
-            android:textColor="#FAFAFA"
-            app:layout_constraintBottom_toTopOf="@+id/stop"
-            app:layout_constraintStart_toStartOf="parent" /-->
-
-        <!--Button
-            android:id="@+id/left"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="12dp"
-            android:layout_marginBottom="12dp"
-            android:backgroundTint="#616161"
-            android:text="Left"
-            android:textColor="#FAFAFA"
-            app:layout_constraintBottom_toTopOf="@+id/backward"
-            app:layout_constraintEnd_toStartOf="@+id/stop" /-->
-
-        <!--Button
-            android:id="@+id/stop"
-            android:layout_width="92dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="102dp"
-            android:layout_marginBottom="12dp"
-            android:backgroundTint="#C80F0F"
-            android:text="Stop"
-            android:textColor="#FAFAFA"
-            app:layout_constraintBottom_toTopOf="@+id/backward"
-            app:layout_constraintStart_toStartOf="parent" /-->
-
-        <!--Button
-            android:id="@+id/right"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_marginBottom="12dp"
-            android:backgroundTint="#616161"
-            android:text="Right"
-            android:textColor="#FAFAFA"
-            app:layout_constraintBottom_toTopOf="@+id/backward"
-            app:layout_constraintStart_toEndOf="@+id/stop" /-->
-
-        <!--Button
-            android:id="@+id/backward"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="88dp"
-            android:layout_marginBottom="120dp"
-            android:backgroundTint="#616161"
-            android:text="Backward"
-            android:textColor="#FAFAFA"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" /-->
-
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="350dp"
@@ -149,14 +88,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="40dp"
             android:layout_marginEnd="44dp"
             android:text="SCAN MODE"
             android:textColor="#050505"
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@+id/menuButton"
-            app:layout_constraintHorizontal_bias="0.158"
+            app:layout_constraintHorizontal_bias="0.225"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -201,7 +140,7 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <ImageButton
-            android:id="@+id/down_arrow"
+            android:id="@+id/backward_arrow"
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="87dp"
             android:layout_height="72dp"
@@ -216,7 +155,7 @@
             app:layout_constraintVertical_bias="0.982" />
 
         <ImageButton
-            android:id="@+id/forward"
+            android:id="@+id/forward_arrow"
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="87dp"
             android:layout_height="72dp"
