@@ -64,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
 
         ImageButton turtleButton = findViewById(R.id.turtleButton);
         ImageButton rabbitButton = findViewById(R.id.rabbitButton);
+        ImageButton left_arrow = findViewById(R.id.left_arrow);
         Button moveForward = (Button) findViewById(R.id.forward);
         Button moveBackward = findViewById(R.id.backward);
         Button moveRight = findViewById(R.id.right);
@@ -75,6 +76,18 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, HomeScreen.class);
                 startActivity(intent);
+            }
+        });
+
+        left_arrow.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                if(motionEvent.getAction() == MotionEvent.ACTION_DOWN){
+                    drive(TURNING_SPEED, -STEERING_ANGLE, "Moving forward left");
+                }else if (motionEvent.getAction() == MotionEvent.ACTION_UP){
+                    drive(IDLE_SPEED, STRAIGHT_ANGLE, "Stopping");
+                }
+                return false;
             }
         });
 

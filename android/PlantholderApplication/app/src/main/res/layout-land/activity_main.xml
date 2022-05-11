@@ -17,7 +17,7 @@
         tools:layout_editor_absoluteX="0dp">
 
 
-        <Button
+        <!--Button
             android:id="@+id/forward"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
@@ -27,9 +27,9 @@
             android:text="FORWARD"
             android:textColor="#FAFAFA"
             app:layout_constraintBottom_toTopOf="@+id/stop"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent" /-->
 
-        <Button
+        <!--Button
             android:id="@+id/left"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
@@ -39,22 +39,21 @@
             android:text="Left"
             android:textColor="#FAFAFA"
             app:layout_constraintBottom_toTopOf="@+id/backward"
-            app:layout_constraintEnd_toStartOf="@+id/stop" />
+            app:layout_constraintEnd_toStartOf="@+id/stop" /-->
 
-        <Button
+        <!--Button
             android:id="@+id/stop"
             android:layout_width="92dp"
             android:layout_height="50dp"
             android:layout_marginStart="102dp"
             android:layout_marginBottom="12dp"
             android:backgroundTint="#C80F0F"
-            android:onClick="stop"
             android:text="Stop"
             android:textColor="#FAFAFA"
             app:layout_constraintBottom_toTopOf="@+id/backward"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent" /-->
 
-        <Button
+        <!--Button
             android:id="@+id/right"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
@@ -64,9 +63,9 @@
             android:text="Right"
             android:textColor="#FAFAFA"
             app:layout_constraintBottom_toTopOf="@+id/backward"
-            app:layout_constraintStart_toEndOf="@+id/stop" />
+            app:layout_constraintStart_toEndOf="@+id/stop" /-->
 
-        <Button
+        <!--Button
             android:id="@+id/backward"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
@@ -76,7 +75,7 @@
             android:text="Backward"
             android:textColor="#FAFAFA"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent" /-->
 
         <ImageView
             android:id="@+id/imageView"
@@ -136,9 +135,8 @@
             android:layout_width="76dp"
             android:layout_height="79dp"
             android:layout_marginStart="52dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="12dp"
             android:adjustViewBounds="true"
-
             android:background="@drawable/button_select_states"
             android:scaleType="fitCenter"
             android:src="@drawable/rabbit"
@@ -174,6 +172,60 @@
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/left_arrow"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="128dp"
+            android:layout_height="111dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginBottom="148dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/left_arrow"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageButton
+            android:id="@+id/right_arrow"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="109dp"
+            android:layout_height="95dp"
+            android:layout_marginStart="168dp"
+            android:layout_marginBottom="156dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/right_arrow"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageButton
+            android:id="@+id/down_arrow"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="87dp"
+            android:layout_height="72dp"
+            android:layout_marginStart="123dp"
+            android:layout_marginBottom="112dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/down_arrow"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.982" />
+
+        <ImageButton
+            android:id="@+id/forward"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="87dp"
+            android:layout_height="72dp"
+            android:layout_marginStart="123dp"
+            android:layout_marginTop="120dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/up_arrow"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
 
