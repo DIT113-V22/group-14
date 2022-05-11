@@ -36,6 +36,8 @@ public class StatusScreen extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.R)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        firebase = new Firebase();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_status_screen);
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
@@ -103,7 +105,7 @@ public class StatusScreen extends AppCompatActivity {
         keepTrackOn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                firebase.updatePlantHealth("1846973667","Keep Track On");
+                firebase.updatePlantHealth("1846973667","Keep Track");
             }
         });
 
