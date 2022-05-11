@@ -8,9 +8,38 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:809049048723:android:ea6dbd33638a5092322f66",
+        "android_client_info": {
+          "package_name": "plantholder.application"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "809049048723-tivmao1mgr8b600e2mr6tk94v48mj4i5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAFdrDKxirAxj2ma10BmgvvlwenzmJT500"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "809049048723-tivmao1mgr8b600e2mr6tk94v48mj4i5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:809049048723:android:575f0b37e615d163322f66",
         "android_client_info": {
-          "package_name": "plantholder.app"
+          "package_name": "platis.solutions.smartcarmqttcontroller"
         }
       },
       "oauth_client": [
