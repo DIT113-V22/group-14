@@ -14,8 +14,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.PopupWindow;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -50,8 +48,8 @@ public class LoginScreen extends AppCompatActivity {
         );
 
         Button login = findViewById(R.id.login);
-        EditText emailText = (EditText) findViewById(R.id.editTextTextEmailAddress);
-        EditText passwordText = (EditText) findViewById(R.id.editTextTextPassword);
+        EditText emailText = findViewById(R.id.editTextTextEmailAddress);
+        EditText passwordText = findViewById(R.id.editTextTextPassword);
 
         //method for hiding and showing password when clicking on the view toggle
         passwordText.setOnTouchListener(new View.OnTouchListener() {
