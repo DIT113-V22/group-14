@@ -22,13 +22,46 @@
 
     <TextView
         android:id="@+id/plantIdTextView"
-        android:layout_width="180dp"
+        android:layout_width="157dp"
         android:layout_height="27dp"
         android:text="error"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/plantRowTextView"
+        app:layout_constraintEnd_toStartOf="@+id/plantRowTextView2"
         app:layout_constraintTop_toBottomOf="@+id/plantStatusTitle" />
+
+    <TextView
+        android:id="@+id/plantIdTextView2"
+        android:layout_width="30dp"
+        android:layout_height="27dp"
+        android:text="ID: "
+        android:textAlignment="textStart"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/plantIdTextView"
+        app:layout_constraintTop_toBottomOf="@+id/plantStatusTitle" />
+
+    <TextView
+        android:id="@+id/plantIdTextView3"
+        android:layout_width="68dp"
+        android:layout_height="27dp"
+        android:text="Species: "
+        android:textAlignment="textStart"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/plantTypeTextView"
+        app:layout_constraintTop_toBottomOf="@+id/plantIdTextView2" />
+
+    <TextView
+        android:id="@+id/plantIdTextView4"
+        android:layout_width="58dp"
+        android:layout_height="24dp"
+        android:text="Health: "
+        android:textAlignment="textStart"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/plantStatusTextView"
+        app:layout_constraintTop_toBottomOf="@+id/plantIdTextView3" />
 
     <TextView
         android:id="@+id/plantStatusTitle"
@@ -39,7 +72,7 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.687"
+        app:layout_constraintHorizontal_bias="0.667"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.166" />
@@ -48,7 +81,7 @@
         android:id="@+id/plantRowTextView"
         android:layout_width="88dp"
         android:layout_height="27dp"
-        android:layout_marginEnd="112dp"
+        android:layout_marginEnd="72dp"
         android:text="nope"
         android:textSize="16sp"
         android:textStyle="bold"
@@ -56,30 +89,53 @@
         app:layout_constraintTop_toBottomOf="@+id/plantStatusTitle" />
 
     <TextView
+        android:id="@+id/plantRowTextView2"
+        android:layout_width="43dp"
+        android:layout_height="27dp"
+        android:text="Row: "
+        android:textAlignment="textStart"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/plantRowTextView"
+        app:layout_constraintTop_toBottomOf="@+id/plantStatusTitle" />
+
+    <TextView
         android:id="@+id/plantColumnTextView"
         android:layout_width="88dp"
         android:layout_height="27dp"
-        android:layout_marginEnd="112dp"
-        android:text="nope"
+        android:layout_marginEnd="45dp"
+        android:text="Nope "
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/plantRowTextView" />
 
     <TextView
+        android:id="@+id/plantColumnTextView2"
+        android:layout_width="70dp"
+        android:layout_height="27dp"
+        android:text="Column: "
+        android:textAlignment="textStart"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/plantColumnTextView"
+        app:layout_constraintTop_toBottomOf="@+id/plantRowTextView2" />
+
+    <TextView
         android:id="@+id/plantTypeTextView"
-        android:layout_width="180dp"
+        android:layout_width="119dp"
         android:layout_height="27dp"
         android:text="nope"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/plantColumnTextView"
+        app:layout_constraintEnd_toStartOf="@+id/plantColumnTextView2"
         app:layout_constraintTop_toBottomOf="@+id/plantIdTextView" />
 
     <TextView
         android:id="@+id/plantStatusTextView"
-        android:layout_width="180dp"
+        android:layout_width="100dp"
         android:layout_height="27dp"
+        android:layout_marginEnd="99dp"
         android:text="nope"
         android:textSize="16sp"
         android:textStyle="bold"
