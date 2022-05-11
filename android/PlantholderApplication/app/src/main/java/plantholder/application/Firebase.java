@@ -14,20 +14,10 @@ import java.util.HashMap;
 public class Firebase extends AppCompatActivity {
 
     private DatabaseReference myDatabase;
-    private DatabaseReference myPlants;
 
 
 
-    public Task<Void> addPlantTask(Plants plant) {
-      return myDatabase.push().setValue(plant);
-    }
 
-    public Task<Void> updatePlantTask(String key, HashMap<String, Object> hashMap) {
-        return myDatabase.child(key).updateChildren(hashMap);
-    }
-
-
-    //old below
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
