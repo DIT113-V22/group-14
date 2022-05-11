@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Plantholder</string>
+    <string name="set_health_status">Set health status</string>
+    <string-array name="healthStatus">
+        <item>Status Unknown</item>
+        <item>Unhealthy</item>
+        <item>Healthy</item>
+        <item>Keep Track On</item>
+        <item>Ripe</item>
+    </string-array>
 </resources>

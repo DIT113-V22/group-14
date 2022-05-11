@@ -19,10 +19,12 @@ import java.util.Map;
 public class Firebase extends AppCompatActivity {
 
     private DatabaseReference myDatabase;
+    private AddPlantScreen addPlantScreen;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
+        addPlantScreen = new AddPlantScreen();
 
     }
 
@@ -32,10 +34,10 @@ public class Firebase extends AppCompatActivity {
     }
 
     // Do not delete method, we will use it later
-    public void writeNewPlant(String ID,String species, int row, int column, String health){
+    public void writeNewPlant(String ID,String species, int row, int column, String selectedHealth){
         getDatabase();
 
-        Plants plant = new Plants(ID,species,row,column,health);
+        Plants plant = new Plants(ID,species,row,column,selectedHealth);
         myDatabase.child(ID).setValue(plant);
 
     }
