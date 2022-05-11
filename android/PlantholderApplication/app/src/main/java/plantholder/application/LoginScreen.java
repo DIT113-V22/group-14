@@ -1,5 +1,6 @@
 package plantholder.application;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,14 +15,32 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.PopupWindow;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.Objects;
 
 public class LoginScreen extends AppCompatActivity {
 
-    boolean passwordVisible;
+    boolean passwordVisible = false;
+    boolean passwordAuthentication;
+    Firebase firebase;
+    FirebaseDatabase firebaseDatabase;
+    DatabaseReference firebaseReference;
+
 
     @RequiresApi(api = Build.VERSION_CODES.R)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        firebase = new Firebase();
+        firebaseDatabase =  FirebaseDatabase.getInstance();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_screen);
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
@@ -67,12 +86,21 @@ public class LoginScreen extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (emailText.getText().toString().isEmpty() || passwordText.getText().toString().isEmpty()) {
-                    startActivity(new Intent(LoginScreen.this,Pop.class));
+                String usernameEntered = emailText.getText().toString();
+                String enteredPassword = passwordText.getText().toString();
+                        firebaseReference = firebaseDatabase.getReference("Users").child(usernameEntered).child("password");
+                if (usernameEntered.isEmpty() || enteredPassword.isEmpty()) {
+                    Toast.makeText(LoginScreen.this, "Please enter email and password", Toast.LENGTH_SHORT).show();
                 } else {
-                    Intent intent = new Intent(LoginScreen.this, HomeScreen.class);
-                    startActivity(intent);
-                    passwordText.setText("");
+
+                    verifyUserCredentials(enteredPassword);
+                    if (passwordAuthentication) {
+                        Intent intent = new Intent(LoginScreen.this, HomeScreen.class);
+                        startActivity(intent);
+                        passwordText.setText("");
+                    } else {
+                        Toast.makeText(LoginScreen.this, "Wrong email or password", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });
@@ -86,5 +114,24 @@ public class LoginScreen extends AppCompatActivity {
                 System.exit(0);
             }
         });
+    }
+
+
+    private void verifyUserCredentials(String password) {
+        firebaseReference.addValueEventListener(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String value = snapshot.getValue(String.class);
+                passwordAuthentication = Objects.equals(value, password);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(LoginScreen.this, "Fail to get data", Toast.LENGTH_SHORT).show();
+            }
+
+        });
+
     }
 }
