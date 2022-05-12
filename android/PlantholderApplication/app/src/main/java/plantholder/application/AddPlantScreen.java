@@ -16,8 +16,11 @@ import android.widget.Toast;
 
 public class AddPlantScreen extends AppCompatActivity {
     String selectedHealth;
+    String selectedType;
     private Firebase firebase;
     Spinner spinnerPlantHealth;
+    Spinner spinnerPlantType;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,14 +36,26 @@ public class AddPlantScreen extends AppCompatActivity {
 
         spinnerPlantHealth.setAdapter(adapter);
 
+        spinnerPlantType = (Spinner) (findViewById(R.id.spinnerPlantType));
+
+        ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this, R.array.plantType, android.R.layout.simple_spinner_item);
+        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        spinnerPlantType.setAdapter(adapter2);
+
+
+
+
         Button save = findViewById(R.id.buttonSave);
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 selectedHealth = spinnerPlantHealth.getSelectedItem().toString();
-                firebase.writeNewPlant("9999999988","potato",4,5, selectedHealth);
+                selectedType = spinnerPlantType.getSelectedItem().toString();
+                firebase.writeNewPlant("9999999988",selectedType,4,5, selectedHealth);
             }
         });
+
 
     }
     }

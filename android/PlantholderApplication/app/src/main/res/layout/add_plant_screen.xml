@@ -9,11 +9,21 @@
         android:id="@+id/spinnerPlantHealth"
         android:layout_width="274dp"
         android:layout_height="55dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="30dp"
         android:contentDescription="@string/set_health_status"
         android:spinnerMode="dropdown"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.452"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerPlantType" />
+
+    <Spinner
+        android:id="@+id/spinnerPlantType"
+        android:layout_width="274dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="40dp"
+        android:contentDescription="@string/set_plant_type"
+        android:spinnerMode="dropdown"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -21,8 +31,8 @@
         android:id="@+id/buttonSave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="316dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginStart="320dp"
+        android:layout_marginBottom="40dp"
         android:text="SAVE"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
