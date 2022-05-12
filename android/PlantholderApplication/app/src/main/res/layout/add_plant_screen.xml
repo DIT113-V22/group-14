@@ -35,10 +35,11 @@
         android:layout_marginBottom="36dp"
         android:backgroundTint="#4CAF50"
         android:gravity="center_vertical"
-        android:text=" SAVE"
-        android:textSize="20dp"
+        android:text="@string/save"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="TextContrastCheck" />
 
     <EditText
         android:id="@+id/editTextRow"
@@ -48,7 +49,7 @@
         android:layout_marginEnd="50dp"
         android:ems="10"
         android:maxLength="5"
-        android:hint="Row"
+        android:hint="@string/row"
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -61,7 +62,7 @@
         android:layout_marginEnd="50dp"
         android:ems="10"
         android:maxLength="5"
-        android:hint="Column"
+        android:hint="@string/column"
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextRow" />
@@ -74,7 +75,7 @@
         android:layout_marginTop="64dp"
         android:ems="10"
         android:gravity="center_vertical"
-        android:hint="ID"
+        android:hint="@string/id"
         android:inputType="number"
         android:maxLength="10"
         app:layout_constraintStart_toStartOf="parent"
@@ -86,6 +87,7 @@
         android:layout_height="121dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="48dp"
+        android:contentDescription="@string/logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/field" />
