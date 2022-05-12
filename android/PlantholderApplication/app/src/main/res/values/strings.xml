@@ -6,7 +6,7 @@
         <item>Status Unknown</item>
         <item>Unhealthy</item>
         <item>Healthy</item>
-        <item>Keep Track On</item>
+        <item>Keep Track</item>
         <item>Ripe</item>
     </string-array>
     <string-array name="plantType">

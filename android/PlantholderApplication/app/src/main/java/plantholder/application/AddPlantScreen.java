@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 
 
@@ -15,11 +16,20 @@ import android.widget.AdapterView;
 import android.widget.Toast;
 
 public class AddPlantScreen extends AppCompatActivity {
-    String selectedHealth;
-    String selectedType;
     private Firebase firebase;
-    Spinner spinnerPlantHealth;
-    Spinner spinnerPlantType;
+
+    private String selectedHealth;
+    private String selectedType;
+    private String addedID;
+    private int addedRow;
+    private int addedColumn;
+
+
+    private Spinner spinnerPlantHealth;
+    private Spinner spinnerPlantType;
+    private EditText editColumn;
+    private EditText editRow;
+    private EditText editID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +39,11 @@ public class AddPlantScreen extends AppCompatActivity {
 
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
+        editID = (EditText) (findViewById(R.id.editTextID));
+        editColumn = (EditText) (findViewById(R.id.editTextColumn));
+        editRow = (EditText) (findViewById(R.id.editTextRow));
+
+        //create spinner for health
         spinnerPlantHealth = (Spinner) (findViewById(R.id.spinnerPlantHealth));
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.healthStatus, android.R.layout.simple_spinner_item);
@@ -36,6 +51,7 @@ public class AddPlantScreen extends AppCompatActivity {
 
         spinnerPlantHealth.setAdapter(adapter);
 
+        // create spinner for type
         spinnerPlantType = (Spinner) (findViewById(R.id.spinnerPlantType));
 
         ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this, R.array.plantType, android.R.layout.simple_spinner_item);
@@ -43,8 +59,7 @@ public class AddPlantScreen extends AppCompatActivity {
 
         spinnerPlantType.setAdapter(adapter2);
 
-
-
+        //create new plant by pressing save
 
         Button save = findViewById(R.id.buttonSave);
         save.setOnClickListener(new View.OnClickListener() {
@@ -52,7 +67,11 @@ public class AddPlantScreen extends AppCompatActivity {
             public void onClick(View view) {
                 selectedHealth = spinnerPlantHealth.getSelectedItem().toString();
                 selectedType = spinnerPlantType.getSelectedItem().toString();
-                firebase.writeNewPlant("9999999988",selectedType,4,5, selectedHealth);
+                addedID = editID.getText().toString();
+                addedColumn = Integer.parseInt(editColumn.getText().toString());
+                addedRow = Integer.parseInt(editRow.getText().toString());
+
+                firebase.writeNewPlant(addedID,selectedType,addedRow,addedColumn, selectedHealth);
             }
         });
 

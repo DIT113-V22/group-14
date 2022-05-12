@@ -9,7 +9,7 @@
         android:id="@+id/spinnerPlantHealth"
         android:layout_width="274dp"
         android:layout_height="55dp"
-        android:layout_marginStart="40dp"
+        android:layout_marginStart="50dp"
         android:layout_marginTop="30dp"
         android:contentDescription="@string/set_health_status"
         android:spinnerMode="dropdown"
@@ -20,22 +20,75 @@
         android:id="@+id/spinnerPlantType"
         android:layout_width="274dp"
         android:layout_height="55dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="30dp"
         android:contentDescription="@string/set_plant_type"
         android:spinnerMode="dropdown"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextID" />
 
     <Button
         android:id="@+id/buttonSave"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="320dp"
-        android:layout_marginBottom="40dp"
-        android:text="SAVE"
+        android:layout_width="97dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="316dp"
+        android:layout_marginBottom="36dp"
+        android:backgroundTint="#4CAF50"
+        android:gravity="center_vertical"
+        android:text=" SAVE"
+        android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextRow"
+        android:layout_width="274dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="150dp"
+        android:layout_marginEnd="50dp"
+        android:ems="10"
+        android:maxLength="5"
+        android:hint="Row"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextColumn"
+        android:layout_width="274dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="50dp"
+        android:ems="10"
+        android:maxLength="5"
+        android:hint="Column"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextRow" />
+
+    <EditText
+        android:id="@+id/editTextID"
+        android:layout_width="274dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="64dp"
+        android:ems="10"
+        android:gravity="center_vertical"
+        android:hint="ID"
+        android:inputType="number"
+        android:maxLength="10"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageLogo"
+        android:layout_width="126dp"
+        android:layout_height="121dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/field" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
