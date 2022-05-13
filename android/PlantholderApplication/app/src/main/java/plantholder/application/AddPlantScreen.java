@@ -74,11 +74,23 @@ public class AddPlantScreen extends AppCompatActivity {
                 selectedHealth = spinnerPlantHealth.getSelectedItem().toString();
                 selectedType = spinnerPlantType.getSelectedItem().toString();
                 addedID = editID.getText().toString();
-                addedColumn = Integer.parseInt(editColumn.getText().toString());
-                addedRow = Integer.parseInt(editRow.getText().toString());
+                if (editColumn.getText().toString().isEmpty()) {
+                    addedColumn = -1;
+                } else {
+                    addedColumn = Integer.parseInt(editColumn.getText().toString());
+                }
+                if (editRow.getText().toString().isEmpty()) {
+                    addedRow = -1;
+                } else {
+                    addedRow = Integer.parseInt(editRow.getText().toString());
+                }
 
                 if (addedID.length() < 10 ) {
                     Toast.makeText(AddPlantScreen.this, "Plant ID needs to be 10 digits.", Toast.LENGTH_SHORT).show();
+                } else if (addedRow < 0){
+                    Toast.makeText(AddPlantScreen.this, "Please enter a row.", Toast.LENGTH_SHORT).show();
+                } else if (addedColumn < 0 ){
+                    Toast.makeText(AddPlantScreen.this, "Please enter a column.", Toast.LENGTH_SHORT).show();
                 } else {
                     firebase.writeNewPlant(addedID, selectedType, addedRow, addedColumn, selectedHealth);
                     Toast.makeText(AddPlantScreen.this, "Plant created!", Toast.LENGTH_SHORT).show();
@@ -94,3 +106,5 @@ public class AddPlantScreen extends AppCompatActivity {
         });
     }
 }
+
+
