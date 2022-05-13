@@ -14,15 +14,10 @@ import java.util.HashMap;
 public class Firebase extends AppCompatActivity {
 
     private DatabaseReference myDatabase;
-    private AddPlantScreen addPlantScreen;
-
-
-
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
-        addPlantScreen = new AddPlantScreen();
 
     }
 
@@ -31,8 +26,6 @@ public class Firebase extends AppCompatActivity {
         myDatabase = database.getReference("Plants");
     }
 
-
-    // Do not delete method, we will use it later
     public void writeNewPlant(String ID,String species, int row, int column, String selectedHealth){
         getDatabase();
 
