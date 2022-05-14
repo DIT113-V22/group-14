@@ -68,8 +68,20 @@ public class MainActivity extends AppCompatActivity {
         ImageButton rightArrow = findViewById(R.id.right_arrow);
         ImageButton forwardArrow = findViewById(R.id.forward_arrow);
         ImageButton backwardArrow = findViewById(R.id.backward_arrow);
-        //ImageButton autoPilot = findViewById(R.id.auto_pilot);
+        Button autoPilot = findViewById(R.id.auto_mode);
         Button menuButton = (Button) findViewById(R.id.menuButton);
+
+        autoPilot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                view.setSelected(!view.isSelected());
+                if(view.isSelected()){
+                    drive(speedMode, STRAIGHT_ANGLE, "Moving forward");
+                }else{
+                    drive(IDLE_SPEED, STRAIGHT_ANGLE, "Stopping");
+                }
+            }
+        });
 
         menuButton.setOnClickListener(new View.OnClickListener() {
             @Override
