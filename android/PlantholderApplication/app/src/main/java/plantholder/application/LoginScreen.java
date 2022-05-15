@@ -52,6 +52,7 @@ public class LoginScreen extends AppCompatActivity {
         EditText emailText = findViewById(R.id.editTextTextEmailAddress);
         EditText passwordText = findViewById(R.id.editTextTextPassword);
         CheckBox rememberMe = findViewById(R.id.checkBox);
+        Button join = findViewById(R.id.joinbutton);
 
         //method for hiding and showing password when clicking on the view toggle
         passwordText.setOnTouchListener(new View.OnTouchListener() {
@@ -106,6 +107,14 @@ public class LoginScreen extends AppCompatActivity {
             }
         });
 
+        join.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LoginScreen.this, CreateAccount.class);
+                startActivity(intent);
+            }
+        });
+
         Button exit = findViewById(R.id.exit);
         exit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -132,7 +141,6 @@ public class LoginScreen extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                //startActivity(new Intent(LoginScreen.this,Pop.class));
                 Toast.makeText(LoginScreen.this, "Fail to get data", Toast.LENGTH_SHORT).show();
             }
 

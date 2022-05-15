@@ -22,6 +22,12 @@
             tools:ignore="LockedOrientationActivity"
             android:exported="false" />
         <activity
+            android:name=".CreateAccount"
+            android:configChanges="orientation"
+            android:screenOrientation= "sensorLandscape"
+            tools:ignore="LockedOrientationActivity"
+            android:exported="false"/>
+        <activity
             android:name=".StatusScreen"
             android:configChanges="orientation"
             android:screenOrientation= "sensorLandscape"
