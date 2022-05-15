@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -27,9 +28,7 @@ import java.util.Objects;
 
 public class LoginScreen extends AppCompatActivity {
 
-    private String value;
     boolean passwordVisible = false;
-    boolean passwordAuthentication;
     Firebase firebase;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference firebaseReference;
@@ -91,30 +90,21 @@ public class LoginScreen extends AppCompatActivity {
             }
         });
 
-            //login button that checks if password and/or email textfields are empty, if they are shows a popup.
+        //login button that checks if password and/or email textfields are empty, if they are shows a popup.
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String usernameEntered = emailText.getText().toString();
                 String enteredPassword = passwordText.getText().toString();
                 firebaseReference = firebaseDatabase.getReference("Users").child(usernameEntered).child("password");
+
                 if (usernameEntered.isEmpty() || enteredPassword.isEmpty()) {
-                    //startActivity(new Intent(LoginScreen.this,Pop.class));
                     Toast.makeText(LoginScreen.this, "Please enter email and password", Toast.LENGTH_SHORT).show();
-                } else {
-                    verifyUserCredentials(enteredPassword);
-                    if (passwordAuthentication) {
-                        Intent intent = new Intent(LoginScreen.this, HomeScreen.class);
-                        startActivity(intent);
-                        passwordText.setText("");
-                    } else {
-                        //startActivity(new Intent(LoginScreen.this,Pop.class));
-                        Toast.makeText(LoginScreen.this, "Wrong email or password", Toast.LENGTH_SHORT).show();
-                    }
+                    return;
                 }
+                verifyUserCredentials(enteredPassword);
             }
         });
-
 
         Button exit = findViewById(R.id.exit);
         exit.setOnClickListener(new View.OnClickListener() {
@@ -126,17 +116,18 @@ public class LoginScreen extends AppCompatActivity {
         });
     }
 
-
     private void verifyUserCredentials(String password) {
         firebaseReference.addValueEventListener(new ValueEventListener() {
 
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                value = snapshot.getValue(String.class);
-                if(Objects.equals(value, password)){
-                    passwordAuthentication = true;
+                String value = snapshot.getValue(String.class);
+                if (Objects.equals(value, password)) {
+                    Intent intent = new Intent(LoginScreen.this, HomeScreen.class);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(LoginScreen.this, "Wrong email or password", Toast.LENGTH_SHORT).show();
                 }
-
             }
 
             @Override

@@ -14,7 +14,7 @@ import java.util.HashMap;
 public class Firebase extends AppCompatActivity {
 
     private DatabaseReference myDatabase;
-
+    private DatabaseReference userDatabase;
 
 
 
@@ -27,6 +27,7 @@ public class Firebase extends AppCompatActivity {
     public void getDatabase(){
         FirebaseDatabase database = FirebaseDatabase.getInstance("https://planty-9e09f-default-rtdb.europe-west1.firebasedatabase.app/");
         myDatabase = database.getReference("Plants");
+        userDatabase = database.getReference("Users");
     }
 
 
