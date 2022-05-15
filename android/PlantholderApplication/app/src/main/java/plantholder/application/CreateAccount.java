@@ -16,9 +16,6 @@ import com.google.firebase.database.FirebaseDatabase;
 public class CreateAccount extends AppCompatActivity {
 
     private Firebase firebase;
-    private FirebaseDatabase firebaseDatabase;
-    private DatabaseReference firebaseRef;
-    private String userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -31,8 +28,6 @@ public class CreateAccount extends AppCompatActivity {
         );
 
         firebase = new Firebase();
-        firebaseDatabase = FirebaseDatabase.getInstance();
-        firebaseRef = firebaseDatabase.getReference("Users");
 
         Button createAccount = findViewById(R.id.createAccount);
         EditText newUser = findViewById(R.id.newUserName);
@@ -42,12 +37,10 @@ public class CreateAccount extends AppCompatActivity {
         createAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //String user = newUser.getText().toString();
-                //String email = newEmail.getText().toString();
-                //String password = newPassword.getText().toString();
-                //User users = new User(user, email, password);
-                //firebase.writeNewUser(user, email, password);
-                //firebaseRef.child(user).setValue(users);
+                String user = newUser.getText().toString();
+                String email = newEmail.getText().toString();
+                String password = newPassword.getText().toString();
+                firebase.writeNewUser(user, email, password);
 
                 Intent intent = new Intent(CreateAccount.this, HomeScreen.class);
                 startActivity(intent);

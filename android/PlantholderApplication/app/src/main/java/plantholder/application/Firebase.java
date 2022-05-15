@@ -29,11 +29,11 @@ public class Firebase extends AppCompatActivity {
         userDatabase = database.getReference("Users");
     }
 
+    //Create new user method
     public void writeNewUser(String userName, String email, String password){
         getDatabase();
-        //String userId = userDatabase.push().getKey();
         User users = new User(userName, email, password);
-        userDatabase.setValue(users);
+        userDatabase.child(userName).setValue(users);
     }
 
     // Do not delete method, we will use it later
