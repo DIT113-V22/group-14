@@ -55,7 +55,8 @@
             android:name=".Pop"
             android:exported="false"
             android:theme="@style/Theme.Plantholder.popupTheme" />
-        <activity android:name=".LoginScreen"
+        <activity
+            android:name=".LoginScreen"
             android:exported="true"
             android:configChanges="orientation"
             android:screenOrientation= "sensorLandscape"

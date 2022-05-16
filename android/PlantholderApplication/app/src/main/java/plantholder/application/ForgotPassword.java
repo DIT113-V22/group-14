@@ -25,7 +25,6 @@ public class ForgotPassword extends AppCompatActivity {
     private Firebase firebase;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference firebaseReference;
-    LoginScreen loginScreen;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,12 +37,10 @@ public class ForgotPassword extends AppCompatActivity {
 
         firebase = new Firebase();
         firebaseDatabase =  FirebaseDatabase.getInstance();
-        loginScreen = new LoginScreen();
 
         ImageButton closeIcon = findViewById(R.id.closeButton);
         Button sendPass = findViewById(R.id.sendPassword);
         TextView userName = findViewById(R.id.userName);
-        EditText passwordText = findViewById(R.id.editTextTextPassword);
 
         //Close page icon
         closeIcon.setOnClickListener(new View.OnClickListener() {
@@ -62,11 +59,11 @@ public class ForgotPassword extends AppCompatActivity {
                 firebaseReference.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        String value  = snapshot.getValue(String.class);
+                        String value = snapshot.getValue(String.class);
                         Intent intent = new Intent(ForgotPassword.this, LoginScreen.class);
+                        intent.putExtra("password", value);
                         startActivity(intent);
-                        //loginScreen.setForgottenPass(value);
-                        passwordText.setText(value);
+                        userName.setText(" ");
                     }
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {

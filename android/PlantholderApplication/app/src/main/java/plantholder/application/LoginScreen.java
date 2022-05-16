@@ -38,12 +38,12 @@ public class LoginScreen extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.R)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        firebase = new Firebase();
-        firebaseDatabase =  FirebaseDatabase.getInstance();
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_screen);
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+
+        firebase = new Firebase();
+        firebaseDatabase =  FirebaseDatabase.getInstance();
 
         getWindow().getDecorView().getWindowInsetsController().hide(
                 android.view.WindowInsets.Type.statusBars()
@@ -57,13 +57,9 @@ public class LoginScreen extends AppCompatActivity {
         Button forgotPass = findViewById(R.id.forgotPasswordText);
         Button exit = findViewById(R.id.exit);
 
-        exit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-                System.exit(0);
-            }
-        });
+        //Set password to the that comes from the forgotten password screen.
+        String message = getIntent().getStringExtra("password");
+        passwordText.setText(message);
 
         //method for hiding and showing password when clicking on the view toggle
         passwordText.setOnTouchListener(new View.OnTouchListener() {
@@ -103,8 +99,8 @@ public class LoginScreen extends AppCompatActivity {
                     emailText.setText("Testuser");
                     passwordText.setText("test");
                 }else{
-                    emailText.setText(" ");
-                    passwordText.setText(" ");
+                    emailText.setText("");
+                    passwordText.setText("");
                 }
             }
         });
@@ -141,6 +137,14 @@ public class LoginScreen extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        exit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+                //System.exit(0);
+            }
+        });
     }
 
     private void verifyUserCredentials(String password) {
@@ -152,6 +156,7 @@ public class LoginScreen extends AppCompatActivity {
                 if (Objects.equals(value, password)) {
                     Intent intent = new Intent(LoginScreen.this, HomeScreen.class);
                     startActivity(intent);
+                    passwordText.setText("");
                 } else {
                     Toast.makeText(LoginScreen.this, "Wrong email or password", Toast.LENGTH_SHORT).show();
                 }
@@ -163,9 +168,5 @@ public class LoginScreen extends AppCompatActivity {
             }
 
         });
-    }
-
-    public void setForgottenPass(String value){
-        passwordText.setText(value);
     }
 }

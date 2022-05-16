@@ -21,9 +21,8 @@ public class CreateAccount extends AppCompatActivity {
         setContentView(R.layout.new_user_window);
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
-        getWindow().getDecorView().getWindowInsetsController().hide(
-                android.view.WindowInsets.Type.statusBars()
-        );
+        //getWindow().getDecorView().getWindowInsetsController().hide(
+                //android.view.WindowInsets.Type.statusBars());
 
         firebase = new Firebase();
 

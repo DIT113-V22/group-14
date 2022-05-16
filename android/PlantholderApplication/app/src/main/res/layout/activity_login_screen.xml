@@ -39,6 +39,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="52dp"
+        android:layout_marginEnd="60dp"
         android:layout_marginBottom="152dp"
         android:drawableRight="@drawable/ic_baseline_visibility_off_24"
         android:ems="12"
@@ -50,6 +51,7 @@
         android:textSize="20sp"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/editTextTextEmailAddress" />
 
     <EditText
@@ -69,16 +71,6 @@
         app:layout_constraintEnd_toStartOf="@+id/editTextTextPassword"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="181dp"
-        android:layout_height="157dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo" />
 
     <!--<TextView
         android:id="@+id/forgotPasswordText"
@@ -101,6 +93,17 @@
         android:textAlignment="center"
         app:layout_constraintStart_toEndOf="@+id/forgotPasswordText"
         app:layout_constraintTop_toBottomOf="@+id/exit" />-->
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="181dp"
+        android:layout_height="157dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.474"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
 
     <CheckBox
         android:id="@+id/checkBox"
