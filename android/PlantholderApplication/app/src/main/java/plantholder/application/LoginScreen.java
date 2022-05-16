@@ -32,6 +32,7 @@ public class LoginScreen extends AppCompatActivity {
     Firebase firebase;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference firebaseReference;
+    EditText passwordText;
 
 
     @RequiresApi(api = Build.VERSION_CODES.R)
@@ -50,9 +51,19 @@ public class LoginScreen extends AppCompatActivity {
 
         Button login = findViewById(R.id.login);
         EditText emailText = findViewById(R.id.editTextTextEmailAddress);
-        EditText passwordText = findViewById(R.id.editTextTextPassword);
+        passwordText = findViewById(R.id.editTextTextPassword);
         CheckBox rememberMe = findViewById(R.id.checkBox);
         Button join = findViewById(R.id.joinbutton);
+        Button forgotPass = findViewById(R.id.forgotPasswordText);
+        Button exit = findViewById(R.id.exit);
+
+        exit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+                System.exit(0);
+            }
+        });
 
         //method for hiding and showing password when clicking on the view toggle
         passwordText.setOnTouchListener(new View.OnTouchListener() {
@@ -69,7 +80,7 @@ public class LoginScreen extends AppCompatActivity {
                             passwordText.setTransformationMethod(PasswordTransformationMethod.getInstance());
                             passwordVisible = false;
                         }else{
-                            //set deawable image
+                            //set drawable image
                             passwordText.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,R.drawable.ic_baseline_visibility_24, 0);
                             //showing password
                             passwordText.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
@@ -83,11 +94,18 @@ public class LoginScreen extends AppCompatActivity {
             }
         });
 
+        //Remember me check box, enter the default user name and password
         rememberMe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                emailText.setText("Testuser");
-                passwordText.setText("test");
+                view.setSelected(!view.isSelected());
+                if(view.isSelected()){
+                    emailText.setText("Testuser");
+                    passwordText.setText("test");
+                }else{
+                    emailText.setText(" ");
+                    passwordText.setText(" ");
+                }
             }
         });
 
@@ -107,7 +125,8 @@ public class LoginScreen extends AppCompatActivity {
             }
         });
 
-        join.setOnClickListener(new View.OnClickListener() {
+        //Button for joining as a new user
+       join.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(LoginScreen.this, CreateAccount.class);
@@ -115,12 +134,11 @@ public class LoginScreen extends AppCompatActivity {
             }
         });
 
-        Button exit = findViewById(R.id.exit);
-        exit.setOnClickListener(new View.OnClickListener() {
+        forgotPass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
-                System.exit(0);
+                Intent intent = new Intent(LoginScreen.this, ForgotPassword.class);
+                startActivity(intent);
             }
         });
     }
@@ -145,6 +163,9 @@ public class LoginScreen extends AppCompatActivity {
             }
 
         });
+    }
 
+    public void setForgottenPass(String value){
+        passwordText.setText(value);
     }
 }
