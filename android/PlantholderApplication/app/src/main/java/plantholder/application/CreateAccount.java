@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -33,6 +35,16 @@ public class CreateAccount extends AppCompatActivity {
         EditText newUser = findViewById(R.id.newUserName);
         EditText newEmail = findViewById(R.id.newEmail);
         EditText newPassword = findViewById(R.id.newPassword);
+        EditText confirmPassword = findViewById(R.id.confirmPassword);
+        ImageButton closeIcon = findViewById(R.id.closeButton);
+
+        closeIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(CreateAccount.this, LoginScreen.class);
+                startActivity(intent);
+            }
+        });
 
         createAccount.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,10 +52,14 @@ public class CreateAccount extends AppCompatActivity {
                 String user = newUser.getText().toString();
                 String email = newEmail.getText().toString();
                 String password = newPassword.getText().toString();
-                firebase.writeNewUser(user, email, password);
-
-                Intent intent = new Intent(CreateAccount.this, HomeScreen.class);
-                startActivity(intent);
+                String confirmPass = confirmPassword.getText().toString();
+                if(password.equals(confirmPass)){
+                    firebase.writeNewUser(user, email, password);
+                    Intent intent = new Intent(CreateAccount.this, HomeScreen.class);
+                    startActivity(intent);
+                }else{
+                    Toast.makeText(CreateAccount.this, "Wrong password", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

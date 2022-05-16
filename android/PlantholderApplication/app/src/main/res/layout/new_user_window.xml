@@ -7,10 +7,10 @@
 
     <EditText
         android:id="@+id/newEmail"
-        android:layout_width="242dp"
-        android:layout_height="40dp"
+        android:layout_width="246dp"
+        android:layout_height="42dp"
         android:layout_marginStart="240dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="12dp"
         android:ems="10"
         android:hint="Email Address"
         android:inputType="textEmailAddress"
@@ -19,10 +19,10 @@
 
     <EditText
         android:id="@+id/newPassword"
-        android:layout_width="238dp"
-        android:layout_height="41dp"
+        android:layout_width="246dp"
+        android:layout_height="44dp"
         android:layout_marginStart="240dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
@@ -34,7 +34,7 @@
         android:layout_width="245dp"
         android:layout_height="45dp"
         android:layout_marginStart="240dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="12dp"
         android:ems="10"
         android:hint="User Name"
         android:inputType="textEmailAddress"
@@ -43,8 +43,8 @@
 
     <TextView
         android:id="@+id/textView8"
-        android:layout_width="345dp"
-        android:layout_height="78dp"
+        android:layout_width="346dp"
+        android:layout_height="61dp"
         android:layout_marginStart="193dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="193dp"
@@ -61,8 +61,45 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="280dp"
         android:layout_marginBottom="32dp"
+        android:backgroundTint="#03A9F4"
         android:text="Create account"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="84dp"
+        android:layout_height="98dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginBottom="200dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+        android:background="@drawable/userimage"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/user_icon" />
+
+    <EditText
+        android:id="@+id/confirmPassword"
+        android:layout_width="246dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="240dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="Confirm Password"
+        android:inputType="textPassword"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/newPassword" />
+
+    <ImageButton
+        android:id="@+id/closeButton"
+        android:layout_width="41dp"
+        android:layout_height="39dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginBottom="370dp"
+        android:background="@drawable/userimage"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/close_icon" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
