@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="0dp">
+
+
+        <Button
+            android:id="@+id/forward"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="88dp"
+            android:layout_marginBottom="12dp"
+            android:backgroundTint="#616161"
+            android:text="FORWARD"
+            android:textColor="#FAFAFA"
+            app:layout_constraintBottom_toTopOf="@+id/stop"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/left"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="12dp"
+            android:backgroundTint="#616161"
+            android:text="Left"
+            android:textColor="#FAFAFA"
+            app:layout_constraintBottom_toTopOf="@+id/backward"
+            app:layout_constraintEnd_toStartOf="@+id/stop" />
+
+        <Button
+            android:id="@+id/stop"
+            android:layout_width="92dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="102dp"
+            android:layout_marginBottom="12dp"
+            android:backgroundTint="#C80F0F"
+            android:onClick="stop"
+            android:text="Stop"
+            android:textColor="#FAFAFA"
+            app:layout_constraintBottom_toTopOf="@+id/backward"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/right"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginBottom="12dp"
+            android:backgroundTint="#616161"
+            android:text="Right"
+            android:textColor="#FAFAFA"
+            app:layout_constraintBottom_toTopOf="@+id/backward"
+            app:layout_constraintStart_toEndOf="@+id/stop" />
+
+        <Button
+            android:id="@+id/backward"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="88dp"
+            android:layout_marginBottom="120dp"
+            android:backgroundTint="#616161"
+            android:text="Backward"
+            android:textColor="#FAFAFA"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="350dp"
+            android:layout_height="300dp"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="110dp"
+            android:layout_marginEnd="2dp"
+            android:layout_marginBottom="132dp"
+            app:layout_constraintBottom_toTopOf="@+id/rabbitButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.962"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.211"
+            app:srcCompat="@android:drawable/ic_menu_slideshow" />
+
+        <Button
+            android:id="@+id/takePicture"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="368dp"
+            android:layout_marginBottom="4dp"
+            android:backgroundTint="#54871A"
+            android:text="Take Picture"
+            android:textColor="#FAFAFA"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/information"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:backgroundTint="#FDFDFD"
+            android:text="INFORMATION"
+            android:textColor="#090909"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.972"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageButton
+            android:id="@+id/turtleButton"
+            android:layout_width="77dp"
+            android:layout_height="72dp"
+            android:layout_marginStart="64dp"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/button_select_states"
+            android:scaleType="fitCenter"
+            android:src="@drawable/turtle2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/rabbitButton" />
+
+        <ImageButton
+            android:id="@+id/rabbitButton"
+            android:layout_width="76dp"
+            android:layout_height="79dp"
+            android:layout_marginStart="52dp"
+            android:layout_marginBottom="8dp"
+            android:adjustViewBounds="true"
+
+            android:background="@drawable/button_select_states"
+            android:scaleType="fitCenter"
+            android:src="@drawable/rabbit"
+            android:text="ToggleButton"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="44dp"
+            android:text="SCAN MODE"
+            android:textColor="#050505"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/menuButton"
+            app:layout_constraintHorizontal_bias="0.158"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/menuButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="#69A525"
+            android:backgroundTint="#616161"
+            android:text="GO BACK"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

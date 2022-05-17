@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Spinner
+        android:id="@+id/spinnerPlantHealth"
+        android:layout_width="274dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="30dp"
+        android:contentDescription="@string/set_health_status"
+        android:spinnerMode="dropdown"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerPlantType" />
+
+    <Spinner
+        android:id="@+id/spinnerPlantType"
+        android:layout_width="274dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="30dp"
+        android:contentDescription="@string/set_plant_type"
+        android:spinnerMode="dropdown"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextID" />
+
+
+    <Button
+        android:id="@+id/buttonSave"
+        android:layout_width="97dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="224dp"
+        android:layout_marginTop="30dp"
+        android:backgroundTint="#4CAF50"
+        android:gravity="center_vertical"
+        android:text="@string/save"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerPlantHealth"
+        tools:ignore="TextContrastCheck" />
+
+    <Button
+        android:id="@+id/buttonBack"
+        android:layout_width="97dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="28dp"
+        android:backgroundTint="#4CAF50"
+        android:gravity="center_vertical"
+        android:text="Back"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/buttonSave"
+        app:layout_constraintTop_toBottomOf="@+id/editTextColumn"
+        tools:ignore="TextContrastCheck" />
+
+    <EditText
+        android:id="@+id/editTextRow"
+        android:layout_width="274dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="150dp"
+        android:layout_marginEnd="50dp"
+        android:ems="10"
+        android:hint="@string/row"
+        android:inputType="number"
+        android:nextFocusForward="@id/editTextColumn"
+        android:maxLength="5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextColumn"
+        android:layout_width="274dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="50dp"
+        android:ems="10"
+        android:hint="@string/column"
+        android:inputType="number"
+        android:maxLength="5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextRow" />
+
+    <EditText
+        android:id="@+id/editTextID"
+        android:layout_width="274dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="64dp"
+        android:ems="10"
+        android:nextFocusForward="@id/editTextRow"
+        android:gravity="center_vertical"
+        android:hint="@string/id"
+        android:inputType="number"
+        android:maxLength="10"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/engine"
+        android:layout_width="126dp"
+        android:layout_height="121dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="48dp"
+        android:contentDescription="@string/logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/engine" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

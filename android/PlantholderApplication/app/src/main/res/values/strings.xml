@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Plantholder</string>
+    <string name="set_health_status">Set health status</string>
+    <string name="set_plant_type">Set plant type</string>
+    <string name="row">Row</string>
+    <string name="column">Column</string>
+    <string name="save">SAVE</string>
+    <string name="id">ID</string>
+    <string name="logo">logo</string>
+    <string-array name="healthStatus">
+        <item>Status Unknown</item>
+        <item>Unhealthy</item>
+        <item>Healthy</item>
+        <item>Keep Track</item>
+        <item>Ripe</item>
+    </string-array>
+    <string-array name="plantType">
+        <item>Type Unknown</item>
+        <item>Tomato</item>
+        <item>Grape</item>
+        <item>Apple</item>
+    </string-array>
+</resources>
