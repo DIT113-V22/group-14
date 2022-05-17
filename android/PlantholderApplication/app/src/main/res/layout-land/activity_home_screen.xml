@@ -25,7 +25,7 @@
         tools:ignore="MissingConstraints" />
 
     <Button
-        android:id="@+id/homeButton"
+        android:id="@+id/infoButton"
         android:layout_width="115dp"
         android:layout_height="75dp"
         android:layout_alignParentBottom="true"
@@ -53,7 +53,7 @@
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/homeButton" />
+        app:layout_constraintStart_toEndOf="@+id/infoButton" />
 
     <TextView
         android:id="@+id/textView"

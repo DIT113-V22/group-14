@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PlantStatistics"
+    android:stretchColumns="1,2,3,4"
+    android:layout_margin="8dp">
+
+    <TableRow>
+
+        <TextView
+            android:id="@+id/plantID"
+            android:text="Plant id"
+            android:textColor="@color/black"
+            android:background="@drawable/table_backround"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:padding="10dp"
+            android:layout_column="1"
+            android:layout_marginRight="15dp"
+            android:ems="5"
+
+            android:layout_weight="0.5"/>
+
+        <TextView
+            android:id="@+id/plantSpecies"
+            android:text="Species"
+            android:textColor="@color/black"
+            android:background="@drawable/table_backround"
+            android:layout_marginRight="15dp"
+            android:ems="5"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:padding="10dp"
+            android:layout_column="1"
+            android:layout_weight="0.5"/>
+
+        <TextView
+            android:id="@+id/plantRow"
+            android:text="row"
+            android:textColor="@color/black"
+            android:background="@drawable/table_backround"
+            android:layout_marginRight="15dp"
+            android:ems="5"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:padding="10dp"
+            android:layout_column="1"
+            android:layout_weight="0.5"/>
+
+        <TextView
+            android:id="@+id/plantColumn"
+            android:text="column"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:background="@drawable/table_backround"
+            android:layout_marginRight="15dp"
+            android:ems="5"
+            android:gravity="center"
+            android:padding="10dp"
+            android:layout_column="1"
+            android:layout_weight="0.5"/>
+
+        <TextView
+            android:id="@+id/plantHealth"
+            android:text="health"
+            android:textColor="@color/black"
+            android:background="@drawable/table_backround"
+            android:layout_marginRight="15dp"
+            android:ems="5"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:padding="10dp"
+            android:layout_column="1"
+            android:layout_weight="0.5"/>
+
+
+    </TableRow>
+
+
+
+</TableLayout>
+
+

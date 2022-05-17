@@ -2,11 +2,11 @@ package plantholder.application;
 
 public class Plants {
 
-    public String ID;
-    public String species;
-    public Integer row;
-    public Integer column;
-    public String health;
+    private String ID;
+   private String species;
+    private Integer row;
+    private Integer column;
+    private String health;
 
     public Plants(){} // needed for later
 
@@ -17,6 +17,26 @@ public class Plants {
         this.column = column;
         this.health = health;
 
+    }
+
+    public String getID() {
+        return ID;
+    }
+
+    public String getSpecies() {
+        return species;
+    }
+
+    public String getHealth() {
+        return health;
+    }
+
+    public Integer getRow() {
+        return row;
+    }
+
+    public Integer getColumn() {
+        return column;
     }
 
 }
