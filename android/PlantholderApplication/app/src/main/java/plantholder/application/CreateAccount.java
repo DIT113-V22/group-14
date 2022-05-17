@@ -9,7 +9,16 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.Objects;
 
 public class CreateAccount extends AppCompatActivity {
 
@@ -21,8 +30,7 @@ public class CreateAccount extends AppCompatActivity {
         setContentView(R.layout.new_user_window);
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
-        //getWindow().getDecorView().getWindowInsetsController().hide(
-                //android.view.WindowInsets.Type.statusBars());
+        getWindow().getDecorView().getWindowInsetsController().hide(android.view.WindowInsets.Type.statusBars());
 
         firebase = new Firebase();
 
@@ -48,12 +56,13 @@ public class CreateAccount extends AppCompatActivity {
                 String email = newEmail.getText().toString();
                 String password = newPassword.getText().toString();
                 String confirmPass = confirmPassword.getText().toString();
-                if(password.equals(confirmPass)){
+
+                if (password.equals(confirmPass) ){
                     firebase.writeNewUser(user, email, password);
                     Intent intent = new Intent(CreateAccount.this, HomeScreen.class);
                     startActivity(intent);
                 }else{
-                    Toast.makeText(CreateAccount.this, "Wrong password", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CreateAccount.this, "Password entered and confirmed are not the same", Toast.LENGTH_SHORT).show();
                 }
             }
         });

@@ -35,7 +35,7 @@ public class ForgotPassword extends AppCompatActivity {
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
         getWindow().getDecorView().getWindowInsetsController().hide(android.view.WindowInsets.Type.statusBars());
-        
+
         firebaseDatabase =  FirebaseDatabase.getInstance();
 
         ImageButton closeIcon = findViewById(R.id.closeButton);
