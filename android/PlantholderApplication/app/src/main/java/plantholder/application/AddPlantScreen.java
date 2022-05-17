@@ -19,7 +19,6 @@ public class AddPlantScreen extends AppCompatActivity {
     private int addedRow;
     private int addedColumn;
 
-
     private Spinner spinnerPlantHealth;
     private Spinner spinnerPlantType;
     private EditText editColumn;
@@ -27,7 +26,6 @@ public class AddPlantScreen extends AppCompatActivity {
     private EditText editID;
 
     private Button back;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +63,13 @@ public class AddPlantScreen extends AppCompatActivity {
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         spinnerPlantType.setAdapter(adapter2);
+
+        //checks if intent sent over a key to input as ID
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            String value = extras.getString("key");
+            editID.setText(value);
+        }
 
         //create new plant by pressing save
         Button save = findViewById(R.id.buttonSave);

@@ -4,12 +4,8 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-
-import java.util.HashMap;
 
 public class Firebase extends AppCompatActivity {
 
@@ -39,5 +35,4 @@ public class Firebase extends AppCompatActivity {
         myDatabase.child(ID).child("health").setValue(status);
 
     }
-
 }
