@@ -7,7 +7,7 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "plantholder.app" //was platis.solutions.smartcarmqttcontroller
+        applicationId "plantholder.application"
         minSdkVersion 29
         targetSdkVersion 32
         versionCode 1
