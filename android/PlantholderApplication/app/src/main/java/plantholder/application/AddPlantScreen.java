@@ -37,6 +37,8 @@ public class AddPlantScreen extends AppCompatActivity {
     private EditText editRow;
     private EditText editID;
 
+    private String plantValue;
+
     private boolean plantExists;
 
     private Button back;
@@ -124,12 +126,12 @@ public class AddPlantScreen extends AppCompatActivity {
                 } else {
 
                     verifyPlantExistence();
-                    System.out.println(plantExists);
-                    if (plantExists) {
+                    if (plantValue != null) {
                         idExistAlert();
                     } else {
                         createPlant();
                         toastCreate();
+
                     }
                 }
             }
@@ -185,12 +187,8 @@ public class AddPlantScreen extends AppCompatActivity {
 
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String value = snapshot.getValue(String.class);
-                if (value != null) {
-                    plantExists = true;
-            } else {
-                    plantExists = false;
-                }
+                plantValue = snapshot.getValue(String.class);
+
         }
 
         @Override

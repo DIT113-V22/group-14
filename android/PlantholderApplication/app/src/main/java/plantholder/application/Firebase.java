@@ -48,7 +48,8 @@ public class Firebase extends AppCompatActivity {
 
     }
 
-    public void updatePlantHealth(String ID, String status, String screen){
+    public void updatePlantHealth(String ID, String status){
+
         firebaseDatabase =  FirebaseDatabase.getInstance();
         myDatabase = firebaseDatabase.getReference("Plants").child(ID).child("id");
 
@@ -58,6 +59,7 @@ public class Firebase extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String value = snapshot.getValue(String.class);
                 if (value != null) {
+                    myDatabase = firebaseDatabase.getReference("Plants");
                     myDatabase.child(ID).child("health").setValue(status);
                 }
             }

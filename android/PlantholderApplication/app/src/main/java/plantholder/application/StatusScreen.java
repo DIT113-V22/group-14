@@ -28,7 +28,7 @@ public class StatusScreen extends AppCompatActivity {
     FirebaseDatabase firebaseDatabase;
     DatabaseReference firebaseReference;
 
-    String scannedPlantId = "7777777777"; //placeholder value for the qr code
+    String scannedPlantId = "1255555555"; //placeholder value for the qr code
 
     @RequiresApi(api = Build.VERSION_CODES.R)
     @Override
@@ -64,7 +64,7 @@ public class StatusScreen extends AppCompatActivity {
         unhealthy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                firebase.updatePlantHealth(scannedPlantId,"Unhealthy", "StatusScreen");
+                firebase.updatePlantHealth(scannedPlantId,"Unhealthy");
             }
         });
 
@@ -72,7 +72,7 @@ public class StatusScreen extends AppCompatActivity {
         healthy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                firebase.updatePlantHealth(scannedPlantId,"Healthy", "StatusScreen");
+                firebase.updatePlantHealth(scannedPlantId,"Healthy");
             }
         });
 
@@ -80,7 +80,7 @@ public class StatusScreen extends AppCompatActivity {
         keepTrackOn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                firebase.updatePlantHealth(scannedPlantId,"Keep Track", "StatusScreen");
+                firebase.updatePlantHealth(scannedPlantId,"Keep Track");
             }
         });
 
@@ -88,13 +88,15 @@ public class StatusScreen extends AppCompatActivity {
         ripe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                firebase.updatePlantHealth(scannedPlantId,"Ripe", "StatusScreen");
+                firebase.updatePlantHealth(scannedPlantId,"Ripe");
             }
         });
 
     }
 
     private void getdata(TextView textView) {
+        firebaseDatabase =  FirebaseDatabase.getInstance();
+
         firebaseReference.addValueEventListener(new ValueEventListener() {
             @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -111,6 +113,8 @@ public class StatusScreen extends AppCompatActivity {
     }
         //gets a textview and updates it with current references data
     private void getdataLong(TextView textView) {
+        firebaseDatabase =  FirebaseDatabase.getInstance();
+
         firebaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -128,6 +132,7 @@ public class StatusScreen extends AppCompatActivity {
     }
 
     private void verifyPlantExistence() {
+        firebaseReference = firebaseDatabase.getReference("Plants").child(scannedPlantId).child("id");
         firebaseReference.addValueEventListener(new ValueEventListener() {
 
             @Override
