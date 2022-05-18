@@ -22,6 +22,10 @@ import org.eclipse.paho.client.mqttv3.IMqttToken;
 import org.eclipse.paho.client.mqttv3.MqttCallback;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "Plantholder";
     private static final String EXTERNAL_MQTT_BROKER = "aerostun.dev";
@@ -39,9 +43,12 @@ public class MainActivity extends AppCompatActivity {
     private static final int QOS = 1;
     private static final int IMAGE_WIDTH = 320;
     private static final int IMAGE_HEIGHT = 240;
+    private static final int CAPTURED_IMAGE_WIDTH = 250;
+    private static final int CAPTURED_IMAGE_HEIGHT = 450;
 
     private MqttClient mMqttClient;
     private boolean isConnected = false;
+    private QrCodeProcessing QrCodeProcessing;
     private ImageView mCameraView;
 
     //New variable to save the last speed selected (turtle slower, rabbit faster or normal). The initial speed is the normal (30)
@@ -69,21 +76,28 @@ public class MainActivity extends AppCompatActivity {
         Button moveRight = findViewById(R.id.right);
         Button moveLeft = findViewById(R.id.left);
         Button menuButton = (Button) findViewById(R.id.menuButton);
+        Button takePicture = findViewById(R.id.takePicture);
 
         menuButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, HomeScreen.class);
                 startActivity(intent);
+
+                 //File f = new File("/storage/emulated/0/Download/QR.bmp");
+                 // System.out.println(f.exists());
+
+                // QrCodeProcessing = new QrCodeProcessing();
+                // System.out.println(QrCodeProcessing.decodeQRImage("/storage/emulated/0/Download/SS.bmp"));
             }
         });
 
         moveForward.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent event) {
-                if(event.getAction() == MotionEvent.ACTION_DOWN){
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
                     drive(speedMode, STRAIGHT_ANGLE, "Moving forward");
-                }else if(event.getAction() == MotionEvent.ACTION_UP){
+                } else if (event.getAction() == MotionEvent.ACTION_UP) {
                     drive(IDLE_SPEED, STRAIGHT_ANGLE, "Stopping");
                 }
                 return true;
@@ -93,9 +107,9 @@ public class MainActivity extends AppCompatActivity {
         moveBackward.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent event) {
-                if(event.getAction() == MotionEvent.ACTION_DOWN){
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
                     drive(-speedMode, STRAIGHT_ANGLE, "Moving backward");
-                }else if(event.getAction() == MotionEvent.ACTION_UP){
+                } else if (event.getAction() == MotionEvent.ACTION_UP) {
                     drive(IDLE_SPEED, STRAIGHT_ANGLE, "Stopping");
                 }
                 return true;
@@ -105,9 +119,9 @@ public class MainActivity extends AppCompatActivity {
         moveLeft.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent event) {
-                if(event.getAction() == MotionEvent.ACTION_DOWN){
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
                     drive(TURNING_SPEED, -STEERING_ANGLE, "Moving forward left");
-                }else if (event.getAction() == MotionEvent.ACTION_UP){
+                } else if (event.getAction() == MotionEvent.ACTION_UP) {
                     drive(IDLE_SPEED, STRAIGHT_ANGLE, "Stopping");
                 }
                 return true;
@@ -117,9 +131,9 @@ public class MainActivity extends AppCompatActivity {
         moveRight.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent event) {
-                if(event.getAction() == MotionEvent.ACTION_DOWN){
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
                     drive(TURNING_SPEED, STEERING_ANGLE, "Moving forward right");
-                }else if(event.getAction() == MotionEvent.ACTION_UP){
+                } else if (event.getAction() == MotionEvent.ACTION_UP) {
                     drive(IDLE_SPEED, STRAIGHT_ANGLE, "Stopping");
                 }
                 return true;
@@ -131,11 +145,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 view.setSelected(!view.isSelected());
-                if(view.isSelected()){
+                if (view.isSelected()) {
                     speedMode = LOWER_MOVEMENT_SPEED;
                     view.setSelected(true);
                     rabbitButton.setSelected(false);
-                }else{
+                } else {
                     view.setSelected(false);
                     speedMode = MOVEMENT_SPEED;
                 }
@@ -147,22 +161,22 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 view.setSelected(!view.isSelected());
-                if(view.isSelected()){
+                if (view.isSelected()) {
                     speedMode = FASTER_MOVEMENT_SPEED;
                     view.setSelected(true);
                     turtleButton.setSelected(false);
-                }else{
+                } else {
                     view.setSelected(false);
                     speedMode = MOVEMENT_SPEED;
                 }
             }
         });
 
-        Button takePicture = findViewById(R.id.takePicture);
         takePicture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this,StatusScreen.class);
+                captureVideoFrame();
+                Intent intent = new Intent(MainActivity.this, StatusScreen.class);
                 startActivity(intent);
             }
         });
@@ -239,7 +253,18 @@ public class MainActivity extends AppCompatActivity {
                         }
                         bm.setPixels(colors, 0, IMAGE_WIDTH, 0, 0, IMAGE_WIDTH, IMAGE_HEIGHT);
                         mCameraView.setImageBitmap(bm);
-                    } else {
+                    }
+
+
+                    //need to create a new method linked to takePicture.setOnClickListener method, that runs once on press
+                    //will use the same logic as messageArrived from within connectToMqttBroker
+                    //upon topic.equals("/smartcar/camera"), create a new bitmap
+                    //receive the pixels from the MQTT broker
+                    //give new values to the IMAGE_WIDTH, IMAGE_HEIGHT parameters in order to set the resolution of the picture
+                    //set their colours
+                    //use Bitmap.compress within a FileOutputStream to save the actual picture file
+
+                    else {
                         Log.i(TAG, "[MQTT] Topic: " + topic + " | Message: " + message.toString());
                     }
                 }
@@ -263,5 +288,31 @@ public class MainActivity extends AppCompatActivity {
         Log.i(TAG, actionDescription);
         mMqttClient.publish(THROTTLE_CONTROL, Integer.toString(throttleSpeed), QOS, null);
         mMqttClient.publish(STEERING_CONTROL, Integer.toString(steeringAngle), QOS, null);
+    }
+
+   void captureVideoFrame() {
+        String topic = "/smartcar/camera";
+        MqttMessage message = new MqttMessage();
+        if (topic.equals("/smartcar/camera")) {
+            final Bitmap capturedBm = Bitmap.createBitmap(CAPTURED_IMAGE_WIDTH, CAPTURED_IMAGE_HEIGHT, Bitmap.Config.ARGB_8888);
+
+            final byte[] payload = message.getPayload();
+            final int[] colors = new int[CAPTURED_IMAGE_HEIGHT * CAPTURED_IMAGE_HEIGHT];
+
+            for (int ci = 0; ci < colors.length; ci++) {
+                final int r = payload[3 * ci] & 0xFF;
+                final int g = payload[3 * ci + 1] & 0xFF;
+                final int b = payload[3 * ci + 2] & 0xFF;
+                colors[ci] = Color.rgb(r, g, b);
+            }
+            capturedBm.setPixels(colors, 0, CAPTURED_IMAGE_HEIGHT, 0, 0, CAPTURED_IMAGE_HEIGHT, CAPTURED_IMAGE_HEIGHT);
+
+            try (FileOutputStream out = new FileOutputStream("/storage/emulated/0/Download/QRTest.bmp")) {
+                capturedBm.compress(Bitmap.CompressFormat.PNG, 100, out); // bmp is your Bitmap instance
+                // PNG is a lossless format, the compression factor (100) is ignored
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }
