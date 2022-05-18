@@ -36,7 +36,7 @@
             android:id="@+id/takePicture"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
+            android:layout_marginStart="48dp"
             android:layout_marginBottom="12dp"
             android:backgroundTint="#54871A"
             android:text="Take Picture"
@@ -54,7 +54,7 @@
             android:textColor="#090909"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.375"
+            app:layout_constraintHorizontal_bias="0.408"
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
@@ -62,7 +62,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:layout_marginEnd="548dp"
+            android:layout_marginEnd="540dp"
             android:background="#69A525"
             android:backgroundTint="#616161"
             android:text="GO BACK"
@@ -71,24 +71,11 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageButton
-            android:id="@+id/right_arrow"
-            style="?android:attr/borderlessButtonStyle"
-            android:layout_width="159dp"
-            android:layout_height="137dp"
-            android:layout_marginStart="556dp"
-            android:layout_marginBottom="130dp"
-            android:adjustViewBounds="true"
-            android:scaleType="fitCenter"
-            android:src="@drawable/right_arrow"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
         <TextView
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="512dp"
+            android:layout_marginStart="472dp"
             android:layout_marginTop="28dp"
             android:text="SCAN MODE"
             android:textColor="#050505"
@@ -98,24 +85,11 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
-            android:id="@+id/forward_arrow"
-            style="?android:attr/borderlessButtonStyle"
-            android:layout_width="107dp"
-            android:layout_height="100dp"
-            android:layout_marginStart="496dp"
-            android:layout_marginTop="80dp"
-            android:adjustViewBounds="true"
-            android:scaleType="fitCenter"
-            android:src="@drawable/up_arrow"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageButton
             android:id="@+id/left_arrow"
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="164dp"
             android:layout_height="158dp"
-            android:layout_marginStart="375dp"
+            android:layout_marginStart="360dp"
             android:layout_marginBottom="124dp"
             android:adjustViewBounds="true"
             android:scaleType="fitCenter"
@@ -123,52 +97,11 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <ImageButton
-            android:id="@+id/rabbitButton"
-            android:layout_width="76dp"
-            android:layout_height="79dp"
-            android:layout_marginStart="436dp"
-            android:layout_marginBottom="16dp"
-            android:adjustViewBounds="true"
-            android:background="@drawable/button_select_states"
-            android:scaleType="fitCenter"
-            android:src="@drawable/rabbit"
-            android:text="ToggleButton"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <ImageButton
-            android:id="@+id/turtleButton"
-            android:layout_width="86dp"
-            android:layout_height="81dp"
-            android:layout_marginStart="80dp"
-            android:layout_marginBottom="16dp"
-            android:background="@drawable/button_select_states"
-            android:scaleType="fitCenter"
-            android:src="@drawable/turtle2"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/rabbitButton" />
-
-        <ImageButton
-            android:id="@+id/backward_arrow"
-            style="?android:attr/borderlessButtonStyle"
-            android:layout_width="110dp"
-            android:layout_height="104dp"
-            android:layout_marginStart="496dp"
-            android:layout_marginBottom="75dp"
-            android:adjustViewBounds="true"
-            android:scaleType="fitCenter"
-            android:src="@drawable/down_arrow"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.995" />
-
         <Button
             android:id="@+id/auto_mode"
             android:layout_width="94dp"
             android:layout_height="53dp"
-            android:layout_marginStart="503dp"
+            android:layout_marginStart="488dp"
             android:layout_marginBottom="10dp"
             android:background="@drawable/autopilot_button"
             android:backgroundTint="@color/black"
@@ -177,7 +110,76 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.525" />
+            app:layout_constraintVertical_bias="0.517" />
+
+        <ImageButton
+            android:id="@+id/forward_arrow"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="107dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="482dp"
+            android:layout_marginTop="72dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/up_arrow"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.007"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/right_arrow"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="159dp"
+            android:layout_height="137dp"
+            android:layout_marginStart="544dp"
+            android:layout_marginBottom="136dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/right_arrow"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageButton
+            android:id="@+id/backward_arrow"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="110dp"
+            android:layout_height="104dp"
+            android:layout_marginStart="482dp"
+            android:layout_marginBottom="72dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/down_arrow"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.007"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageButton
+            android:id="@+id/turtleButton"
+            android:layout_width="86dp"
+            android:layout_height="81dp"
+            android:layout_marginStart="72dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/button_select_states"
+            android:scaleType="fitCenter"
+            android:src="@drawable/turtle2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/rabbitButton" />
+
+        <ImageButton
+            android:id="@+id/rabbitButton"
+            android:layout_width="76dp"
+            android:layout_height="79dp"
+            android:layout_marginStart="420dp"
+            android:layout_marginBottom="16dp"
+            android:adjustViewBounds="true"
+            android:background="@drawable/button_select_states"
+            android:scaleType="fitCenter"
+            android:src="@drawable/rabbit"
+            android:text="ToggleButton"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
