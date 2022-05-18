@@ -40,11 +40,12 @@ public class PlantsAdapter extends RecyclerView.Adapter<PlantsAdapter.ViewHolder
         Plants plant = list.get(position);
         holder.ID.setText(plant.getID());
         holder.species.setText(plant.getSpecies());
+        holder.health.setText(plant.getHealth());
         holder.row.setText(plant.getRow()+"");
         holder.column.setText(plant.getColumn()+"");
 
        // holder.column.setText(plant.getColumn());
-        holder.health.setText(plant.getHealth());
+
 
 
     }
@@ -66,9 +67,10 @@ public class PlantsAdapter extends RecyclerView.Adapter<PlantsAdapter.ViewHolder
             super(itemView);
             ID = itemView.findViewById(R.id.plantID);
             species = itemView.findViewById(R.id.plantSpecies);
+            health = itemView.findViewById(R.id.plantHealth);
             row = itemView.findViewById(R.id.plantRow);
             column = itemView.findViewById(R.id.plantColumn);
-            health = itemView.findViewById(R.id.plantHealth);
+
 
         }
     }
