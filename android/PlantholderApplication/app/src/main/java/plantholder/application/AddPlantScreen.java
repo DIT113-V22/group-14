@@ -131,8 +131,8 @@ public class AddPlantScreen extends AppCompatActivity {
                     } else {
                         createPlant();
                         toastCreate();
-
                     }
+                    plantValue = null;
                 }
             }
         });
@@ -184,11 +184,16 @@ public class AddPlantScreen extends AppCompatActivity {
         firebaseDatabase = FirebaseDatabase.getInstance();
         firebaseReference = firebaseDatabase.getReference("Plants").child(addedID).child("id");
         firebaseReference.addValueEventListener(new ValueEventListener() {
-
+            boolean processDone = false;
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                plantValue = snapshot.getValue(String.class);
+                if (!processDone) {
+                    System.out.println(plantValue);
+                    plantValue = snapshot.getValue(String.class);
+                    System.out.println(plantValue);
 
+                }
+                processDone = true;
         }
 
         @Override
