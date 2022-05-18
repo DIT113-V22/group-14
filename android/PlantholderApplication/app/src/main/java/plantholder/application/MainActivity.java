@@ -64,11 +64,11 @@ public class MainActivity extends AppCompatActivity {
 
         ImageButton turtleButton = findViewById(R.id.turtleButton);
         ImageButton rabbitButton = findViewById(R.id.rabbitButton);
-        Button moveForward = (Button) findViewById(R.id.forward);
+        Button moveForward = findViewById(R.id.forward);
         Button moveBackward = findViewById(R.id.backward);
         Button moveRight = findViewById(R.id.right);
         Button moveLeft = findViewById(R.id.left);
-        Button menuButton = (Button) findViewById(R.id.menuButton);
+        Button menuButton = findViewById(R.id.menuButton);
 
         menuButton.setOnClickListener(new View.OnClickListener() {
             @Override

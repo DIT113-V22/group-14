@@ -1,5 +1,6 @@
 package plantholder.application;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,12 +13,27 @@ import android.text.method.PasswordTransformationMethod;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.PopupWindow;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.Objects;
 
 public class LoginScreen extends AppCompatActivity {
 
-    boolean passwordVisible;
+    boolean passwordVisible = false;
+    Firebase firebase;
+    FirebaseDatabase firebaseDatabase;
+    DatabaseReference firebaseReference;
+    EditText passwordText;
+
 
     @RequiresApi(api = Build.VERSION_CODES.R)
     @Override
@@ -26,13 +42,24 @@ public class LoginScreen extends AppCompatActivity {
         setContentView(R.layout.activity_login_screen);
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
+        firebase = new Firebase();
+        firebaseDatabase =  FirebaseDatabase.getInstance();
+
         getWindow().getDecorView().getWindowInsetsController().hide(
                 android.view.WindowInsets.Type.statusBars()
         );
 
         Button login = findViewById(R.id.login);
-        EditText emailText = (EditText) findViewById(R.id.editTextTextEmailAddress);
-        EditText passwordText = (EditText) findViewById(R.id.editTextTextPassword);
+        EditText emailText = findViewById(R.id.editTextTextEmailAddress);
+        passwordText = findViewById(R.id.editTextTextPassword);
+        CheckBox rememberMe = findViewById(R.id.checkBox);
+        Button join = findViewById(R.id.joinbutton);
+        Button forgotPass = findViewById(R.id.forgotPasswordText);
+        Button exit = findViewById(R.id.exit);
+
+        //Set password to the that comes from the forgotten password screen.
+        String message = getIntent().getStringExtra("password");
+        passwordText.setText(message);
 
         //method for hiding and showing password when clicking on the view toggle
         passwordText.setOnTouchListener(new View.OnTouchListener() {
@@ -49,7 +76,7 @@ public class LoginScreen extends AppCompatActivity {
                             passwordText.setTransformationMethod(PasswordTransformationMethod.getInstance());
                             passwordVisible = false;
                         }else{
-                            //set deawable image
+                            //set drawable image
                             passwordText.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,R.drawable.ic_baseline_visibility_24, 0);
                             //showing password
                             passwordText.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
@@ -63,28 +90,83 @@ public class LoginScreen extends AppCompatActivity {
             }
         });
 
-            //login button that checks if password and/or email textfields are empty, if they are shows a popup.
-        login.setOnClickListener(new View.OnClickListener() {
+        //Remember me check box, enter the default user name and password
+        rememberMe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (emailText.getText().toString().isEmpty() || passwordText.getText().toString().isEmpty()) {
-                    startActivity(new Intent(LoginScreen.this,Pop.class));
-                } else {
-                    Intent intent = new Intent(LoginScreen.this, HomeScreen.class);
-                    startActivity(intent);
+                view.setSelected(!view.isSelected());
+                if(view.isSelected()){
+                    emailText.setText("Testuser");
+                    passwordText.setText("test");
+                }else{
+                    emailText.setText("");
                     passwordText.setText("");
                 }
             }
         });
 
+        //login button that checks if password and/or email textfields are empty, if they are shows a popup.
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String usernameEntered = emailText.getText().toString();
+                String enteredPassword = passwordText.getText().toString();
+                firebaseReference = firebaseDatabase.getReference("Users").child(usernameEntered).child("password");
 
-        Button exit = findViewById(R.id.exit);
+                if (usernameEntered.isEmpty() || enteredPassword.isEmpty()) {
+                    Toast.makeText(LoginScreen.this, "Please enter email and password", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                verifyUserCredentials(enteredPassword);
+            }
+        });
+
+        //Button for joining as a new user
+       join.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LoginScreen.this, CreateAccount.class);
+                startActivity(intent);
+            }
+        });
+
+        forgotPass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LoginScreen.this, ForgotPassword.class);
+                startActivity(intent);
+            }
+        });
+
         exit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
-                System.exit(0);
+                //System.exit(0);
             }
+        });
+    }
+
+    private void verifyUserCredentials(String password) {
+        firebaseReference.addValueEventListener(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String value = snapshot.getValue(String.class);
+                if (Objects.equals(value, password)) {
+                    Intent intent = new Intent(LoginScreen.this, HomeScreen.class);
+                    startActivity(intent);
+                    passwordText.setText("");
+                } else {
+                    Toast.makeText(LoginScreen.this, "Wrong email or password", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(LoginScreen.this, "Fail to get data", Toast.LENGTH_SHORT).show();
+            }
+
         });
     }
 }
