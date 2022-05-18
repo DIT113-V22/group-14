@@ -159,7 +159,7 @@ public class AddPlantScreen extends AppCompatActivity {
                     });
             builder.setNeutralButton("No", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
-                            Toast.makeText(AddPlantScreen.this, "The added ID already exists, please enter a new ID.", Toast.LENGTH_LONG).show();
+                            Toast.makeText(AddPlantScreen.this, "Plant not updated.", Toast.LENGTH_LONG).show();
                         }
                     });
 
