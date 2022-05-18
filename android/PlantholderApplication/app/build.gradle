@@ -50,7 +50,8 @@ dependencies {
     implementation platform('com.google.firebase:firebase-bom:29.3.1')
     implementation 'com.google.firebase:firebase-database'
 
-    implementation 'com.google.firebase:firebase-database:20.0.5'
+    implementation 'com.google.android.material:material:<version>' // added 17/5 for alertwindow
+
 
     implementation 'androidx.localbroadcastmanager:localbroadcastmanager:1.0.0'
 
