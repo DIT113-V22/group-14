@@ -44,8 +44,7 @@ public class MainActivity extends AppCompatActivity {
     private static final int QOS = 1;
     private static final int IMAGE_WIDTH = 320;
     private static final int IMAGE_HEIGHT = 240;
-    private static final int CAPTURED_IMAGE_WIDTH = 250;
-    private static final int CAPTURED_IMAGE_HEIGHT = 450;
+
 
     final Bitmap bm = Bitmap.createBitmap(IMAGE_WIDTH, IMAGE_HEIGHT, Bitmap.Config.ARGB_8888);
 
@@ -72,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
         );
 
         connectToMqttBroker();
+        QrCodeProcessing = new QrCodeProcessing();
 
         ImageButton turtleButton = findViewById(R.id.turtleButton);
         ImageButton rabbitButton = findViewById(R.id.rabbitButton);
@@ -91,8 +91,6 @@ public class MainActivity extends AppCompatActivity {
                  //File f = new File("/storage/emulated/0/Download/QR.bmp");
                  // System.out.println(f.exists());
 
-                // QrCodeProcessing = new QrCodeProcessing();
-                // System.out.println(QrCodeProcessing.decodeQRImage("/storage/emulated/0/Download/SS.bmp"));
             }
         });
 
@@ -181,11 +179,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 int counter = 0;
-                try (FileOutputStream out = new FileOutputStream("/storage/emulated/0/Download/PlantImage" + counter + ".png")) {
+                String imagesPath = "/storage/emulated/0/Download/PlantImage" + counter + ".png";
+                try (FileOutputStream out = new FileOutputStream(imagesPath)) {
                     bm.compress(Bitmap.CompressFormat.PNG, 100, out);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+                System.out.println("WORKS");
+                System.out.println(QrCodeProcessing.decodeQRImage(imagesPath));
                 Intent intent = new Intent(MainActivity.this, StatusScreen.class);
                 startActivity(intent);
             }

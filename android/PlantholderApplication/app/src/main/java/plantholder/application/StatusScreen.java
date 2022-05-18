@@ -147,8 +147,10 @@ public class StatusScreen extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Long value = snapshot.getValue(Long.class);
-                String valueString = Long.toString(value);
-                textView.setText(valueString);
+                if(value != null ) {
+                    String valueString = Long.toString(value);
+                    textView.setText(valueString);
+                }
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {

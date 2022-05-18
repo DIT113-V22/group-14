@@ -17,10 +17,10 @@ import com.google.zxing.qrcode.QRCodeReader;
 
 public class QrCodeProcessing {
 
-    public String decodeQRImage(String path) {
+    public String decodeQRImage(String imagesPath) {
 
 
-        Bitmap bMap = BitmapFactory.decodeFile(path);
+        Bitmap bMap = BitmapFactory.decodeFile(imagesPath);
         String decoded = null;
         int[] intArray = new int[bMap.getWidth() * bMap.getHeight()];
         bMap.getPixels(intArray, 0, bMap.getWidth(), 0, 0, bMap.getWidth(),
