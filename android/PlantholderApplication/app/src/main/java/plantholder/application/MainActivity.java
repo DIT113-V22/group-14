@@ -186,8 +186,10 @@ public class MainActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 System.out.println("WORKS");
-                System.out.println(QrCodeProcessing.decodeQRImage(imagesPath));
+                String decodedPlantId = (QrCodeProcessing.decodeQRImage(imagesPath));
+                System.out.println(decodedPlantId);
                 Intent intent = new Intent(MainActivity.this, StatusScreen.class);
+                intent.putExtra("key", decodedPlantId);
                 startActivity(intent);
             }
         });
@@ -263,18 +265,6 @@ public class MainActivity extends AppCompatActivity {
                         bm.setPixels(colors, 0, IMAGE_WIDTH, 0, 0, IMAGE_WIDTH, IMAGE_HEIGHT);
                         mCameraView.setImageBitmap(bm);
                     }
-
-
-
-
-                    //need to create a new method linked to takePicture.setOnClickListener method, that runs once on press
-                    //will use the same logic as messageArrived from within connectToMqttBroker
-                    //upon topic.equals("/smartcar/camera"), create a new bitmap
-                    //receive the pixels from the MQTT broker
-                    //give new values to the IMAGE_WIDTH, IMAGE_HEIGHT parameters in order to set the resolution of the picture
-                    //set their colours
-                    //use Bitmap.compress within a FileOutputStream to save the actual picture file
-
                     else {
                         Log.i(TAG, "[MQTT] Topic: " + topic + " | Message: " + message.toString());
                     }
