@@ -44,7 +44,7 @@
             android:configChanges="orientation"
             android:screenOrientation= "sensorLandscape"
             tools:ignore="LockedOrientationActivity"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".HomeScreen"
             android:configChanges="orientation"
