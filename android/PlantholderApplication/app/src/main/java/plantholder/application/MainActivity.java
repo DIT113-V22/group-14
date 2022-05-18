@@ -64,11 +64,24 @@ public class MainActivity extends AppCompatActivity {
 
         ImageButton turtleButton = findViewById(R.id.turtleButton);
         ImageButton rabbitButton = findViewById(R.id.rabbitButton);
-        Button moveForward = findViewById(R.id.forward);
-        Button moveBackward = findViewById(R.id.backward);
-        Button moveRight = findViewById(R.id.right);
-        Button moveLeft = findViewById(R.id.left);
-        Button menuButton = findViewById(R.id.menuButton);
+        ImageButton leftArrow = findViewById(R.id.left_arrow);
+        ImageButton rightArrow = findViewById(R.id.right_arrow);
+        ImageButton forwardArrow = findViewById(R.id.forward_arrow);
+        ImageButton backwardArrow = findViewById(R.id.backward_arrow);
+        Button autoPilot = findViewById(R.id.auto_mode);
+        Button menuButton = (Button) findViewById(R.id.menuButton);
+
+        autoPilot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                view.setSelected(!view.isSelected());
+                if(view.isSelected()){
+                    drive(speedMode, STRAIGHT_ANGLE, "Moving forward");
+                }else{
+                    drive(IDLE_SPEED, STRAIGHT_ANGLE, "Stopping");
+                }
+            }
+        });
 
         menuButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        moveForward.setOnTouchListener(new View.OnTouchListener() {
+        forwardArrow.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent event) {
                 if(event.getAction() == MotionEvent.ACTION_DOWN){
@@ -90,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        moveBackward.setOnTouchListener(new View.OnTouchListener() {
+        backwardArrow.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent event) {
                 if(event.getAction() == MotionEvent.ACTION_DOWN){
@@ -102,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        moveLeft.setOnTouchListener(new View.OnTouchListener() {
+        leftArrow.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent event) {
                 if(event.getAction() == MotionEvent.ACTION_DOWN){
@@ -114,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        moveRight.setOnTouchListener(new View.OnTouchListener() {
+        rightArrow.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent event) {
                 if(event.getAction() == MotionEvent.ACTION_DOWN){
