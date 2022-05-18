@@ -17,6 +17,7 @@ import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 import android.widget.Toast;
 
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -42,8 +43,9 @@ public class AddPlantScreen extends AppCompatActivity {
 
     private Button back;
 
-    private Adapter adapter;
-    private Adapter adapter2;
+    public ArrayAdapter<CharSequence> adapter;
+    public ArrayAdapter<CharSequence> adapter2;
+
     DatabaseReference firebaseReference;
     FirebaseDatabase firebaseDatabase;
 
@@ -54,6 +56,10 @@ public class AddPlantScreen extends AppCompatActivity {
         firebase = new Firebase();
 
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+
+        getWindow().getDecorView().getWindowInsetsController().hide(
+                android.view.WindowInsets.Type.statusBars()
+        );
 
         back = (Button) findViewById(R.id.buttonBack);
         back.setOnClickListener(new View.OnClickListener() {
@@ -71,7 +77,7 @@ public class AddPlantScreen extends AppCompatActivity {
         //create spinner for health
         spinnerPlantHealth = (Spinner) (findViewById(R.id.spinnerPlantHealth));
 
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.healthStatus, android.R.layout.simple_spinner_item);
+        adapter = ArrayAdapter.createFromResource(this, R.array.healthStatus, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         spinnerPlantHealth.setAdapter(adapter);
@@ -79,7 +85,7 @@ public class AddPlantScreen extends AppCompatActivity {
         // create spinner for type
         spinnerPlantType = (Spinner) (findViewById(R.id.spinnerPlantType));
 
-        ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this, R.array.plantType, android.R.layout.simple_spinner_item);
+        adapter2 = ArrayAdapter.createFromResource(this, R.array.plantType, android.R.layout.simple_spinner_item);
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         spinnerPlantType.setAdapter(adapter2);
@@ -122,6 +128,7 @@ public class AddPlantScreen extends AppCompatActivity {
                                 idExistAlert();
                             } else {
                                 createPlant();
+                                toastCreate();
 
                             }
                         }
@@ -137,45 +144,47 @@ public class AddPlantScreen extends AppCompatActivity {
             }
         });
 
-
-
-
     }
 
     public void idExistAlert() {
-       // @Override
-        //public Dialog onCreateDialog(Bundle savedInstanceState) {
-            // Use the Builder class for convenient dialog construction*/
-            AlertDialog.Builder builder = new AlertDialog.Builder(this); // (getActivity();)
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(AddPlantScreen.this); // (getActivity();)
             builder.setTitle("The inserted ID already exists! ");
             builder.setMessage("Do you want to continue and update this plant?");
             builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             createPlant();
+                            toastUpdate();
                         }
                     });
-            builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            builder.setNeutralButton("No", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             Toast.makeText(AddPlantScreen.this, "The added ID already exists, please enter a new ID.", Toast.LENGTH_LONG).show();
                         }
                     });
 
             builder.create();
-            //builder.show();
-            // Create the AlertDialog object and return it
-           // return builder.create();
+            builder.show();
         }
+
+    public void toastUpdate(){
+        Toast.makeText(this, "Plant updated!", Toast.LENGTH_SHORT).show();
+    }
+
+    public void toastCreate(){
+        Toast.makeText(this, "Plant created!", Toast.LENGTH_SHORT).show();
+    }
 
     void createPlant(){
         firebase.writeNewPlant(addedID, selectedType, addedRow, addedColumn, selectedHealth);
-        Toast.makeText(AddPlantScreen.this, "Plant created!", Toast.LENGTH_SHORT).show();
 
         //clean input
         editID.setText("");
         editColumn.setText("");
         editRow.setText("");
-        spinnerPlantType.setAdapter((SpinnerAdapter) adapter2); //(adapter2)
-        spinnerPlantHealth.setAdapter((SpinnerAdapter) adapter);
+        spinnerPlantType.setAdapter(adapter2);
+        spinnerPlantHealth.setAdapter(adapter);
+
     }
 }
 
