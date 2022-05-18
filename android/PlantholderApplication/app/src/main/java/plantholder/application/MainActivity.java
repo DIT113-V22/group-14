@@ -180,14 +180,13 @@ public class MainActivity extends AppCompatActivity {
         takePicture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                try (FileOutputStream out = new FileOutputStream("/storage/emulated/0/Download/QRTest2.png")) {
+                int counter = 0;
+                try (FileOutputStream out = new FileOutputStream("/storage/emulated/0/Download/PlantImage" + counter + ".png")) {
                     bm.compress(Bitmap.CompressFormat.PNG, 100, out);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
                 Intent intent = new Intent(MainActivity.this, StatusScreen.class);
-                String Qrcode = null;
-                intent.putExtra("key", Qrcode);
                 startActivity(intent);
             }
         });
