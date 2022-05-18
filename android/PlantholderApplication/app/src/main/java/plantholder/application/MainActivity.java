@@ -25,6 +25,7 @@ import org.eclipse.paho.client.mqttv3.MqttMessage;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.sql.SQLOutput;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "Plantholder";
@@ -45,6 +46,9 @@ public class MainActivity extends AppCompatActivity {
     private static final int IMAGE_HEIGHT = 240;
     private static final int CAPTURED_IMAGE_WIDTH = 250;
     private static final int CAPTURED_IMAGE_HEIGHT = 450;
+
+    final Bitmap bm = Bitmap.createBitmap(IMAGE_WIDTH, IMAGE_HEIGHT, Bitmap.Config.ARGB_8888);
+
 
     private MqttClient mMqttClient;
     private boolean isConnected = false;
@@ -172,11 +176,18 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
         takePicture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                captureVideoFrame();
+                try (FileOutputStream out = new FileOutputStream("/storage/emulated/0/Download/QRTest2.png")) {
+                    bm.compress(Bitmap.CompressFormat.PNG, 100, out);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 Intent intent = new Intent(MainActivity.this, StatusScreen.class);
+                String Qrcode = null;
+                intent.putExtra("key", Qrcode);
                 startActivity(intent);
             }
         });
@@ -240,8 +251,6 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void messageArrived(String topic, MqttMessage message) throws Exception {
                     if (topic.equals("/smartcar/camera")) {
-                        final Bitmap bm = Bitmap.createBitmap(IMAGE_WIDTH, IMAGE_HEIGHT, Bitmap.Config.ARGB_8888);
-
                         final byte[] payload = message.getPayload();
                         final int[] colors = new int[IMAGE_WIDTH * IMAGE_HEIGHT];
 
@@ -254,6 +263,8 @@ public class MainActivity extends AppCompatActivity {
                         bm.setPixels(colors, 0, IMAGE_WIDTH, 0, 0, IMAGE_WIDTH, IMAGE_HEIGHT);
                         mCameraView.setImageBitmap(bm);
                     }
+
+
 
 
                     //need to create a new method linked to takePicture.setOnClickListener method, that runs once on press
@@ -290,29 +301,4 @@ public class MainActivity extends AppCompatActivity {
         mMqttClient.publish(STEERING_CONTROL, Integer.toString(steeringAngle), QOS, null);
     }
 
-   void captureVideoFrame() {
-        String topic = "/smartcar/camera";
-        MqttMessage message = new MqttMessage();
-        if (topic.equals("/smartcar/camera")) {
-            final Bitmap capturedBm = Bitmap.createBitmap(CAPTURED_IMAGE_WIDTH, CAPTURED_IMAGE_HEIGHT, Bitmap.Config.ARGB_8888);
-
-            final byte[] payload = message.getPayload();
-            final int[] colors = new int[CAPTURED_IMAGE_HEIGHT * CAPTURED_IMAGE_HEIGHT];
-
-            for (int ci = 0; ci < colors.length; ci++) {
-                final int r = payload[3 * ci] & 0xFF;
-                final int g = payload[3 * ci + 1] & 0xFF;
-                final int b = payload[3 * ci + 2] & 0xFF;
-                colors[ci] = Color.rgb(r, g, b);
-            }
-            capturedBm.setPixels(colors, 0, CAPTURED_IMAGE_HEIGHT, 0, 0, CAPTURED_IMAGE_HEIGHT, CAPTURED_IMAGE_HEIGHT);
-
-            try (FileOutputStream out = new FileOutputStream("/storage/emulated/0/Download/QRTest.bmp")) {
-                capturedBm.compress(Bitmap.CompressFormat.PNG, 100, out); // bmp is your Bitmap instance
-                // PNG is a lossless format, the compression factor (100) is ignored
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
 }
