@@ -1,6 +1,9 @@
 package plantholder.application;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
@@ -10,6 +13,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 
 public class AddPlantScreen extends AppCompatActivity {
     private Firebase firebase;
@@ -26,8 +37,17 @@ public class AddPlantScreen extends AppCompatActivity {
     private EditText editRow;
     private EditText editID;
 
+    private String plantValue;
+
+    private boolean plantExists;
+
     private Button back;
 
+    public ArrayAdapter<CharSequence> adapter;
+    public ArrayAdapter<CharSequence> adapter2;
+
+    DatabaseReference firebaseReference;
+    FirebaseDatabase firebaseDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,11 +57,16 @@ public class AddPlantScreen extends AppCompatActivity {
 
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
+        getWindow().getDecorView().getWindowInsetsController().hide(
+                android.view.WindowInsets.Type.statusBars()
+        );
+
+
         back = (Button) findViewById(R.id.buttonBack);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(AddPlantScreen.this,HomeScreen.class);
+                Intent intent = new Intent(AddPlantScreen.this, HomeScreen.class);
                 startActivity(intent);
             }
         });
@@ -50,10 +75,17 @@ public class AddPlantScreen extends AppCompatActivity {
         editColumn = (EditText) (findViewById(R.id.editTextColumn));
         editRow = (EditText) (findViewById(R.id.editTextRow));
 
+        //checks if intent sent over a key to input as ID
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            String value = extras.getString("key");
+            editID.setText(value);
+        }
+
         //create spinner for health
         spinnerPlantHealth = (Spinner) (findViewById(R.id.spinnerPlantHealth));
 
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.healthStatus, android.R.layout.simple_spinner_item);
+        adapter = ArrayAdapter.createFromResource(this, R.array.healthStatus, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         spinnerPlantHealth.setAdapter(adapter);
@@ -61,7 +93,7 @@ public class AddPlantScreen extends AppCompatActivity {
         // create spinner for type
         spinnerPlantType = (Spinner) (findViewById(R.id.spinnerPlantType));
 
-        ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this, R.array.plantType, android.R.layout.simple_spinner_item);
+        adapter2 = ArrayAdapter.createFromResource(this, R.array.plantType, android.R.layout.simple_spinner_item);
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         spinnerPlantType.setAdapter(adapter2);
@@ -85,26 +117,96 @@ public class AddPlantScreen extends AppCompatActivity {
                     addedRow = Integer.parseInt(editRow.getText().toString());
                 }
 
-                if (addedID.length() < 10 ) {
+                if (addedID.length() < 10) {
                     Toast.makeText(AddPlantScreen.this, "Plant ID needs to be 10 digits.", Toast.LENGTH_SHORT).show();
-                } else if (addedRow < 0){
+                } else if (addedRow < 0) {
                     Toast.makeText(AddPlantScreen.this, "Please enter a row.", Toast.LENGTH_SHORT).show();
-                } else if (addedColumn < 0 ){
+                } else if (addedColumn < 0) {
                     Toast.makeText(AddPlantScreen.this, "Please enter a column.", Toast.LENGTH_SHORT).show();
                 } else {
-                    firebase.writeNewPlant(addedID, selectedType, addedRow, addedColumn, selectedHealth);
-                    Toast.makeText(AddPlantScreen.this, "Plant created!", Toast.LENGTH_SHORT).show();
 
-                    //clean input
-                    editID.setText("");
-                    editColumn.setText("");
-                    editRow.setText("");
-                    spinnerPlantType.setAdapter(adapter2);
-                    spinnerPlantHealth.setAdapter(adapter);
+                    verifyPlantExistence();
+                    if (plantValue != null) {
+                        idExistAlert();
+                    } else {
+                        createPlant();
+                        toastCreate();
+                    }
+                    plantValue = null;
                 }
             }
         });
+
+    }
+
+    public void idExistAlert() {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(AddPlantScreen.this); // (getActivity();)
+        builder.setTitle("The inserted ID already exists! ");
+        builder.setMessage("Do you want to continue and update this plant?");
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                createPlant();
+                toastUpdate();
+            }
+        });
+        builder.setNeutralButton("No", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                Toast.makeText(AddPlantScreen.this, "Plant not updated.", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        builder.create();
+        builder.show();
+    }
+
+    public void toastUpdate() {
+        Toast.makeText(this, "Plant updated!", Toast.LENGTH_SHORT).show();
+    }
+
+    public void toastCreate() {
+        Toast.makeText(this, "Plant created!", Toast.LENGTH_SHORT).show();
+    }
+
+    void createPlant() {
+        firebase.writeNewPlant(addedID, selectedType, addedRow, addedColumn, selectedHealth);
+
+        //clean input
+        editID.setText("");
+        editColumn.setText("");
+        editRow.setText("");
+        spinnerPlantType.setAdapter(adapter2);
+        spinnerPlantHealth.setAdapter(adapter);
+
+    }
+
+    private void verifyPlantExistence() {
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        firebaseReference = firebaseDatabase.getReference("Plants").child(addedID).child("id");
+        firebaseReference.addValueEventListener(new ValueEventListener() {
+            boolean processDone = false;
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (!processDone) {
+                    System.out.println(plantValue);
+                    plantValue = snapshot.getValue(String.class);
+                    System.out.println(plantValue);
+
+                }
+                processDone = true;
+        }
+
+        @Override
+        public void onCancelled (@NonNull DatabaseError error){
+            Toast.makeText(AddPlantScreen.this, "Fail to get data", Toast.LENGTH_SHORT).show();
+        }
+
+    });
+
     }
 }
+
+
+
 
 

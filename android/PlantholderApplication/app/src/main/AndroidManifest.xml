@@ -23,6 +23,18 @@
             tools:ignore="LockedOrientationActivity"
             android:exported="false" />
         <activity
+            android:name=".CreateAccount"
+            android:configChanges="orientation"
+            android:screenOrientation= "sensorLandscape"
+            tools:ignore="LockedOrientationActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".ForgotPassword"
+            android:configChanges="orientation"
+            android:screenOrientation= "sensorLandscape"
+            tools:ignore="LockedOrientationActivity"
+            android:exported="false"/>
+        <activity
             android:name=".StatusScreen"
             android:configChanges="orientation"
             android:screenOrientation= "sensorLandscape"
@@ -44,7 +56,8 @@
             android:name=".Pop"
             android:exported="false"
             android:theme="@style/Theme.Plantholder.popupTheme" />
-        <activity android:name=".LoginScreen"
+        <activity
+            android:name=".LoginScreen"
             android:exported="true"
             android:configChanges="orientation"
             android:screenOrientation= "sensorLandscape"
