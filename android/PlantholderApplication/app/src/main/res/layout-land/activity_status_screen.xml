@@ -133,10 +133,10 @@
 
     <TextView
         android:id="@+id/plantStatusTextView"
-        android:layout_width="100dp"
+        android:layout_width="150dp"
         android:layout_height="27dp"
-        android:layout_marginEnd="99dp"
-        android:text="nope"
+        android:layout_marginEnd="49dp"
+        android:text="nope2"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/plantColumnTextView"

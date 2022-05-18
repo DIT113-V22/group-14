@@ -26,7 +26,7 @@ public class StatusScreen extends AppCompatActivity {
     FirebaseDatabase firebaseDatabase;
     DatabaseReference firebaseReference;
 
-    String scannedPlantId = "1305167209"; //placeholder value for the qr code
+    String scannedPlantId = "1255555555"; //placeholder value for the qr code
 
     @RequiresApi(api = Build.VERSION_CODES.R)
     @Override
