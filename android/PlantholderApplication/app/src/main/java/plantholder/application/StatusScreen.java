@@ -39,6 +39,11 @@ public class StatusScreen extends AppCompatActivity {
                 android.view.WindowInsets.Type.statusBars()
         );
 
+
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            scannedPlantId = extras.getString("key");
+        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_status_screen);
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
