@@ -1,19 +1,119 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     tools:context=".PlantStatistics">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/showPlants"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
+
+    <TextView
+        android:id="@+id/plantsum"
+        android:layout_width="190dp"
+        android:layout_height="61dp"
+        android:layout_marginTop="88dp"
+        android:layout_marginEnd="8dp"
+        android:gravity="center"
+        android:text="total plants"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/plantsumAmnt"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/plantsumAmnt"
+        android:layout_width="190dp"
+        android:layout_height="61dp"
+        android:layout_marginTop="88dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="center"
+        android:text="0"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 
+    <TextView
+        android:id="@+id/plantHealth"
+        android:layout_width="100dp"
+        android:layout_height="61dp"
+        android:layout_marginTop="232dp"
+        android:layout_marginEnd="76dp"
+        android:gravity="center"
+        android:text="Plant Health"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/plantsumAmnt"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/healthyPlant"
+        android:layout_width="60dp"
+        android:layout_height="61dp"
+        android:layout_marginTop="232dp"
+        android:layout_marginEnd="192dp"
+        android:gravity="center"
+        android:text="....."
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/unhealthyPlant"
+        android:layout_width="60dp"
+        android:layout_height="61dp"
+        android:layout_marginTop="232dp"
+        android:layout_marginEnd="108dp"
+        android:gravity="center"
+        android:text="....."
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/ripePlant"
+        android:layout_width="60dp"
+        android:layout_height="61dp"
+        android:layout_marginTop="232dp"
+        android:layout_marginEnd="28dp"
+        android:gravity="center"
+        android:text="....."
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/plantType"
+        android:layout_width="100dp"
+        android:layout_height="61dp"
+        android:layout_marginTop="348dp"
+        android:layout_marginEnd="96dp"
+        android:gravity="center"
+        android:text="Plant Type"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/plantsumAmnt"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tomatoPlants"
+        android:layout_width="60dp"
+        android:layout_height="61dp"
+        android:layout_marginTop="348dp"
+        android:layout_marginEnd="192dp"
+        android:gravity="center"
+        android:text="....."
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/otherPlants"
+        android:layout_width="60dp"
+        android:layout_height="61dp"
+        android:layout_marginTop="348dp"
+        android:layout_marginEnd="88dp"
+        android:gravity="center"
+        android:text="....."
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

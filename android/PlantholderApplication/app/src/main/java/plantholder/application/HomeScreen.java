@@ -44,7 +44,7 @@ public class HomeScreen extends AppCompatActivity {
         infoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(HomeScreen.this, PlantStatistics.class);
+                Intent intent = new Intent(HomeScreen.this, InformationScreen.class);
                 startActivity(intent);
             }
         });
