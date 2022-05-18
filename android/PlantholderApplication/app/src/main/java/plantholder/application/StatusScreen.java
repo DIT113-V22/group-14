@@ -71,7 +71,7 @@ public class StatusScreen extends AppCompatActivity {
 
         getWindow().getDecorView().getWindowInsetsController().hide(
                 android.view.WindowInsets.Type.statusBars()
-);
+        );
 
 
 
@@ -122,7 +122,7 @@ public class StatusScreen extends AppCompatActivity {
     private void getdata(TextView textView) {
         firebaseReference.addValueEventListener(new ValueEventListener() {
             @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String value = snapshot.getValue(String.class);
                 textView.setText(value);
             }
