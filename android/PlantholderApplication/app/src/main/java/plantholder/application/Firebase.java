@@ -1,16 +1,23 @@
 package plantholder.application;
 
 import android.os.Bundle;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class Firebase extends AppCompatActivity {
 
     private DatabaseReference myDatabase;
     private DatabaseReference userDatabase;
+    private FirebaseDatabase firebaseDatabase;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,9 +48,23 @@ public class Firebase extends AppCompatActivity {
 
     }
 
-    public void updatePlantHealth(String ID, String status){
-        getDatabase();
-        myDatabase.child(ID).child("health").setValue(status);
+    public void updatePlantHealth(String ID, String status, String screen){
+        firebaseDatabase =  FirebaseDatabase.getInstance();
+        myDatabase = firebaseDatabase.getReference("Plants").child(ID).child("id");
 
+        myDatabase.addValueEventListener(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String value = snapshot.getValue(String.class);
+                if (value != null) {
+                    myDatabase.child(ID).child("health").setValue(status);
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+
+        });
     }
 }

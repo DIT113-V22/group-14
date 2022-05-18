@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Build;
@@ -26,7 +28,7 @@ public class StatusScreen extends AppCompatActivity {
     FirebaseDatabase firebaseDatabase;
     DatabaseReference firebaseReference;
 
-    String scannedPlantId = "1255555555"; //placeholder value for the qr code
+    String scannedPlantId = "1255255555"; //placeholder value for the qr code
 
     @RequiresApi(api = Build.VERSION_CODES.R)
     @Override
@@ -62,7 +64,7 @@ public class StatusScreen extends AppCompatActivity {
         unhealthy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                firebase.updatePlantHealth("1846973667","Unhealthy");
+                firebase.updatePlantHealth(scannedPlantId,"Unhealthy", "StatusScreen");
             }
         });
 
@@ -70,7 +72,7 @@ public class StatusScreen extends AppCompatActivity {
         healthy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                firebase.updatePlantHealth("1846973667","Healthy");
+                firebase.updatePlantHealth(scannedPlantId,"Healthy", "StatusScreen");
             }
         });
 
@@ -78,7 +80,7 @@ public class StatusScreen extends AppCompatActivity {
         keepTrackOn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                firebase.updatePlantHealth("1846973667","Keep Track");
+                firebase.updatePlantHealth(scannedPlantId,"Keep Track", "StatusScreen");
             }
         });
 
@@ -86,7 +88,7 @@ public class StatusScreen extends AppCompatActivity {
         ripe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                firebase.updatePlantHealth("1846973667","Ripe");
+                firebase.updatePlantHealth(scannedPlantId,"Ripe", "StatusScreen");
             }
         });
 
@@ -155,9 +157,7 @@ public class StatusScreen extends AppCompatActivity {
 
 
                 } else {
-                    Intent intent = new Intent(StatusScreen.this, AddPlantScreen.class);
-                    intent.putExtra("key", scannedPlantId);
-                    startActivity(intent);
+                    changeToAddPlantScreen();
                 }
             }
             @Override
@@ -166,5 +166,26 @@ public class StatusScreen extends AppCompatActivity {
             }
 
         });
+    }
+    public void changeToAddPlantScreen() {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(StatusScreen.this); // (getActivity();)
+        builder.setTitle("The scanned ID does not exist ");
+        builder.setMessage("Do you want to add this plant?");
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                Intent intent = new Intent(StatusScreen.this, AddPlantScreen.class);
+                intent.putExtra("key", scannedPlantId);
+                startActivity(intent);
+            }
+        });
+        builder.setNeutralButton("No", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                Toast.makeText(StatusScreen.this, "The scanned plant does not exist.", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        builder.create();
+        builder.show();
     }
 }
