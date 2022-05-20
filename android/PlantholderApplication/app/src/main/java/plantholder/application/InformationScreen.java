@@ -43,7 +43,7 @@ public class InformationScreen extends AppCompatActivity  {
         searchView = findViewById(R.id.searchView);
         plantStatsBtn = findViewById(R.id.plantStats);
         //recyclerView.setAdapter(adapter);
-        //recyclerView.setHasFixedSize(true);
+        recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
@@ -145,7 +145,15 @@ public class InformationScreen extends AppCompatActivity  {
 
                 @Override
                 public boolean onQueryTextChange(String newText) {
-                    search(newText);
+                    if (newText!= null )
+                    {
+                        if (newText.isEmpty()){
+                            onStart();
+                        }
+                        else{
+                            search(newText);
+                        }
+                    }
                     return true;
                 }
             }
@@ -153,8 +161,6 @@ public class InformationScreen extends AppCompatActivity  {
         }
 
     }
-
-
 
     private void search(String str){
 
