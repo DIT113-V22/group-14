@@ -53,20 +53,20 @@ public class InformationScreen extends AppCompatActivity  {
        // adapter.notifyDataSetChanged();
 
 
-//keep this here?????
         getWindow().getDecorView().getWindowInsetsController().hide(
                 android.view.WindowInsets.Type.statusBars()
         );
 
-        /* Button back = findViewById(R.id.backMain);
+        Button back = findViewById(R.id.backMain);
          back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(InfoScreen.this,HomeScreen.class);
+                Intent intent = new Intent(InformationScreen.this,HomeScreen.class);
                 startActivity(intent);
             }
         });
-*/
+
+
         plantStatsBtn = findViewById(R.id.plantStats);
 
         plantStatsBtn.setOnClickListener(new View.OnClickListener() {

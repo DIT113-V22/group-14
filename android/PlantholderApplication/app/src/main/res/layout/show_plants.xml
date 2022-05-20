@@ -3,81 +3,117 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="50dp"
     tools:context=".InformationScreen"
-    android:stretchColumns="1,2,3,4"
-    android:layout_margin="8dp">
+    android:stretchColumns="1,2,3,4,5"
+    android:layout_margin="3dp">
 
     <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="42dp"
+        android:padding="2dp">
+
 
         <TextView
             android:id="@+id/plantID"
+            android:layout_height="37dp"
             android:layout_column="1"
             android:layout_marginRight="15dp"
             android:layout_weight="0.5"
-            android:ems="5"
-            android:gravity="center"
             android:padding="10dp"
-            android:text="Plant id"
+            android:text="Plant ID"
             android:textColor="@color/black"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/plantSpecies"
+            android:layout_height="37dp"
             android:layout_column="1"
             android:layout_marginRight="15dp"
             android:layout_weight="0.5"
             android:ems="5"
-            android:gravity="center"
             android:padding="10dp"
             android:text="Species"
             android:textColor="@color/black"
             android:textStyle="bold" />
 
-
         <TextView
             android:id="@+id/plantHealth"
+            android:layout_height="38dp"
             android:layout_column="1"
             android:layout_marginRight="15dp"
             android:layout_weight="0.5"
             android:ems="5"
-            android:gravity="center"
             android:padding="10dp"
-            android:text="health"
+            android:text="Health"
             android:textColor="@color/black"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/plantRow"
+            android:layout_height="37dp"
             android:layout_column="1"
             android:layout_marginRight="15dp"
             android:layout_weight="0.5"
             android:ems="5"
-            android:gravity="center"
             android:padding="10dp"
-            android:text="row"
+            android:text="Row"
             android:textColor="@color/black"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/plantColumn"
+            android:layout_height="35dp"
             android:layout_column="1"
             android:layout_marginRight="15dp"
             android:layout_weight="0.5"
             android:ems="5"
-            android:gravity="center"
             android:padding="10dp"
-            android:text="column"
+            android:text="Column"
             android:textColor="@color/black"
             android:textStyle="bold" />
 
 
+<!--        <TextView-->
+<!--            android:id="@+id/plantID"-->
+<!--            android:layout_width="100dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:text="Plant ID"-->
+<!--            android:textColor="@color/black" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/plantSpecies"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:text="Species"-->
+<!--            android:textColor="@color/black"/>-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/plantHealth"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:text="Health"-->
+<!--            android:textColor="@color/black"/>-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/plantRow"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:text="Row"-->
+<!--            android:textColor="@color/black"/>-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/plantColumn"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:text="Column"-->
+<!--            android:textColor="@color/black"/>-->
+
     </TableRow>
-
-
-
 
 
 </TableLayout>
