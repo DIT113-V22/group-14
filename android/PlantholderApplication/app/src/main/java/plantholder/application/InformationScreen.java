@@ -73,12 +73,9 @@ public class InformationScreen extends AppCompatActivity  {
             }
         });
 
-
-
-
     }
 
-
+// populate table with data from the database
     protected void onStart(){
         super.onStart();
         if(database != null){
@@ -98,7 +95,6 @@ public class InformationScreen extends AppCompatActivity  {
                         adapter = new PlantsAdapter(plantList);
                         recyclerView.setAdapter(adapter);
 
-
                     }
                 }
 
@@ -109,7 +105,6 @@ public class InformationScreen extends AppCompatActivity  {
                 }
             });
         }
-
 
         if(searchView != null){
             searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -124,25 +119,23 @@ public class InformationScreen extends AppCompatActivity  {
                     search(newText);
                     return true;
                 }
-            });
+            }
+            );
         }
     }
 
     private void search(String str){
 
-        ArrayList<Plants> myList = new ArrayList<>();
+        ArrayList<Plants> newPlantList = new ArrayList<>();
 
-        for (Plants objectt : plantList) {
-            if(objectt.getHealth().toLowerCase().equalsIgnoreCase(str.toLowerCase())){
-                myList.add(objectt);
+        for (Plants plant : plantList) {
+            if(plant.getHealth().toLowerCase().equalsIgnoreCase(str.toLowerCase()) ||plant.getSpecies().toLowerCase().equalsIgnoreCase(str.toLowerCase()) ){
+                newPlantList.add(plant);
             }
-
+            
         }
-        adapter = new PlantsAdapter(myList);
+        adapter = new PlantsAdapter(newPlantList);
         recyclerView.setAdapter(adapter);
     }
-
-
-
 
 }
