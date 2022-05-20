@@ -178,14 +178,12 @@ public class MainActivity extends AppCompatActivity {
         takePicture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int counter = 0;
-                String imagesPath = "/storage/emulated/0/Download/PlantImage" + counter + ".png";
+                String imagesPath = "/storage/emulated/0/Download/PlantImage" + ".png";
                 try (FileOutputStream out = new FileOutputStream(imagesPath)) {
                     bm.compress(Bitmap.CompressFormat.PNG, 100, out);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                System.out.println("WORKS");
                 String decodedPlantId = (QrCodeProcessing.decodeQRImage(imagesPath));
                 System.out.println(decodedPlantId);
                 Intent intent = new Intent(MainActivity.this, StatusScreen.class);

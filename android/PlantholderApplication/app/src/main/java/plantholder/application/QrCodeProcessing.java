@@ -1,5 +1,9 @@
 package plantholder.application;
 
+// reference for QrCodeProcessing from
+// https://stackoverflow.com/questions/36210537/find-qr-code-in-image-and-decode-it-using-zxing
+// by user3646022
+
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
