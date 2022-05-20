@@ -39,7 +39,7 @@ public class HomeScreen extends AppCompatActivity {
             }
         });
 
-        infoButton = (Button) findViewById(R.id.infoButton);
+        infoButton = (Button) findViewById(R.id.toInfoButton);
 
         infoButton.setOnClickListener(new View.OnClickListener() {
             @Override
