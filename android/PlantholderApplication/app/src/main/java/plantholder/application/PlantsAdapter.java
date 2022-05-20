@@ -18,33 +18,35 @@ import java.util.List;
 
 public class PlantsAdapter extends RecyclerView.Adapter<PlantsAdapter.ViewHolder> {
 
-    private Context context;
-    private ArrayList<Plants> list;
 
-    public PlantsAdapter(Context context, ArrayList<Plants> list) {
-        this.context = context;
-        this.list = list;
+    private ArrayList<Plants> plantList;
+
+    public PlantsAdapter( ArrayList<Plants> plantList) {
+
+        this.plantList = plantList;
     }
+
+
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(context).inflate(R.layout.show_plants,parent,false);
-        return new ViewHolder(v);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.show_plants,parent,false);
+        return new ViewHolder(v); //(parent.getContext())
 
         //return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.show_plants,parent,false));
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Plants plant = list.get(position);
+        Plants plant = plantList.get(position);
         holder.ID.setText(plant.getID());
         holder.species.setText(plant.getSpecies());
         holder.health.setText(plant.getHealth());
         holder.row.setText(plant.getRow()+"");
         holder.column.setText(plant.getColumn()+"");
 
-       // holder.column.setText(plant.getColumn());
+        // holder.column.setText(plant.getColumn());
 
 
 
@@ -52,7 +54,7 @@ public class PlantsAdapter extends RecyclerView.Adapter<PlantsAdapter.ViewHolder
 
     @Override
     public int getItemCount() {
-        return list.size();
+        return plantList.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

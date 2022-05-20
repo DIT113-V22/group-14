@@ -16,10 +16,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Plantholder" >
         <activity
-            android:name=".PlantStatistics"
+            android:name=".InformationScreen"
             android:exported="false" />
         <activity
-            android:name=".InformationScreen"
+            android:name=".PlantStatistics"
             android:exported="false" />
         <activity
             android:name=".AddPlantScreen"

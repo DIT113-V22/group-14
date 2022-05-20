@@ -4,116 +4,230 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#92DF95"
     tools:context=".PlantStatistics">
 
 
     <TextView
         android:id="@+id/plantsum"
-        android:layout_width="190dp"
-        android:layout_height="61dp"
-        android:layout_marginTop="88dp"
-        android:layout_marginEnd="8dp"
+        android:layout_width="198dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="168dp"
+        android:layout_marginTop="24dp"
         android:gravity="center"
-        android:text="total plants"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toStartOf="@+id/plantsumAmnt"
+        android:text="Plant Population:"
+        android:textColor="#107A15"
+        android:textSize="24sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/plantsumAmnt"
-        android:layout_width="190dp"
-        android:layout_height="61dp"
-        android:layout_marginTop="88dp"
-        android:layout_marginEnd="16dp"
+        android:layout_width="35dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="24dp"
         android:gravity="center"
         android:text="0"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="#107A15"
+        android:textSize="24sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintStart_toEndOf="@+id/plantsum"
         app:layout_constraintTop_toTopOf="parent" />
-
 
     <TextView
         android:id="@+id/plantHealth"
-        android:layout_width="100dp"
-        android:layout_height="61dp"
-        android:layout_marginTop="232dp"
-        android:layout_marginEnd="76dp"
+        android:layout_width="150dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="17dp"
+        android:layout_marginBottom="15dp"
         android:gravity="center"
         android:text="Plant Health"
+        android:textColor="#033A35"
         android:textSize="20sp"
-        app:layout_constraintEnd_toStartOf="@+id/plantsumAmnt"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toTopOf="@+id/healthyPlant"
+        app:layout_constraintStart_toEndOf="@+id/plantType"
+        app:layout_constraintTop_toBottomOf="@+id/plantsum" />
 
     <TextView
         android:id="@+id/healthyPlant"
-        android:layout_width="60dp"
-        android:layout_height="61dp"
-        android:layout_marginTop="232dp"
-        android:layout_marginEnd="192dp"
+        android:layout_width="40dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="248dp"
         android:gravity="center"
-        android:text="....."
+        android:text="."
+        android:textColor="#0B0B0B"
         android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/plantHealth" />
 
     <TextView
         android:id="@+id/unhealthyPlant"
-        android:layout_width="60dp"
-        android:layout_height="61dp"
-        android:layout_marginTop="232dp"
-        android:layout_marginEnd="108dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="22dp"
+        android:layout_marginEnd="242dp"
         android:gravity="center"
-        android:text="....."
+        android:text="."
+        android:textColor="#0B0B0B"
         android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/healthyPlant" />
 
     <TextView
         android:id="@+id/ripePlant"
-        android:layout_width="60dp"
-        android:layout_height="61dp"
-        android:layout_marginTop="232dp"
-        android:layout_marginEnd="28dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="244dp"
+        android:layout_marginBottom="53dp"
         android:gravity="center"
-        android:text="....."
+        android:text="."
+        android:textColor="#0B0B0B"
         android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+        app:layout_constraintTop_toBottomOf="@+id/unhealthyPlant"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/plantType"
-        android:layout_width="100dp"
-        android:layout_height="61dp"
-        android:layout_marginTop="348dp"
-        android:layout_marginEnd="96dp"
+        android:layout_width="150dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="136dp"
+        android:layout_marginTop="17dp"
+        android:layout_marginBottom="16dp"
         android:gravity="center"
         android:text="Plant Type"
+        android:textColor="#033A35"
         android:textSize="20sp"
-        app:layout_constraintEnd_toStartOf="@+id/plantsumAmnt"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toTopOf="@+id/tomatoPlants"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/plantsum"
+        app:layout_constraintVertical_bias="0.185" />
 
     <TextView
         android:id="@+id/tomatoPlants"
-        android:layout_width="60dp"
-        android:layout_height="61dp"
-        android:layout_marginTop="348dp"
-        android:layout_marginEnd="192dp"
+        android:layout_width="53dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="24dp"
         android:gravity="center"
-        android:text="....."
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="20%"
+        android:textColor="#0B0B0B"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/textView7"
+        app:layout_constraintTop_toBottomOf="@+id/plantType" />
 
     <TextView
         android:id="@+id/otherPlants"
-        android:layout_width="60dp"
-        android:layout_height="61dp"
-        android:layout_marginTop="348dp"
-        android:layout_marginEnd="88dp"
+        android:layout_width="54dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="23dp"
         android:gravity="center"
-        android:text="....."
-        android:textSize="20sp"
+        android:text="100%"
+        android:textColor="#0B0B0B"
+        android:textSize="17dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/textView9"
+        app:layout_constraintTop_toBottomOf="@+id/tomatoPlants" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="93dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="149dp"
+        android:layout_marginTop="28dp"
+        android:text="Tomatoes :"
+        android:textColor="#0B0B0B"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/plantType" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="86dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="149dp"
+        android:layout_marginTop="24dp"
+        android:text="Other        :"
+        android:textColor="#0B0B0B"
+        android:textSize="17dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="95dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="15dp"
+        android:text="Healthy  :"
+        android:textColor="#0B0B0B"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/healthyPlant"
+        app:layout_constraintTop_toBottomOf="@+id/plantHealth" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="97dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:text="Unhealthy :"
+        android:textColor="#0B0B0B"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/unhealthyPlant"
+        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="95dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="53dp"
+        android:text="Ripe        :"
+        android:textColor="#0B0B0B"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/ripePlant"
+        app:layout_constraintStart_toEndOf="@+id/backInfoButton"
+        app:layout_constraintTop_toBottomOf="@+id/textView11"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="150dp"
+        android:layout_height="96dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="168dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/chart" />
+
+    <Button
+        android:id="@+id/backInfoButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="248dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="19dp"
+        android:layout_marginBottom="16dp"
+        android:text="Close"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/textView12"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/otherPlants" />
 </androidx.constraintlayout.widget.ConstraintLayout>

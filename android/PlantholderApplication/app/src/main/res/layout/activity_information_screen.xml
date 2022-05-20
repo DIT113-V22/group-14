@@ -1,66 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:stretchColumns="1,2,3,4,"
-    android:layout_margin="8dp"
+    android:layout_height="wrap_content"
     tools:context=".InformationScreen">
 
-    <TableRow>
-
-    <TextView
-        android:text="Plant id"
-        android:layout_column="1"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:textSize="14dp"
-        android:padding="10dp" />
-
-    <TextView
-        android:text="species"
-        android:layout_column="2"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:textSize="14dp"
-        android:padding="10dp" />
-
-    <TextView
-        android:text="health"
-        android:layout_column="2"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:textSize="14dp"
-        android:padding="10dp" />
-
-    <TextView
-        android:text="row"
-        android:layout_column="1"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:textSize="14dp"
-        android:padding="10dp"  />
-
-    <TextView
-        android:text="column"
-        android:layout_column="1"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:textSize="14dp"
-        android:padding="10dp"  />
-    </TableRow>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/showPlants"
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/backButton"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:backgroundTint="#03A9F4"
+        android:text="GO BACK"
+        app:layout_constraintBottom_toTopOf="@+id/tableLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <Button
+        android:id="@+id/plantStats"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="467dp"
+        android:layout_marginEnd="44dp"
+        android:backgroundTint="#03A9F4"
+        android:text="Statistics"
+        app:layout_constraintBottom_toTopOf="@+id/tableLayout2"
+        app:layout_constraintEnd_toStartOf="@+id/backButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TableLayout
+
+        android:id="@+id/tableLayout2"
+        android:layout_width="700dp"
+        android:layout_height="match_parent"
+        android:layout_margin="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="23dp"
+        android:layout_marginBottom="15dp"
+        android:stretchColumns="1,2,3,4,"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/backButton">
 
 
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/searchView"
+            android:layout_width="702dp"
+            android:layout_height="54dp"
+            android:padding="10dp" />
 
-</TableLayout>
+        <TableRow>
+
+            <TextView
+                android:layout_column="1"
+                android:padding="10dp"
+                android:text="Plant id"
+                android:textColor="@color/black"
+                android:textSize="14dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_column="2"
+                android:padding="10dp"
+                android:text="species"
+                android:textColor="@color/black"
+                android:textSize="14dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_column="2"
+                android:padding="10dp"
+                android:text="health"
+                android:textColor="@color/black"
+                android:textSize="14dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_column="1"
+                android:padding="10dp"
+                android:text="row"
+                android:textColor="@color/black"
+                android:textSize="14dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_column="1"
+                android:padding="10dp"
+                android:text="column"
+                android:textColor="@color/black"
+                android:textSize="14dp"
+                android:textStyle="bold" />
+        </TableRow>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/showPlants"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+    </TableLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -51,7 +51,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-database'
 
     implementation 'com.google.android.material:material:<version>' // added 17/5 for alertwindow
-
+    implementation "androidx.cardview:cardview:1.0.0"
 
     implementation 'androidx.localbroadcastmanager:localbroadcastmanager:1.0.0'
 

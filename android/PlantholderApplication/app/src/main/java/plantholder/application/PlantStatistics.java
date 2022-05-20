@@ -2,7 +2,12 @@ package plantholder.application;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -26,6 +31,8 @@ public class PlantStatistics extends AppCompatActivity {
     private int tomato = 0;
     private int other = 0;
 
+    Button backToInfoBtn;
+
     private DatabaseReference databaseReference;
 
 
@@ -33,9 +40,20 @@ public class PlantStatistics extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_plant_statistics);
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
        //get the total number of plants registered in the database
         plantTotal = (TextView) findViewById(R.id.plantsumAmnt);
+
+        backToInfoBtn = findViewById(R.id.backInfoButton);
+        backToInfoBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(PlantStatistics.this,InformationScreen.class);
+                startActivity(intent);
+            }
+        });
+
 
         databaseReference = FirebaseDatabase.getInstance().getReference("Plants");
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -115,8 +133,8 @@ public class PlantStatistics extends AppCompatActivity {
                     long tomatoPercentage = (tomato* 100L)/ plantCount;
                     long otherPercentage = (other* 100L)/ plantCount;
 
-                    tomatoPlant.setText(Long.toString(tomatoPercentage) + " %");
-                    otherPlant.setText(Long.toString(otherPercentage) + " %" );
+                    tomatoPlant.setText(Long.toString(tomatoPercentage) + "%");
+                    otherPlant.setText(Long.toString(otherPercentage) + "%" );
 
                 }
             }
