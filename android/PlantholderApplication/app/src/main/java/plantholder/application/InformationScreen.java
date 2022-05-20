@@ -30,7 +30,6 @@ public class InformationScreen extends AppCompatActivity  {
     ArrayList<Plants> plantList;
     DatabaseReference database;
     SearchView searchView;
-    Dialog myDialog;
     Button plantStatsBtn;
 
 
@@ -43,16 +42,21 @@ public class InformationScreen extends AppCompatActivity  {
         recyclerView = findViewById(R.id.showPlants);
         searchView = findViewById(R.id.searchView);
         plantStatsBtn = findViewById(R.id.plantStats);
-        myDialog = new Dialog(this);
-
-
-        recyclerView.setHasFixedSize(true);
+        //recyclerView.setAdapter(adapter);
+        //recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
         plantList = new ArrayList<>();
         adapter = new PlantsAdapter(plantList);
         recyclerView.setAdapter(adapter);
+       // adapter.notifyDataSetChanged();
+
+
+//keep this here?????
+        getWindow().getDecorView().getWindowInsetsController().hide(
+                android.view.WindowInsets.Type.statusBars()
+        );
 
         /* Button back = findViewById(R.id.backMain);
          back.setOnClickListener(new View.OnClickListener() {
@@ -63,7 +67,7 @@ public class InformationScreen extends AppCompatActivity  {
             }
         });
 */
-       plantStatsBtn = findViewById(R.id.plantStats);
+        plantStatsBtn = findViewById(R.id.plantStats);
 
         plantStatsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,15 +96,40 @@ public class InformationScreen extends AppCompatActivity  {
                             plantList.add(plant);
                         }
 
-                        adapter = new PlantsAdapter(plantList);
-                        recyclerView.setAdapter(adapter);
+                        PlantsAdapter  adapter1 = new PlantsAdapter(plantList);
+                        recyclerView.setAdapter(adapter1);
+                        //adapter.notifyDataSetChanged();
 
                     }
                 }
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
-                    Toast.makeText(InformationScreen.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(InformationScreen.this, "No Data found", Toast.LENGTH_SHORT).show();
+
+                }
+            });
+        }
+
+        if (searchView== null){
+            database.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+
+                    for(DataSnapshot dataSnapshot: snapshot.getChildren()){
+
+                        Plants plant = dataSnapshot.getValue(Plants.class);
+                        plantList.add(plant);
+
+                    }
+                    adapter.notifyDataSetChanged();
+
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
 
                 }
             });
@@ -111,7 +140,7 @@ public class InformationScreen extends AppCompatActivity  {
 
                 @Override
                 public boolean onQueryTextSubmit(String query) {
-                    return false;
+                    return true;
                 }
 
                 @Override
@@ -122,20 +151,27 @@ public class InformationScreen extends AppCompatActivity  {
             }
             );
         }
+
     }
+
+
 
     private void search(String str){
 
         ArrayList<Plants> newPlantList = new ArrayList<>();
 
         for (Plants plant : plantList) {
-            if(plant.getHealth().toLowerCase().equalsIgnoreCase(str.toLowerCase()) ||plant.getSpecies().toLowerCase().equalsIgnoreCase(str.toLowerCase()) ){
+            if (plant.getHealth().toLowerCase().equalsIgnoreCase(str.toLowerCase()) || plant.getSpecies().toLowerCase().equalsIgnoreCase(str.toLowerCase())) {
                 newPlantList.add(plant);
             }
-            
         }
-        adapter = new PlantsAdapter(newPlantList);
-        recyclerView.setAdapter(adapter);
+        PlantsAdapter adapter2 = new PlantsAdapter(newPlantList);
+        recyclerView.setAdapter(adapter2);
+       // adapter2.notifyDataSetChanged();
+
+
     }
+
+
 
 }

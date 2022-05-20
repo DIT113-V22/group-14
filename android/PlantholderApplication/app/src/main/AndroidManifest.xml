@@ -17,10 +17,14 @@
         android:theme="@style/Theme.Plantholder" >
         <activity
             android:name=".InformationScreen"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="sensorLandscape"
+            tools:ignore="LockedOrientationActivity"/>
         <activity
             android:name=".PlantStatistics"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="sensorLandscape"
+            tools:ignore="LockedOrientationActivity"/>
         <activity
             android:name=".AddPlantScreen"
             android:configChanges="orientation"

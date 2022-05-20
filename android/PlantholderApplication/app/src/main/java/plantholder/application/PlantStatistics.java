@@ -21,14 +21,18 @@ public class PlantStatistics extends AppCompatActivity {
     private TextView healthyPlant;
     private TextView unHealthyPlant;
     private TextView ripePlant;
+    private TextView trackPlant;
     private TextView tomatoPlant;
     private TextView otherPlant;
+    private TextView grapePlant;
 
     private int plantCount = 0;
     private int healthy = 0;
     private int unhealthy = 0;
     private int ripe = 0;
+    private int track = 0;
     private int tomato = 0;
+    private int grape = 0;
     private int other = 0;
 
     Button backToInfoBtn;
@@ -73,6 +77,7 @@ public class PlantStatistics extends AppCompatActivity {
         healthyPlant = (TextView) findViewById(R.id.healthyPlant);
         unHealthyPlant = (TextView) findViewById(R.id.unhealthyPlant);
         ripePlant = (TextView) findViewById(R.id.ripePlant);
+        trackPlant = (TextView) findViewById(R.id.trackPlant);
         databaseReference = FirebaseDatabase.getInstance().getReference("Plants");
 
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -91,15 +96,20 @@ public class PlantStatistics extends AppCompatActivity {
                       case "Ripe":
                             ++ripe;
                             break;
+                      case "Keep Track":
+                          ++track;
+                          break;
                   }
 
                 long healthyPercentage = (healthy * 100L)/ plantCount;
                 long unhealthyPercentage = (unhealthy* 100L)/ plantCount;
                 long ripePercentage = (ripe * 100L)/ plantCount;
+                long trackPercentage = (track * 100L)/ plantCount;
 
                 healthyPlant.setText(Long.toString(healthyPercentage) + "%");
                 unHealthyPlant.setText(Long.toString(unhealthyPercentage) + "%");
                 ripePlant.setText(Long.toString(ripePercentage) + "%");
+                trackPlant.setText(Long.toString(trackPercentage) + "%");
 
                    }
                  }
@@ -113,6 +123,7 @@ public class PlantStatistics extends AppCompatActivity {
 
 
         tomatoPlant = (TextView) findViewById(R.id.tomatoPlants);
+        grapePlant = (TextView) findViewById(R.id.grapePlants);
         otherPlant = (TextView) findViewById(R.id.otherPlants);
         databaseReference = FirebaseDatabase.getInstance().getReference("Plants");
 
@@ -125,15 +136,20 @@ public class PlantStatistics extends AppCompatActivity {
                         case "Tomato":
                             ++tomato;
                             break;
+                        case "Grape":
+                            ++grape;
+                            break;
                         default:
                             ++other;
                             break;
                     }
 
                     long tomatoPercentage = (tomato* 100L)/ plantCount;
+                    long grapePercentage = (grape* 100L)/ plantCount;
                     long otherPercentage = (other* 100L)/ plantCount;
 
                     tomatoPlant.setText(Long.toString(tomatoPercentage) + "%");
+                    grapePlant.setText(Long.toString(grapePercentage) + "%");
                     otherPlant.setText(Long.toString(otherPercentage) + "%" );
 
                 }
