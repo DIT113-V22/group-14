@@ -147,21 +147,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:backgroundTint="#616161"
+        android:layout_marginEnd="24dp"
+        android:backgroundTint="@color/grey"
+        android:shadowColor="#000000"
+        android:shadowRadius="5"
         android:text="Go Back"
         android:textColor="#FAFAFA"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.95"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/unhealthy"
         android:layout_width="128dp"
         android:layout_height="74dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="20dp"
-        android:backgroundTint="#5A3A2F"
+        android:backgroundTint="@color/unhealthy"
+        android:shadowColor="#000000"
+        android:shadowRadius="5"
         android:text="Unhealthy"
         android:textColor="#FAFAFA"
         app:layout_constraintEnd_toStartOf="@+id/keepTrack"
@@ -171,36 +174,40 @@
         android:id="@+id/healthy"
         android:layout_width="130dp"
         android:layout_height="74dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="20dp"
-        android:backgroundTint="#D6C52E"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="@color/healthy"
+        android:shadowColor="#000000"
+        android:shadowRadius="5"
         android:text="Healthy"
         android:textColor="#FAFAFA"
         app:layout_constraintEnd_toStartOf="@+id/ripe"
+        app:layout_constraintStart_toStartOf="@+id/unhealthy"
         app:layout_constraintTop_toBottomOf="@+id/unhealthy" />
 
     <Button
         android:id="@+id/keepTrack"
         android:layout_width="130dp"
         android:layout_height="74dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="112dp"
-        android:backgroundTint="#F39407"
+        android:backgroundTint="@color/keeptrack"
+        android:shadowColor="#000000"
+        android:shadowRadius="5"
         android:text="Keep Track"
         android:textColor="#FAFAFA"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/plantStatusTextView" />
+        app:layout_constraintTop_toTopOf="@+id/unhealthy" />
 
     <Button
         android:id="@+id/ripe"
         android:layout_width="130dp"
         android:layout_height="74dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="112dp"
-        android:backgroundTint="#0A9A10"
+        android:backgroundTint="@color/green"
+        android:shadowColor="#000000"
+        android:shadowRadius="5"
         android:text="Ripe"
         android:textColor="#FAFAFA"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/keepTrack" />
+        app:layout_constraintEnd_toEndOf="@+id/keepTrack"
+        app:layout_constraintTop_toTopOf="@+id/healthy" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

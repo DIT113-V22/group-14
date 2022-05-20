@@ -186,9 +186,7 @@ public class AddPlantScreen extends AppCompatActivity {
 
             @Override
             public void onCancelled(DatabaseError error) {
-
             }
-
         });
     }
 }
