@@ -75,67 +75,75 @@ public class MainActivity extends AppCompatActivity {
 
         ImageButton turtleButton = findViewById(R.id.turtleButton);
         ImageButton rabbitButton = findViewById(R.id.rabbitButton);
-        Button moveForward = (Button) findViewById(R.id.forward);
-        Button moveBackward = findViewById(R.id.backward);
-        Button moveRight = findViewById(R.id.right);
-        Button moveLeft = findViewById(R.id.left);
+        ImageButton leftArrow = findViewById(R.id.left_arrow);
+        ImageButton rightArrow = findViewById(R.id.right_arrow);
+        ImageButton forwardArrow = findViewById(R.id.forward_arrow);
+        ImageButton backwardArrow = findViewById(R.id.backward_arrow);
+        Button autoPilot = findViewById(R.id.auto_mode);
         Button menuButton = (Button) findViewById(R.id.menuButton);
-        Button takePicture = findViewById(R.id.takePicture);
+
+        autoPilot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                view.setSelected(!view.isSelected());
+                if(view.isSelected()){
+                    drive(speedMode, STRAIGHT_ANGLE, "Moving forward");
+                }else{
+                    drive(IDLE_SPEED, STRAIGHT_ANGLE, "Stopping");
+                }
+            }
+        });
 
         menuButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, HomeScreen.class);
                 startActivity(intent);
-
-                 //File f = new File("/storage/emulated/0/Download/QR.bmp");
-                 // System.out.println(f.exists());
-
             }
         });
 
-        moveForward.setOnTouchListener(new View.OnTouchListener() {
+        forwardArrow.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                if(event.getAction() == MotionEvent.ACTION_DOWN){
                     drive(speedMode, STRAIGHT_ANGLE, "Moving forward");
-                } else if (event.getAction() == MotionEvent.ACTION_UP) {
+                }else if(event.getAction() == MotionEvent.ACTION_UP){
                     drive(IDLE_SPEED, STRAIGHT_ANGLE, "Stopping");
                 }
                 return true;
             }
         });
 
-        moveBackward.setOnTouchListener(new View.OnTouchListener() {
+        backwardArrow.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                if(event.getAction() == MotionEvent.ACTION_DOWN){
                     drive(-speedMode, STRAIGHT_ANGLE, "Moving backward");
-                } else if (event.getAction() == MotionEvent.ACTION_UP) {
+                }else if(event.getAction() == MotionEvent.ACTION_UP){
                     drive(IDLE_SPEED, STRAIGHT_ANGLE, "Stopping");
                 }
                 return true;
             }
         });
 
-        moveLeft.setOnTouchListener(new View.OnTouchListener() {
+        leftArrow.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                if(event.getAction() == MotionEvent.ACTION_DOWN){
                     drive(TURNING_SPEED, -STEERING_ANGLE, "Moving forward left");
-                } else if (event.getAction() == MotionEvent.ACTION_UP) {
+                }else if (event.getAction() == MotionEvent.ACTION_UP){
                     drive(IDLE_SPEED, STRAIGHT_ANGLE, "Stopping");
                 }
                 return true;
             }
         });
 
-        moveRight.setOnTouchListener(new View.OnTouchListener() {
+        rightArrow.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                if(event.getAction() == MotionEvent.ACTION_DOWN){
                     drive(TURNING_SPEED, STEERING_ANGLE, "Moving forward right");
-                } else if (event.getAction() == MotionEvent.ACTION_UP) {
+                }else if(event.getAction() == MotionEvent.ACTION_UP){
                     drive(IDLE_SPEED, STRAIGHT_ANGLE, "Stopping");
                 }
                 return true;
@@ -147,11 +155,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 view.setSelected(!view.isSelected());
-                if (view.isSelected()) {
+                if(view.isSelected()){
                     speedMode = LOWER_MOVEMENT_SPEED;
                     view.setSelected(true);
                     rabbitButton.setSelected(false);
-                } else {
+                }else{
                     view.setSelected(false);
                     speedMode = MOVEMENT_SPEED;
                 }
@@ -163,18 +171,18 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 view.setSelected(!view.isSelected());
-                if (view.isSelected()) {
+                if(view.isSelected()){
                     speedMode = FASTER_MOVEMENT_SPEED;
                     view.setSelected(true);
                     turtleButton.setSelected(false);
-                } else {
+                }else{
                     view.setSelected(false);
                     speedMode = MOVEMENT_SPEED;
                 }
             }
         });
 
-
+        Button takePicture = findViewById(R.id.takePicture);
         takePicture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -262,8 +270,7 @@ public class MainActivity extends AppCompatActivity {
                         }
                         bm.setPixels(colors, 0, IMAGE_WIDTH, 0, 0, IMAGE_WIDTH, IMAGE_HEIGHT);
                         mCameraView.setImageBitmap(bm);
-                    }
-                    else {
+                    } else {
                         Log.i(TAG, "[MQTT] Topic: " + topic + " | Message: " + message.toString());
                     }
                 }
@@ -288,5 +295,4 @@ public class MainActivity extends AppCompatActivity {
         mMqttClient.publish(THROTTLE_CONTROL, Integer.toString(throttleSpeed), QOS, null);
         mMqttClient.publish(STEERING_CONTROL, Integer.toString(steeringAngle), QOS, null);
     }
-
 }
