@@ -13,7 +13,7 @@
 [ext_resource path="res://plant pots/plant10/9431245846-sickPlant.glb" type="PackedScene" id=11]
 [ext_resource path="res://plant pots/plant9/7522007913-plant.glb" type="PackedScene" id=12]
 [ext_resource path="res://plant pots/plant7/5314589770-plant.glb" type="PackedScene" id=13]
-[ext_resource path="res://Signs/s1/QRSign1.glb" type="PackedScene" id=14]
+[ext_resource path="res://Signs/s1/beautifulSign.glb" type="PackedScene" id=14]
 [ext_resource path="res://farm/farm/farmBuilding.glb" type="PackedScene" id=15]
 
 [sub_resource type="ConcavePolygonShape" id=2]
@@ -249,9 +249,6 @@ shape = SubResource( 9 )
 
 [node name="Signs" type="Spatial" parent="."]
 
-[node name="QRSign1" parent="Signs" instance=ExtResource( 14 )]
-transform = Transform( -0.0269778, 0, -1.73127, 0, 3.19364, 0, 3.19352, 0, -0.0146251, 20.1644, -1.98365, -46.4818 )
-
 [node name="farmBuilding" parent="." instance=ExtResource( 15 )]
 transform = Transform( 1.0929, 0, -1.84271, 0, 2.32958, 0, 2.02768, 0, 1.26267, 75.3938, 1.06835, -97.0456 )
 
@@ -261,3 +258,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, -2.98023e-08, 0, 1, 0, 0, 0 )
 [node name="CollisionShape" type="CollisionShape" parent="farmBuilding/StaticBody2"]
 transform = Transform( -0.940928, 0, 18.3684, 0, 4.82433, 0, -9.38724, 0, -0.721732, -4.68293, 4.08955, -4.53806 )
 shape = SubResource( 10 )
+
+[node name="beautifulSign" parent="." instance=ExtResource( 14 )]
+transform = Transform( -0.99962, 0, -0.0275726, 0, 1, 0, 0.0275726, 0, -0.99962, 20.9378, -0.536754, -46.8468 )

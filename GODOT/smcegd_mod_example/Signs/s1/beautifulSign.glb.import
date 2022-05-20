@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/QRSign1.glb-eb60bf4b6c39ee0a44ca7bfe4258657f.scn"
+path="res://.import/beautifulSign.glb-9d8baaa824dbeb9730e53a7abf4a0c3d.scn"
 
 [deps]
 
-source_file="res://Signs/s1/QRSign1.glb"
-dest_files=[ "res://.import/QRSign1.glb-eb60bf4b6c39ee0a44ca7bfe4258657f.scn" ]
+source_file="res://Signs/s1/beautifulSign.glb"
+dest_files=[ "res://.import/beautifulSign.glb-9d8baaa824dbeb9730e53a7abf4a0c3d.scn" ]
 
 [params]
 
