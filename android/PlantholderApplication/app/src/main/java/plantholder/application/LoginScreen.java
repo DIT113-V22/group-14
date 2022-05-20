@@ -55,7 +55,6 @@ public class LoginScreen extends AppCompatActivity {
         CheckBox rememberMe = findViewById(R.id.checkBox);
         Button join = findViewById(R.id.joinbutton);
         Button forgotPass = findViewById(R.id.forgotPasswordText);
-        Button exit = findViewById(R.id.exit);
 
         //Set password to the that comes from the forgotten password screen.
         String message = getIntent().getStringExtra("password");
@@ -135,14 +134,6 @@ public class LoginScreen extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(LoginScreen.this, ForgotPassword.class);
                 startActivity(intent);
-            }
-        });
-
-        exit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-                //System.exit(0);
             }
         });
     }
