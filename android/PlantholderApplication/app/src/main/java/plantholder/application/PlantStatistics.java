@@ -58,6 +58,10 @@ public class PlantStatistics extends AppCompatActivity {
             }
         });
 
+        getWindow().getDecorView().getWindowInsetsController().hide(
+                android.view.WindowInsets.Type.statusBars()
+        );
+
 
         databaseReference = FirebaseDatabase.getInstance().getReference("Plants");
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
