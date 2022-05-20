@@ -50,6 +50,7 @@ public class AddPlantScreen extends AppCompatActivity {
 
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
+        // hide decorview
         getWindow().getDecorView().getWindowInsetsController().hide(
                 android.view.WindowInsets.Type.statusBars()
         );
@@ -90,7 +91,7 @@ public class AddPlantScreen extends AppCompatActivity {
 
         spinnerPlantType.setAdapter(adapter2);
 
-        //create new plant by pressing save
+        //create new plant by pressing save and go through some conditions
         Button save = findViewById(R.id.buttonSave);
         save.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -125,6 +126,7 @@ public class AddPlantScreen extends AppCompatActivity {
 
     }
 
+    //give the user an Alert with action if the inserted id already exists
     public void idExistAlert() {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(AddPlantScreen.this); // (getActivity();)
@@ -154,10 +156,11 @@ public class AddPlantScreen extends AppCompatActivity {
         Toast.makeText(this, "Plant created!", Toast.LENGTH_SHORT).show();
     }
 
+    //creates a new plant in the database
     void createPlant() {
         firebase.writeNewPlant(addedID, selectedType, addedRow, addedColumn, selectedHealth);
 
-        //clean input
+        //clean input in layout
         editID.setText("");
         editColumn.setText("");
         editRow.setText("");
@@ -166,8 +169,8 @@ public class AddPlantScreen extends AppCompatActivity {
 
     }
 
+    //This checks if the plant id already exists in the database
     private void verifyPlantExistence(String addedID) {
-        // Assuming the names are in the name node. Remove "name/" if not
         DatabaseReference plantRef = FirebaseDatabase.getInstance().getReference("Plants/" + addedID);
         plantRef.addListenerForSingleValueEvent(new ValueEventListener() {
 
