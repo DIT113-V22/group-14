@@ -30,24 +30,17 @@ public class AddPlantScreen extends AppCompatActivity {
     private int addedRow;
     private int addedColumn;
 
-
     private Spinner spinnerPlantHealth;
     private Spinner spinnerPlantType;
     private EditText editColumn;
     private EditText editRow;
     private EditText editID;
 
-    private String plantValue;
-
-    private boolean plantExists;
-
     private Button back;
 
     public ArrayAdapter<CharSequence> adapter;
     public ArrayAdapter<CharSequence> adapter2;
 
-    DatabaseReference firebaseReference;
-    FirebaseDatabase firebaseDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,10 +50,10 @@ public class AddPlantScreen extends AppCompatActivity {
 
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
+        // hide decorview
         getWindow().getDecorView().getWindowInsetsController().hide(
                 android.view.WindowInsets.Type.statusBars()
         );
-
 
         back = (Button) findViewById(R.id.buttonBack);
         back.setOnClickListener(new View.OnClickListener() {
@@ -98,7 +91,7 @@ public class AddPlantScreen extends AppCompatActivity {
 
         spinnerPlantType.setAdapter(adapter2);
 
-        //create new plant by pressing save
+        //create new plant by pressing save and go through some conditions
         Button save = findViewById(R.id.buttonSave);
         save.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -125,20 +118,15 @@ public class AddPlantScreen extends AppCompatActivity {
                     Toast.makeText(AddPlantScreen.this, "Please enter a column.", Toast.LENGTH_SHORT).show();
                 } else {
 
-                    verifyPlantExistence();
-                    if (plantValue != null) {
-                        idExistAlert();
-                    } else {
-                        createPlant();
-                        toastCreate();
-                    }
-                    plantValue = null;
+                    verifyPlantExistence(addedID);
+
                 }
             }
         });
 
     }
 
+    //give the user an Alert with action if the inserted id already exists
     public void idExistAlert() {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(AddPlantScreen.this); // (getActivity();)
@@ -168,10 +156,11 @@ public class AddPlantScreen extends AppCompatActivity {
         Toast.makeText(this, "Plant created!", Toast.LENGTH_SHORT).show();
     }
 
+    //creates a new plant in the database
     void createPlant() {
         firebase.writeNewPlant(addedID, selectedType, addedRow, addedColumn, selectedHealth);
 
-        //clean input
+        //clean input in layout
         editID.setText("");
         editColumn.setText("");
         editRow.setText("");
@@ -180,29 +169,27 @@ public class AddPlantScreen extends AppCompatActivity {
 
     }
 
-    private void verifyPlantExistence() {
-        firebaseDatabase = FirebaseDatabase.getInstance();
-        firebaseReference = firebaseDatabase.getReference("Plants").child(addedID).child("id");
-        firebaseReference.addValueEventListener(new ValueEventListener() {
-            boolean processDone = false;
+    //This checks if the plant id already exists in the database
+    private void verifyPlantExistence(String addedID) {
+        DatabaseReference plantRef = FirebaseDatabase.getInstance().getReference("Plants/" + addedID);
+        plantRef.addListenerForSingleValueEvent(new ValueEventListener() {
+
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (!processDone) {
-                    System.out.println(plantValue);
-                    plantValue = snapshot.getValue(String.class);
-                    System.out.println(plantValue);
-
+            public void onDataChange(DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    idExistAlert();
+                } else {
+                    createPlant();
+                    toastCreate();
                 }
-                processDone = true;
-        }
+            }
 
-        @Override
-        public void onCancelled (@NonNull DatabaseError error){
-            Toast.makeText(AddPlantScreen.this, "Fail to get data", Toast.LENGTH_SHORT).show();
-        }
+            @Override
+            public void onCancelled(DatabaseError error) {
 
-    });
+            }
 
+        });
     }
 }
 
