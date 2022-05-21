@@ -52,6 +52,8 @@ dependencies {
 
     implementation 'com.google.android.material:material:<version>' // added 17/5 for alertwindow
     implementation "androidx.cardview:cardview:1.0.0"
+    implementation 'com.github.blackfizz:eazegraph:1.2.5l@aar' // for pie chart
+    implementation 'com.nineoldandroids:library:2.4.0' // for pie chart
 
     implementation 'androidx.localbroadcastmanager:localbroadcastmanager:1.0.0'
 
