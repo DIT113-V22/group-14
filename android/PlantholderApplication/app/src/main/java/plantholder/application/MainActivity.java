@@ -80,8 +80,12 @@ public class MainActivity extends AppCompatActivity {
                 view.setSelected(!view.isSelected());
                 if(view.isSelected()){
                     drive(speedMode, STRAIGHT_ANGLE, "Moving forward");
+                    view.setSelected(true);
+                    view.setBackgroundColor(Color.LTGRAY);
                 }else{
                     drive(IDLE_SPEED, STRAIGHT_ANGLE, "Stopping");
+                    view.setSelected(false);
+                    view.setBackgroundColor(Color.BLACK);
                 }
             }
         });
