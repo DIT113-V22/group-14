@@ -3,20 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#FDFDFD">
+    android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/plantsum"
-        android:layout_width="270dp"
+        android:layout_width="285dp"
         android:layout_height="60dp"
-        android:layout_marginStart="344dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="304dp"
+        android:layout_marginTop="16dp"
         android:gravity="center"
-        android:text="Plant Population:"
+        android:text="Plant Population: "
         android:textColor="#107A15"
         android:textSize="35dp"
         android:textStyle="bold|italic"
+        app:layout_constraintEnd_toStartOf="@+id/plantsumAmnt"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -25,21 +25,26 @@
         android:layout_width="100dp"
         android:layout_height="47dp"
         android:layout_marginTop="28dp"
+        android:layout_marginEnd="76dp"
+        android:layout_marginBottom="37dp"
         android:gravity="center"
         android:text="000"
-        android:paddingRight="40dp"
         android:textColor="#107A15"
         android:textSize="35dp"
         android:textStyle="bold|italic"
+        app:layout_constraintBottom_toTopOf="@+id/cardViewGraph"
+        app:layout_constraintEnd_toStartOf="@+id/backInfoButton"
         app:layout_constraintStart_toEndOf="@+id/plantsum"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardViewGraph"
-        android:layout_width="473dp"
-        android:layout_height="272dp"
-        android:layout_marginEnd="37dp"
-        android:layout_marginBottom="27dp"
+        android:layout_width="428dp"
+        android:layout_height="263dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="24dp"
+        app:cardBackgroundColor="#EBF1E5"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
@@ -58,6 +63,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="254dp"
+            android:backgroundTint="#C0D1CF"
             android:orientation="horizontal"
             android:weightSum="2">
 
@@ -209,31 +215,35 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView2"
-        android:layout_width="289dp"
-        android:layout_height="144dp"
+        android:layout_width="245dp"
+        android:layout_height="137dp"
         android:layout_margin="16dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginBottom="50dp"
-        app:cardBackgroundColor="#D4F3D6"
+        android:layout_marginStart="39dp"
+        android:layout_marginTop="77dp"
+        android:layout_marginEnd="81dp"
+        android:layout_marginBottom="43dp"
+        app:cardBackgroundColor="#EBF1E5"
         app:cardCornerRadius="8dp"
         app:cardElevation="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintEnd_toStartOf="@+id/cardViewGraph"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView8">
 
 
         <TextView
             android:id="@+id/text00"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="80dp"
+            android:paddingLeft="50dp"
             android:text="Plant Type"
             android:textColor="#0E64A8"
             android:textSize="30dp"
             android:textStyle="bold" />
 
         <LinearLayout
-            android:layout_width="274dp"
-            android:layout_height="100dp"
+            android:layout_width="219dp"
+            android:layout_height="90dp"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="45dp"
             android:orientation="vertical">
@@ -321,8 +331,8 @@
 
     <ImageView
         android:id="@+id/imageView8"
-        android:layout_width="265dp"
-        android:layout_height="144dp"
+        android:layout_width="266dp"
+        android:layout_height="142dp"
         android:layout_marginStart="26dp"
         android:layout_marginTop="12dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -337,7 +347,7 @@
         android:layout_marginEnd="13dp"
         android:background="#8E7777"
         android:backgroundTint="@color/grey"
-        android:text="Back"
+        android:text="Go Back"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

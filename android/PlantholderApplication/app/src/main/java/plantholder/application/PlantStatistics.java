@@ -171,10 +171,9 @@ public class PlantStatistics extends AppCompatActivity {
                             ++other;
                             break;
                     }
-
-                    long tomatoPercentage = (tomato* 100L)/ plantCount;
-                    long grapePercentage = (grape* 100L)/ plantCount;
-                    long otherPercentage = (other* 100L)/ plantCount;
+                    tomatoPercentage = (tomato* 100L)/ plantCount;
+                    grapePercentage = (grape* 100L)/ plantCount;
+                    otherPercentage = (other* 100L)/ plantCount;
 
                     tomatoPlant.setText(Long.toString(tomatoPercentage) + "%");
                     grapePlant.setText(Long.toString(grapePercentage) + "%");
