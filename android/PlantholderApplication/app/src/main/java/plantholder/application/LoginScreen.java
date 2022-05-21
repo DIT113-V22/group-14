@@ -35,6 +35,7 @@ public class LoginScreen extends AppCompatActivity {
     DatabaseReference firebaseReference;
     EditText passwordText;
 
+    private static final int SNOW = Color.parseColor("#FFFAFA");
 
     @RequiresApi(api = Build.VERSION_CODES.R)
     @Override
@@ -57,7 +58,7 @@ public class LoginScreen extends AppCompatActivity {
         Button join = findViewById(R.id.joinbutton);
         Button forgotPass = findViewById(R.id.forgotPasswordText);
 
-        //Set password to the that comes from the forgotten password screen.
+        //Set password to the password box that comes from the forgotten password screen.
         String message = getIntent().getStringExtra("password");
         passwordText.setText(message);
 
@@ -125,7 +126,7 @@ public class LoginScreen extends AppCompatActivity {
        join.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                view.setBackgroundColor(Color.LTGRAY);
+                view.setBackgroundColor(SNOW);
                 Intent intent = new Intent(LoginScreen.this, CreateAccount.class);
                 startActivity(intent);
             }
@@ -134,7 +135,7 @@ public class LoginScreen extends AppCompatActivity {
         forgotPass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                view.setBackgroundColor(Color.LTGRAY);
+                view.setBackgroundColor(SNOW);
                 Intent intent = new Intent(LoginScreen.this, ForgotPassword.class);
                 startActivity(intent);
             }
@@ -160,7 +161,6 @@ public class LoginScreen extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
                 Toast.makeText(LoginScreen.this, "Fail to get data", Toast.LENGTH_SHORT).show();
             }
-
         });
     }
 }
