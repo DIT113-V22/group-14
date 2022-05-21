@@ -115,6 +115,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Button infoScreen = findViewById(R.id.information);
+        infoScreen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this,InformationScreen.class);
+                startActivity(intent);
+            }
+        });
+
         forwardArrow.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent event) {

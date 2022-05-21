@@ -9,20 +9,54 @@
 
     <Button
         android:id="@+id/manualButton"
-        android:layout_width="115dp"
-        android:layout_height="75dp"
+        android:layout_width="165dp"
+        android:layout_height="60dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
+        android:layout_marginStart="118dp"
+        android:layout_marginTop="13dp"
         android:backgroundTint="#4CAF50"
         android:text="SCAN"
         android:textColor="#FAFAFA"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.777"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonAddPlant"
         tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/infoButton"
+        android:layout_width="165dp"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="118dp"
+        android:layout_marginTop="12dp"
+        android:backgroundTint="#4CAF50"
+        android:text="PLANT INFO"
+        android:textColor="#E0ECE0"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/manualButton"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/buttonAddPlant"
+        android:layout_width="165dp"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="116dp"
+        android:layout_marginTop="33dp"
+        android:layout_marginBottom="18dp"
+        android:backgroundTint="#4CAF50"
+        android:text="Add Plant"
+        android:textColor="#E0ECE0"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/manualButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textView"
@@ -34,21 +68,21 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.075"
+        app:layout_constraintHorizontal_bias="0.195"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.163" />
+        app:layout_constraintVertical_bias="0.211" />
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="290dp"
-        android:layout_height="320dp"
+        android:layout_width="282dp"
+        android:layout_height="288dp"
+        android:layout_marginTop="84dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginBottom="39dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.644"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.408"
-        app:srcCompat="@drawable/field" />
+        app:srcCompat="@drawable/growth" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
