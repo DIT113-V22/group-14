@@ -2,10 +2,12 @@ package plantholder.application;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -47,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
     //New variable to save the last speed selected (turtle slower, rabbit faster or normal). The initial speed is the normal (30)
     private int speedMode = MOVEMENT_SPEED;
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -105,8 +108,10 @@ public class MainActivity extends AppCompatActivity {
             public boolean onTouch(View view, MotionEvent event) {
                 if(event.getAction() == MotionEvent.ACTION_DOWN){
                     drive(speedMode, STRAIGHT_ANGLE, "Moving forward");
+                    view.setPressed(true);
                 }else if(event.getAction() == MotionEvent.ACTION_UP){
                     drive(IDLE_SPEED, STRAIGHT_ANGLE, "Stopping");
+                    view.setPressed(false);
                 }
                 return true;
             }
@@ -117,8 +122,10 @@ public class MainActivity extends AppCompatActivity {
             public boolean onTouch(View view, MotionEvent event) {
                 if(event.getAction() == MotionEvent.ACTION_DOWN){
                     drive(-speedMode, STRAIGHT_ANGLE, "Moving backward");
+                    view.setPressed(true);
                 }else if(event.getAction() == MotionEvent.ACTION_UP){
                     drive(IDLE_SPEED, STRAIGHT_ANGLE, "Stopping");
+                    view.setPressed(false);
                 }
                 return true;
             }
@@ -129,8 +136,10 @@ public class MainActivity extends AppCompatActivity {
             public boolean onTouch(View view, MotionEvent event) {
                 if(event.getAction() == MotionEvent.ACTION_DOWN){
                     drive(TURNING_SPEED, -STEERING_ANGLE, "Moving forward left");
+                    view.setPressed(true);
                 }else if (event.getAction() == MotionEvent.ACTION_UP){
                     drive(IDLE_SPEED, STRAIGHT_ANGLE, "Stopping");
+                    view.setPressed(false);
                 }
                 return true;
             }
@@ -141,8 +150,10 @@ public class MainActivity extends AppCompatActivity {
             public boolean onTouch(View view, MotionEvent event) {
                 if(event.getAction() == MotionEvent.ACTION_DOWN){
                     drive(TURNING_SPEED, STEERING_ANGLE, "Moving forward right");
+                    view.setPressed(true);
                 }else if(event.getAction() == MotionEvent.ACTION_UP){
                     drive(IDLE_SPEED, STRAIGHT_ANGLE, "Stopping");
+                    view.setPressed(false);
                 }
                 return true;
             }

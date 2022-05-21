@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.method.HideReturnsTransformationMethod;
@@ -124,6 +125,7 @@ public class LoginScreen extends AppCompatActivity {
        join.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                view.setBackgroundColor(Color.LTGRAY);
                 Intent intent = new Intent(LoginScreen.this, CreateAccount.class);
                 startActivity(intent);
             }
@@ -132,6 +134,7 @@ public class LoginScreen extends AppCompatActivity {
         forgotPass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                view.setBackgroundColor(Color.LTGRAY);
                 Intent intent = new Intent(LoginScreen.this, ForgotPassword.class);
                 startActivity(intent);
             }
