@@ -49,6 +49,19 @@ public class MainActivity extends AppCompatActivity {
     final Bitmap bm = Bitmap.createBitmap(IMAGE_WIDTH, IMAGE_HEIGHT, Bitmap.Config.ARGB_8888);
 
 
+    private static String imagesPath = "/storage/emulated/0/Download/PlantImage.png";
+
+    public static String getSavedImagePath(){
+        return imagesPath;
+    }
+
+
+    private static String decodedPlantId;
+
+    public static String getDecodedPlantId(){
+        return decodedPlantId;
+    }
+
     private MqttClient mMqttClient;
     private boolean isConnected = false;
     private QrCodeProcessing QrCodeProcessing;
@@ -186,14 +199,12 @@ public class MainActivity extends AppCompatActivity {
         takePicture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String imagesPath = "/storage/emulated/0/Download/PlantImage" + ".png";
                 try (FileOutputStream out = new FileOutputStream(imagesPath)) {
                     bm.compress(Bitmap.CompressFormat.PNG, 100, out);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                String decodedPlantId = (QrCodeProcessing.decodeQRImage(imagesPath));
-                System.out.println(decodedPlantId);
+                decodedPlantId = (QrCodeProcessing.decodeQRImage(imagesPath));
                 Intent intent = new Intent(MainActivity.this, StatusScreen.class);
                 intent.putExtra("key", decodedPlantId);
                 startActivity(intent);

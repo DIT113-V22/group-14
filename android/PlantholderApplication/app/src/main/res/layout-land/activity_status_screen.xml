@@ -17,8 +17,7 @@
         app:layout_constraintHorizontal_bias="0.037"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.33"
-        app:srcCompat="@drawable/tomato" />
+        app:layout_constraintVertical_bias="0.33" />
 
     <TextView
         android:id="@+id/plantIdTextView"

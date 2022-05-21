@@ -44,6 +44,9 @@ public class QrCodeProcessing {
         } catch (FormatException e) {
             e.printStackTrace();
         }
+        if(decoded==null){
+            decoded="Unreadable QR code";
+        }
         return decoded;
     }
 }
