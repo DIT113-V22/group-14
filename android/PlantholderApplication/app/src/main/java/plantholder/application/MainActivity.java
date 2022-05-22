@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
     private static final int QOS = 1;
     private static final int IMAGE_WIDTH = 320;
     private static final int IMAGE_HEIGHT = 240;
-    private static final int Transparent_grey = Color.argb(0, 185, 185, 185);
+    private static final int GREEN = Color.parseColor("#759d4b");
 
     private MqttClient mMqttClient;
     private boolean isConnected = false;
@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
                 if(view.isSelected()){
                     drive(speedMode, STRAIGHT_ANGLE, "Moving forward");
                     view.setSelected(true);
-                    view.setBackgroundColor(Color.LTGRAY);
+                    view.setBackgroundColor(GREEN);
                 }else{
                     drive(IDLE_SPEED, STRAIGHT_ANGLE, "Stopping");
                     view.setSelected(false);

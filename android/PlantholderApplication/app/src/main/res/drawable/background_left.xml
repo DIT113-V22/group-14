@@ -10,5 +10,5 @@
         android:right="15dp"
         android:top= "5dp" />
     <stroke
-        android:width="2dp" android:color="@color/grey" />
+        android:width="2dp" android:color="#C0C0C0" />
 </shape>

@@ -14,7 +14,7 @@
         android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="16dp">
+        tools:layout_editor_absoluteX="81dp">
 
         <ImageView
             android:id="@+id/imageView"
@@ -93,7 +93,7 @@
             android:id="@+id/auto_mode"
             android:layout_width="94dp"
             android:layout_height="53dp"
-            android:layout_marginStart="496dp"
+            android:layout_marginStart="508dp"
             android:layout_marginBottom="10dp"
             android:backgroundTint="@color/black"
             android:text="Auto"
@@ -101,62 +101,63 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.514" />
+            app:layout_constraintVertical_bias="0.479" />
 
         <ImageButton
             android:id="@+id/right_arrow"
             style="?android:attr/borderlessButtonStyle"
-            android:layout_width="90dp"
-            android:layout_height="90dp"
-            android:layout_marginStart="4dp"
-            android:layout_marginBottom="160dp"
+            android:layout_width="60dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginBottom="167dp"
             android:adjustViewBounds="true"
             android:background="@drawable/right_arrow_background"
             android:scaleType="fitCenter"
-            android:src="@drawable/right"
+
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/auto_mode" />
 
         <ImageButton
+            android:id="@+id/backward_arrow"
+            android:layout_width="80dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="474dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="85dp"
+            android:adjustViewBounds="true"
+            android:background="@drawable/down_arrow_background"
+
+            android:scaleType="fitCenter"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.201"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/auto_mode"
+            app:layout_constraintVertical_bias="0.538" />
+
+        <ImageButton
             android:id="@+id/left_arrow"
             style="?android:attr/borderlessButtonStyle"
-            android:layout_width="90dp"
-            android:layout_height="90dp"
+            android:layout_width="60dp"
+            android:layout_height="80dp"
             android:layout_marginStart="392dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginBottom="160dp"
+            android:layout_marginEnd="3dp"
+            android:layout_marginBottom="167dp"
             android:adjustViewBounds="true"
             android:background="@drawable/left_arrow_background"
             android:scaleType="fitCenter"
-            android:src="@drawable/left"
+
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/auto_mode"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.588"
             app:layout_constraintStart_toStartOf="parent" />
-
-        <ImageButton
-            android:id="@+id/backward_arrow"
-            android:layout_width="90dp"
-            android:layout_height="90dp"
-            android:layout_marginStart="482dp"
-            android:layout_marginBottom="76dp"
-            android:adjustViewBounds="true"
-            android:background="@drawable/down_arrow_background"
-            android:scaleType="fitCenter"
-            android:src="@drawable/down"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.113"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/auto_mode"
-            app:layout_constraintVertical_bias="0.461" />
 
         <ImageButton
             android:id="@+id/rabbitButton"
             android:layout_width="76dp"
             android:layout_height="79dp"
-            android:layout_marginStart="428dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginStart="440dp"
+            android:layout_marginBottom="24dp"
             android:adjustViewBounds="true"
             android:background="@drawable/button_select_states"
             android:scaleType="fitCenter"
@@ -169,8 +170,8 @@
             android:id="@+id/turtleButton"
             android:layout_width="86dp"
             android:layout_height="81dp"
-            android:layout_marginStart="76dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginStart="84dp"
+            android:layout_marginBottom="28dp"
             android:background="@drawable/button_select_states"
             android:scaleType="fitCenter"
             android:src="@drawable/turtle2"
@@ -179,21 +180,21 @@
 
         <ImageButton
             android:id="@+id/forward_arrow"
-
-            android:layout_width="90dp"
-            android:layout_height="90dp"
-            android:layout_marginStart="482dp"
+            android:layout_width="80dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="474dp"
             android:layout_marginTop="72dp"
+            android:layout_marginBottom="16dp"
             android:adjustViewBounds="true"
             android:background="@drawable/up_arrow_background"
+
             android:scaleType="fitCenter"
-            android:src="@drawable/up"
             app:layout_constraintBottom_toTopOf="@+id/auto_mode"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.113"
+            app:layout_constraintHorizontal_bias="0.201"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.47" />
+            app:layout_constraintVertical_bias="0.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
