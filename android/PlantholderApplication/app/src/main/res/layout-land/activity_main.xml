@@ -14,7 +14,7 @@
         android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="16dp">
+        tools:layout_editor_absoluteX="81dp">
 
         <ImageView
             android:id="@+id/imageView"
@@ -26,10 +26,10 @@
             android:layout_marginBottom="132dp"
             app:layout_constraintBottom_toTopOf="@+id/rabbitButton"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.127"
+            app:layout_constraintHorizontal_bias="0.122"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.222"
+            app:layout_constraintVertical_bias="0.262"
             app:srcCompat="@android:drawable/ic_menu_slideshow" />
 
         <Button
@@ -89,95 +89,75 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageButton
-            android:id="@+id/left_arrow"
-            style="?android:attr/borderlessButtonStyle"
-            android:layout_width="164dp"
-            android:layout_height="158dp"
-            android:layout_marginStart="360dp"
-            android:layout_marginBottom="124dp"
-            android:adjustViewBounds="true"
-            android:scaleType="fitCenter"
-            android:src="@drawable/left_arrow"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
         <Button
             android:id="@+id/auto_mode"
             android:layout_width="94dp"
             android:layout_height="53dp"
-            android:layout_marginStart="488dp"
+            android:layout_marginStart="508dp"
             android:layout_marginBottom="10dp"
-            android:background="@drawable/autopilot_button"
             android:backgroundTint="@color/black"
             android:text="Auto"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.517" />
-
-        <ImageButton
-            android:id="@+id/forward_arrow"
-            style="?android:attr/borderlessButtonStyle"
-            android:layout_width="107dp"
-            android:layout_height="100dp"
-            android:layout_marginStart="482dp"
-            android:layout_marginTop="72dp"
-            android:adjustViewBounds="true"
-            android:scaleType="fitCenter"
-            android:src="@drawable/up_arrow"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.007"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintVertical_bias="0.479" />
 
         <ImageButton
             android:id="@+id/right_arrow"
             style="?android:attr/borderlessButtonStyle"
-            android:layout_width="159dp"
-            android:layout_height="137dp"
-            android:layout_marginStart="544dp"
-            android:layout_marginBottom="136dp"
+            android:layout_width="60dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginBottom="167dp"
             android:adjustViewBounds="true"
+            android:background="@drawable/right_arrow_background"
             android:scaleType="fitCenter"
-            android:src="@drawable/right_arrow"
+
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toEndOf="@+id/auto_mode" />
 
         <ImageButton
             android:id="@+id/backward_arrow"
-            style="?android:attr/borderlessButtonStyle"
-            android:layout_width="110dp"
-            android:layout_height="104dp"
-            android:layout_marginStart="482dp"
-            android:layout_marginBottom="72dp"
+            android:layout_width="80dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="474dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="85dp"
             android:adjustViewBounds="true"
+            android:background="@drawable/down_arrow_background"
+
             android:scaleType="fitCenter"
-            android:src="@drawable/down_arrow"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.007"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintHorizontal_bias="0.201"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/auto_mode"
+            app:layout_constraintVertical_bias="0.538" />
 
         <ImageButton
-            android:id="@+id/turtleButton"
-            android:layout_width="86dp"
-            android:layout_height="81dp"
-            android:layout_marginStart="72dp"
-            android:layout_marginBottom="16dp"
-            android:background="@drawable/button_select_states"
+            android:id="@+id/left_arrow"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="60dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="392dp"
+            android:layout_marginEnd="3dp"
+            android:layout_marginBottom="167dp"
+            android:adjustViewBounds="true"
+            android:background="@drawable/left_arrow_background"
             android:scaleType="fitCenter"
-            android:src="@drawable/turtle2"
+
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/rabbitButton" />
+            app:layout_constraintEnd_toStartOf="@+id/auto_mode"
+            app:layout_constraintHorizontal_bias="0.588"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <ImageButton
             android:id="@+id/rabbitButton"
             android:layout_width="76dp"
             android:layout_height="79dp"
-            android:layout_marginStart="420dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginStart="440dp"
+            android:layout_marginBottom="24dp"
             android:adjustViewBounds="true"
             android:background="@drawable/button_select_states"
             android:scaleType="fitCenter"
@@ -186,6 +166,35 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
+        <ImageButton
+            android:id="@+id/turtleButton"
+            android:layout_width="86dp"
+            android:layout_height="81dp"
+            android:layout_marginStart="84dp"
+            android:layout_marginBottom="28dp"
+            android:background="@drawable/button_select_states"
+            android:scaleType="fitCenter"
+            android:src="@drawable/turtle2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/rabbitButton" />
+
+        <ImageButton
+            android:id="@+id/forward_arrow"
+            android:layout_width="80dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="474dp"
+            android:layout_marginTop="72dp"
+            android:layout_marginBottom="16dp"
+            android:adjustViewBounds="true"
+            android:background="@drawable/up_arrow_background"
+
+            android:scaleType="fitCenter"
+            app:layout_constraintBottom_toTopOf="@+id/auto_mode"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.201"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

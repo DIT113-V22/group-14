@@ -2,6 +2,7 @@ package plantholder.application;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
@@ -13,7 +14,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import org.eclipse.paho.client.mqttv3.IMqttActionListener;
@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
     private static final int QOS = 1;
     private static final int IMAGE_WIDTH = 320;
     private static final int IMAGE_HEIGHT = 240;
+    private static final int GREEN = Color.parseColor("#759d4b");
 
 
     final Bitmap bm = Bitmap.createBitmap(IMAGE_WIDTH, IMAGE_HEIGHT, Bitmap.Config.ARGB_8888);
@@ -70,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
     //New variable to save the last speed selected (turtle slower, rabbit faster or normal). The initial speed is the normal (30)
     private int speedMode = MOVEMENT_SPEED;
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -101,8 +103,12 @@ public class MainActivity extends AppCompatActivity {
                 view.setSelected(!view.isSelected());
                 if(view.isSelected()){
                     drive(speedMode, STRAIGHT_ANGLE, "Moving forward");
+                    view.setSelected(true);
+                    view.setBackgroundColor(GREEN);
                 }else{
                     drive(IDLE_SPEED, STRAIGHT_ANGLE, "Stopping");
+                    view.setSelected(false);
+                    view.setBackgroundColor(Color.BLACK);
                 }
             }
         });
@@ -129,8 +135,10 @@ public class MainActivity extends AppCompatActivity {
             public boolean onTouch(View view, MotionEvent event) {
                 if(event.getAction() == MotionEvent.ACTION_DOWN){
                     drive(speedMode, STRAIGHT_ANGLE, "Moving forward");
+                    view.setPressed(true);
                 }else if(event.getAction() == MotionEvent.ACTION_UP){
                     drive(IDLE_SPEED, STRAIGHT_ANGLE, "Stopping");
+                    view.setPressed(false);
                 }
                 return true;
             }
@@ -141,8 +149,10 @@ public class MainActivity extends AppCompatActivity {
             public boolean onTouch(View view, MotionEvent event) {
                 if(event.getAction() == MotionEvent.ACTION_DOWN){
                     drive(-speedMode, STRAIGHT_ANGLE, "Moving backward");
+                    view.setPressed(true);
                 }else if(event.getAction() == MotionEvent.ACTION_UP){
                     drive(IDLE_SPEED, STRAIGHT_ANGLE, "Stopping");
+                    view.setPressed(false);
                 }
                 return true;
             }
@@ -153,8 +163,10 @@ public class MainActivity extends AppCompatActivity {
             public boolean onTouch(View view, MotionEvent event) {
                 if(event.getAction() == MotionEvent.ACTION_DOWN){
                     drive(TURNING_SPEED, -STEERING_ANGLE, "Moving forward left");
+                    view.setPressed(true);
                 }else if (event.getAction() == MotionEvent.ACTION_UP){
                     drive(IDLE_SPEED, STRAIGHT_ANGLE, "Stopping");
+                    view.setPressed(false);
                 }
                 return true;
             }
@@ -165,8 +177,10 @@ public class MainActivity extends AppCompatActivity {
             public boolean onTouch(View view, MotionEvent event) {
                 if(event.getAction() == MotionEvent.ACTION_DOWN){
                     drive(TURNING_SPEED, STEERING_ANGLE, "Moving forward right");
+                    view.setPressed(true);
                 }else if(event.getAction() == MotionEvent.ACTION_UP){
                     drive(IDLE_SPEED, STRAIGHT_ANGLE, "Stopping");
+                    view.setPressed(false);
                 }
                 return true;
             }
