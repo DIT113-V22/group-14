@@ -3,191 +3,211 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#FDFDFD">
-
+    android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/plantsum"
-        android:layout_width="229dp"
-        android:layout_height="64dp"
-        android:layout_marginStart="236dp"
-        android:layout_marginTop="28dp"
+        android:layout_width="285dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="304dp"
+        android:layout_marginTop="16dp"
         android:gravity="center"
-        android:text="Plant Population:"
+        android:text="Plant Population: "
         android:textColor="#107A15"
-        android:textSize="27dp"
+        android:textSize="35dp"
         android:textStyle="bold|italic"
+        app:layout_constraintEnd_toStartOf="@+id/plantsumAmnt"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/plantsumAmnt"
-        android:layout_width="35dp"
+        android:layout_width="100dp"
         android:layout_height="47dp"
-        android:layout_marginTop="37dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="76dp"
+        android:layout_marginBottom="37dp"
         android:gravity="center"
-        android:text="0"
+        android:text="000"
         android:textColor="#107A15"
-        android:textSize="27dp"
+        android:textSize="35dp"
         android:textStyle="bold|italic"
+        app:layout_constraintBottom_toTopOf="@+id/cardViewGraph"
+        app:layout_constraintEnd_toStartOf="@+id/backInfoButton"
         app:layout_constraintStart_toEndOf="@+id/plantsum"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/plantType"
-        android:layout_width="150dp"
-        android:layout_height="55dp"
-        android:layout_marginStart="112dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="162dp"
-        android:gravity="center"
-        android:text="Plant Type"
-        android:textColor="#033A35"
-        android:textSize="25dp"
-        android:textStyle="bold|italic"
-        app:layout_constraintBottom_toTopOf="@+id/cardView2"
-        app:layout_constraintEnd_toStartOf="@+id/cardView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView8"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/plantHealth"
-        android:layout_width="150dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="116dp"
-        android:gravity="center"
-        android:text="Plant Health"
-        android:textColor="#033A35"
-        android:textSize="25dp"
-        android:textStyle="bold|italic"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/plantsumAmnt" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardView"
-        android:layout_width="271dp"
-        android:layout_height="200dp"
-        android:layout_margin="16dp"
-        android:layout_marginStart="98dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="48dp"
-        app:cardBackgroundColor="#D4F3D6"
-        app:cardCornerRadius="8dp"
-        app:cardElevation="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/cardView2"
-        app:layout_constraintTop_toBottomOf="@+id/plantHealth">
+        android:id="@+id/cardViewGraph"
+        android:layout_width="428dp"
+        android:layout_height="263dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="24dp"
+        app:cardBackgroundColor="#EBF1E5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/textVie"
+            android:layout_width="225dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="100dp"
+            android:layout_marginBottom="93dp"
+            android:paddingLeft="30dp"
+            android:text="Plant Health"
+            android:textColor="#0E64A8"
+            android:textSize="30dp"
+            android:textStyle="bold" />
 
         <LinearLayout
-            android:layout_width="253dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="16dp"
-            android:orientation="vertical">
+            android:layout_width="match_parent"
+            android:layout_height="254dp"
+            android:backgroundTint="#C0D1CF"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <org.eazegraph.lib.charts.PieChart
+                android:id="@+id/pie_chart"
+                android:layout_width="179dp"
+                android:layout_height="217dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="35dp"
+                android:layout_marginBottom="15dp"
+                android:layout_weight="1"
+                android:padding="6dp" />
 
             <LinearLayout
-                android:layout_width="240dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center_vertical"
-                android:orientation="horizontal">
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="45dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="154dp"
-                    android:layout_height="wrap_content"
-                    android:text="Healthy        :"
-                    android:textColor="@color/black"
-                    android:textSize="22dp"
-                    android:textStyle="bold" />
+                <LinearLayout
+                    android:layout_width="167dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="5dp">
 
-                <TextView
-                    android:id="@+id/healthyPlant"
-                    android:layout_width="65dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:text="000%"
-                    android:textColor="@color/black"
-                    android:textSize="22dp" />
+                    <View
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:background="@color/green" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="10dp"
+                        android:text="Healthy        :"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/healthyPlant"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="5dp"
+                        android:text="000%"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="167dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="5dp">
+
+                    <View
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:background="@color/unhealthy" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="10dp"
+                        android:text="Unhealthy    :"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/unhealthyPlant"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="5dp"
+                        android:text="000%"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="166dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="5dp">
+
+
+                    <View
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:background="#ED5252" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="10dp"
+                        android:text="Ripe              :"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/ripePlant"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="5dp"
+                        android:text="000%"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="167dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="5dp">
+
+                    <View
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:background="@color/keeptrack" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="10dp"
+                        android:text="Keep Track  :"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/trackPlant"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="5dp"
+                        android:text="000%"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
 
             </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="240dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="154dp"
-                    android:layout_height="wrap_content"
-                    android:text="Unhealthy    :"
-                    android:textColor="@color/black"
-                    android:textSize="22dp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/unhealthyPlant"
-                    android:layout_width="65dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:text="000%"
-                    android:textColor="@color/black"
-                    android:textSize="22dp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="240dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="154dp"
-                    android:layout_height="wrap_content"
-                    android:text="Ripe              :"
-                    android:textColor="@color/black"
-                    android:textSize="22dp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/ripePlant"
-                    android:layout_width="65dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:text="000%"
-                    android:textColor="@color/black"
-                    android:textSize="22dp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="240dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="154dp"
-                    android:layout_height="wrap_content"
-                    android:text="Keep Track  :"
-                    android:textColor="@color/black"
-                    android:textSize="22dp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/trackPlant"
-                    android:layout_width="65dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:text="000%"
-                    android:textColor="@color/black"
-                    android:textSize="22dp" />
-
-
-            </LinearLayout>
-
 
         </LinearLayout>
 
@@ -195,45 +215,58 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView2"
-        android:layout_width="233dp"
-        android:layout_height="145dp"
+        android:layout_width="245dp"
+        android:layout_height="137dp"
         android:layout_margin="16dp"
-        android:layout_marginStart="91dp"
-        android:layout_marginTop="9dp"
-        android:layout_marginEnd="184dp"
-        app:cardBackgroundColor="#D4F3D6"
+        android:layout_marginStart="39dp"
+        android:layout_marginTop="77dp"
+        android:layout_marginEnd="81dp"
+        android:layout_marginBottom="43dp"
+        app:cardBackgroundColor="#EBF1E5"
         app:cardCornerRadius="8dp"
         app:cardElevation="8dp"
-        app:layout_constraintEnd_toStartOf="@+id/cardView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/cardViewGraph"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/plantType">
+        app:layout_constraintTop_toBottomOf="@+id/imageView8">
 
+
+        <TextView
+            android:id="@+id/text00"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="50dp"
+            android:text="Plant Type"
+            android:textColor="#0E64A8"
+            android:textSize="30dp"
+            android:textStyle="bold" />
 
         <LinearLayout
-            android:layout_width="215dp"
-            android:layout_height="136dp"
-            android:layout_marginLeft="16dp"
+            android:layout_width="219dp"
+            android:layout_height="90dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="45dp"
             android:orientation="vertical">
 
             <LinearLayout
-                android:layout_width="215dp"
-                android:layout_height="50dp"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="130dp"
+                    android:layout_width="119dp"
                     android:layout_height="wrap_content"
-                    android:text="Tomatoes :"
+                    android:text="Tomatoes  :"
                     android:textColor="@color/black"
                     android:textSize="22dp"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/tomatoPlants"
-                    android:layout_width="65dp"
+                    android:layout_width="75dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
+                    android:layout_marginLeft="3dp"
                     android:text="000%"
                     android:textColor="@color/black"
                     android:textSize="22dp" />
@@ -241,24 +274,24 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="215dp"
-                android:layout_height="50dp"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="130dp"
+                    android:layout_width="119dp"
                     android:layout_height="wrap_content"
-                    android:text="Grapes      :"
+                    android:text="Grapes       :"
                     android:textColor="@color/black"
                     android:textSize="22dp"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/grapePlants"
-                    android:layout_width="65dp"
+                    android:layout_width="75dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
+                    android:layout_marginLeft="3dp"
                     android:text="000%"
                     android:textColor="@color/black"
                     android:textSize="22dp" />
@@ -267,24 +300,24 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="215dp"
-                android:layout_height="50dp"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="131dp"
+                    android:layout_width="119dp"
                     android:layout_height="wrap_content"
-                    android:text="Other         :"
+                    android:text="Other          :"
                     android:textColor="@color/black"
                     android:textSize="22sp"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/otherPlants"
-                    android:layout_width="65dp"
+                    android:layout_width="75dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
+                    android:layout_marginLeft="3dp"
                     android:text="000%"
                     android:textColor="@color/black"
                     android:textSize="22dp" />
@@ -298,8 +331,8 @@
 
     <ImageView
         android:id="@+id/imageView8"
-        android:layout_width="199dp"
-        android:layout_height="135dp"
+        android:layout_width="266dp"
+        android:layout_height="142dp"
         android:layout_marginStart="26dp"
         android:layout_marginTop="12dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -314,7 +347,7 @@
         android:layout_marginEnd="13dp"
         android:background="#8E7777"
         android:backgroundTint="@color/grey"
-        android:text="Close"
+        android:text="Go Back"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

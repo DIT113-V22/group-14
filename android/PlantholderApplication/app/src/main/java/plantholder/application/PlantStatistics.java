@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -14,6 +15,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import org.eazegraph.lib.charts.PieChart;
+import org.eazegraph.lib.models.PieModel;
 
 public class PlantStatistics extends AppCompatActivity {
 
@@ -35,7 +39,16 @@ public class PlantStatistics extends AppCompatActivity {
     private int grape = 0;
     private int other = 0;
 
-    Button backToInfoBtn;
+    private long tomatoPercentage = 0;
+    private long otherPercentage = 0;
+    private long grapePercentage = 0;
+    private long healthyPercentage = 0;
+    private long unhealthyPercentage = 0;
+    private long ripePercentage = 0;
+    private long trackPercentage = 0;
+
+    private Button backToInfoBtn;
+    private PieChart chart;
 
     private DatabaseReference databaseReference;
 
@@ -48,6 +61,7 @@ public class PlantStatistics extends AppCompatActivity {
 
        //get the total number of plants registered in the database
         plantTotal = (TextView) findViewById(R.id.plantsumAmnt);
+        chart = findViewById(R.id.pie_chart);
 
         backToInfoBtn = findViewById(R.id.backInfoButton);
         backToInfoBtn.setOnClickListener(new View.OnClickListener() {
@@ -77,12 +91,12 @@ public class PlantStatistics extends AppCompatActivity {
             }
         });
 
-        //get the percentages of different plant healths
+        //get the percentages of different plant health statuses
         healthyPlant = (TextView) findViewById(R.id.healthyPlant);
         unHealthyPlant = (TextView) findViewById(R.id.unhealthyPlant);
         ripePlant = (TextView) findViewById(R.id.ripePlant);
         trackPlant = (TextView) findViewById(R.id.trackPlant);
-        databaseReference = FirebaseDatabase.getInstance().getReference("Plants");
+
 
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
          @Override
@@ -101,22 +115,32 @@ public class PlantStatistics extends AppCompatActivity {
                             ++ripe;
                             break;
                       case "Keep Track":
-                          ++track;
-                          break;
+                            ++track;
+                            break;
                   }
 
-                long healthyPercentage = (healthy * 100L)/ plantCount;
-                long unhealthyPercentage = (unhealthy* 100L)/ plantCount;
-                long ripePercentage = (ripe * 100L)/ plantCount;
-                long trackPercentage = (track * 100L)/ plantCount;
+                healthyPercentage = (healthy * 100L)/ plantCount;
+                unhealthyPercentage = (unhealthy* 100L)/ plantCount;
+                ripePercentage = (ripe * 100L)/ plantCount;
+                trackPercentage = (track * 100L)/ plantCount;
 
                 healthyPlant.setText(Long.toString(healthyPercentage) + "%");
                 unHealthyPlant.setText(Long.toString(unhealthyPercentage) + "%");
                 ripePlant.setText(Long.toString(ripePercentage) + "%");
                 trackPlant.setText(Long.toString(trackPercentage) + "%");
+                }
 
-                   }
-                 }
+             chart.addPieSlice(new PieModel("Healthy", healthyPercentage, Color.parseColor("#26912B")));
+             chart.addPieSlice(new PieModel("Unhealthy", unhealthyPercentage, Color.parseColor("#704C17")));
+             chart.addPieSlice(new PieModel("Ripe", ripePercentage, Color.parseColor("#AF2D2A")));
+             chart.addPieSlice(new PieModel("Track", trackPercentage, Color.parseColor("#CC9D12")));
+
+
+             chart.startAnimation();
+
+
+
+         }
 
                   @Override
                 public void onCancelled(@NonNull DatabaseError error) {
@@ -125,7 +149,7 @@ public class PlantStatistics extends AppCompatActivity {
                 }
             );
 
-
+// get species population in %
         tomatoPlant = (TextView) findViewById(R.id.tomatoPlants);
         grapePlant = (TextView) findViewById(R.id.grapePlants);
         otherPlant = (TextView) findViewById(R.id.otherPlants);
@@ -147,10 +171,9 @@ public class PlantStatistics extends AppCompatActivity {
                             ++other;
                             break;
                     }
-
-                    long tomatoPercentage = (tomato* 100L)/ plantCount;
-                    long grapePercentage = (grape* 100L)/ plantCount;
-                    long otherPercentage = (other* 100L)/ plantCount;
+                    tomatoPercentage = (tomato* 100L)/ plantCount;
+                    grapePercentage = (grape* 100L)/ plantCount;
+                    otherPercentage = (other* 100L)/ plantCount;
 
                     tomatoPlant.setText(Long.toString(tomatoPercentage) + "%");
                     grapePlant.setText(Long.toString(grapePercentage) + "%");

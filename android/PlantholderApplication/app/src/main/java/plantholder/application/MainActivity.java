@@ -22,6 +22,11 @@ import org.eclipse.paho.client.mqttv3.IMqttToken;
 import org.eclipse.paho.client.mqttv3.MqttCallback;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.sql.SQLOutput;
+
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "Plantholder";
     private static final String EXTERNAL_MQTT_BROKER = "aerostun.dev";
@@ -41,8 +46,26 @@ public class MainActivity extends AppCompatActivity {
     private static final int IMAGE_HEIGHT = 240;
     private static final int GREEN = Color.parseColor("#759d4b");
 
+
+    final Bitmap bm = Bitmap.createBitmap(IMAGE_WIDTH, IMAGE_HEIGHT, Bitmap.Config.ARGB_8888);
+
+
+    private static String imagesPath = "/storage/emulated/0/Download/PlantImage.png";
+
+    public static String getSavedImagePath(){
+        return imagesPath;
+    }
+
+
+    private static String decodedPlantId;
+
+    public static String getDecodedPlantId(){
+        return decodedPlantId;
+    }
+
     private MqttClient mMqttClient;
     private boolean isConnected = false;
+    private QrCodeProcessing QrCodeProcessing;
     private ImageView mCameraView;
 
     //New variable to save the last speed selected (turtle slower, rabbit faster or normal). The initial speed is the normal (30)
@@ -63,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
         );
 
         connectToMqttBroker();
+        QrCodeProcessing = new QrCodeProcessing();
 
         ImageButton turtleButton = findViewById(R.id.turtleButton);
         ImageButton rabbitButton = findViewById(R.id.rabbitButton);
@@ -198,7 +222,14 @@ public class MainActivity extends AppCompatActivity {
         takePicture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this,StatusScreen.class);
+                try (FileOutputStream out = new FileOutputStream(imagesPath)) {
+                    bm.compress(Bitmap.CompressFormat.PNG, 100, out);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                decodedPlantId = (QrCodeProcessing.decodeQRImage(imagesPath));
+                Intent intent = new Intent(MainActivity.this, StatusScreen.class);
+                intent.putExtra("key", decodedPlantId);
                 startActivity(intent);
             }
         });
@@ -262,8 +293,6 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void messageArrived(String topic, MqttMessage message) throws Exception {
                     if (topic.equals("/smartcar/camera")) {
-                        final Bitmap bm = Bitmap.createBitmap(IMAGE_WIDTH, IMAGE_HEIGHT, Bitmap.Config.ARGB_8888);
-
                         final byte[] payload = message.getPayload();
                         final int[] colors = new int[IMAGE_WIDTH * IMAGE_HEIGHT];
 
