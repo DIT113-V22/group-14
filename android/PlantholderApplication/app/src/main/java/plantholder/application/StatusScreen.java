@@ -8,10 +8,13 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,12 +24,21 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.IOException;
+
+// reference for the bitmap creation from
+// https://stackoverflow.com/questions/16804404/create-a-bitmap-drawable-from-file-path
+// by CodeShadow
+
 public class StatusScreen extends AppCompatActivity {
 
     Firebase firebase;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference firebaseReference;
-    String scannedPlantId = "1255555555"; //placeholder value for the qr code
+    String scannedPlantId = MainActivity.getDecodedPlantId();
+    String takenPicturePath = MainActivity.getSavedImagePath();
+    private ImageView viewTakenPicture;
+    BitmapFactory.Options bmOptions = new BitmapFactory.Options();
 
     @RequiresApi(api = Build.VERSION_CODES.R)
     @Override
@@ -44,6 +56,10 @@ public class StatusScreen extends AppCompatActivity {
         }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_status_screen);
+        viewTakenPicture = findViewById(R.id.taken_picture_view);
+        Bitmap myBitmap = BitmapFactory.decodeFile(takenPicturePath, bmOptions);
+        viewTakenPicture.setImageBitmap(myBitmap);
+
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
         //set id text to variable
@@ -52,8 +68,16 @@ public class StatusScreen extends AppCompatActivity {
 
         //gets database snapshot and check if the variable id exists
         firebaseDatabase =  FirebaseDatabase.getInstance();
-        firebaseReference = firebaseDatabase.getReference("Plants").child(scannedPlantId).child("id");
-        verifyPlantExistence();
+
+
+       try {
+           firebaseReference = (firebaseDatabase.getReference("Plants").child(scannedPlantId).child("id"));
+       } catch (
+        Exception e) {
+        e.printStackTrace();
+        }
+
+       verifyPlantExistence();
 
         //back button that brings you to the MainActivity screen
         Button back = findViewById(R.id.back);

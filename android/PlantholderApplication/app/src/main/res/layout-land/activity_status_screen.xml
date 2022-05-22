@@ -9,7 +9,7 @@
 
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/taken_picture_view"
         android:layout_width="250dp"
         android:layout_height="450dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -17,8 +17,7 @@
         app:layout_constraintHorizontal_bias="0.037"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.33"
-        app:srcCompat="@drawable/tomato" />
+        app:layout_constraintVertical_bias="0.33" />
 
     <TextView
         android:id="@+id/plantIdTextView"
