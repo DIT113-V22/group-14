@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="plantholder.application">
+    package="plantholder.application" >
 
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -14,53 +15,63 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Plantholder">
+        android:theme="@style/Theme.Plantholder" >
+        <activity
+            android:name=".InformationScreen"
+            android:exported="false"
+            android:screenOrientation="sensorLandscape"
+            tools:ignore="LockedOrientationActivity"/>
+        <activity
+            android:name=".PlantStatistics"
+            android:exported="false"
+            android:screenOrientation="sensorLandscape"
+            tools:ignore="LockedOrientationActivity"/>
         <activity
             android:name=".AddPlantScreen"
             android:configChanges="orientation"
-            android:screenOrientation= "sensorLandscape"
-            tools:ignore="LockedOrientationActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="sensorLandscape"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".CreateAccount"
             android:configChanges="orientation"
-            android:screenOrientation= "sensorLandscape"
-            tools:ignore="LockedOrientationActivity"
-            android:exported="false"/>
+            android:exported="false"
+            android:screenOrientation="sensorLandscape"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".ForgotPassword"
             android:configChanges="orientation"
-            android:screenOrientation= "sensorLandscape"
-            tools:ignore="LockedOrientationActivity"
-            android:exported="false"/>
+            android:exported="false"
+            android:screenOrientation="sensorLandscape"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".StatusScreen"
             android:configChanges="orientation"
-            android:screenOrientation= "sensorLandscape"
-            tools:ignore="LockedOrientationActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="sensorLandscape"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".MainActivity"
             android:configChanges="orientation"
-            android:screenOrientation= "sensorLandscape"
-            tools:ignore="LockedOrientationActivity"
-            android:exported="true" />
+            android:exported="false"
+            android:screenOrientation="sensorLandscape"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".HomeScreen"
             android:configChanges="orientation"
-            android:screenOrientation= "sensorLandscape"
-            tools:ignore="LockedOrientationActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="sensorLandscape"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".Pop"
             android:exported="false"
             android:theme="@style/Theme.Plantholder.popupTheme" />
         <activity
             android:name=".LoginScreen"
-            android:exported="true"
             android:configChanges="orientation"
-            android:screenOrientation= "sensorLandscape"
-            tools:ignore="LockedOrientationActivity">
+            android:exported="true"
+            android:screenOrientation="sensorLandscape"
+            tools:ignore="LockedOrientationActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -8,31 +8,20 @@
 
     <Button
         android:id="@+id/login"
-        android:layout_width="134dp"
-        android:layout_height="59dp"
-        android:layout_marginStart="120dp"
-        android:layout_marginBottom="48dp"
-        android:backgroundTint="#4CAF50"
+        android:layout_width="227dp"
+        android:layout_height="64dp"
+        android:layout_marginBottom="52dp"
+        android:backgroundTint="@color/green"
+        android:shadowColor="#050303"
+        android:shadowRadius="5"
         android:text="LOGIN"
         android:textColor="#FAFAFA"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/exit"
-        android:layout_width="133dp"
-        android:layout_height="59dp"
-        android:layout_marginStart="188dp"
-        android:layout_marginBottom="48dp"
-        android:backgroundTint="#4CAF50"
-        android:text="exit"
-        android:textColor="#FAFAFA"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/login" />
 
     <EditText
         android:id="@+id/editTextTextPassword"
@@ -118,25 +107,29 @@
     <Button
         android:id="@+id/joinbutton"
         style="?android:attr/borderlessButtonStyle"
-        android:layout_width="147dp"
-        android:layout_height="36dp"
-        android:layout_marginStart="136dp"
+        android:layout_width="113dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="132dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="20dp"
         android:backgroundTint="@color/white"
         android:text="Join Now"
         android:textColor="@color/black"
-        app:layout_constraintStart_toEndOf="@+id/forgotPasswordText"
-        app:layout_constraintTop_toBottomOf="@+id/exit" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login"
+        app:layout_constraintVertical_bias="0.555" />
 
     <Button
         android:id="@+id/forgotPasswordText"
         style="?android:attr/borderlessButtonStyle"
         android:layout_width="200dp"
         android:layout_height="36dp"
-        android:layout_marginStart="92dp"
+        android:layout_marginEnd="92dp"
         android:backgroundTint="@color/white"
         android:text="Forgot Password?"
         android:textColor="@color/black"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

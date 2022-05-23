@@ -13,96 +13,31 @@
         android:background="@color/white"
         android:gravity="center"
         android:orientation="vertical"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="-26dp">
-
-
-        <Button
-            android:id="@+id/forward"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="100dp"
-            android:layout_marginBottom="8dp"
-            android:backgroundTint="#616161"
-            android:text="FORWARD"
-            android:textColor="#FAFAFA"
-            app:layout_constraintBottom_toTopOf="@+id/stop"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <Button
-            android:id="@+id/left"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_marginBottom="4dp"
-            android:backgroundTint="#616161"
-
-            android:text="Left"
-            android:textColor="#FAFAFA"
-            app:layout_constraintBottom_toTopOf="@+id/backward"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <Button
-            android:id="@+id/stop"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_marginBottom="4dp"
-            android:backgroundTint="#CF0606"
-            android:onClick="stop"
-            android:text="Stop"
-            android:textColor="#FAFAFA"
-            app:layout_constraintBottom_toTopOf="@+id/backward"
-            app:layout_constraintStart_toEndOf="@+id/left" />
-
-        <Button
-            android:id="@+id/right"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginBottom="64dp"
-            android:backgroundTint="#616161"
-
-            android:text="Right"
-            android:textColor="#FAFAFA"
-            app:layout_constraintBottom_toTopOf="@+id/information"
-            app:layout_constraintStart_toEndOf="@+id/stop" />
-
-        <Button
-            android:id="@+id/backward"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="100dp"
-            android:layout_marginBottom="12dp"
-            android:backgroundTint="#616161"
-
-            android:text="Backward"
-            android:textColor="#FAFAFA"
-            app:layout_constraintBottom_toTopOf="@+id/takePicture"
-            app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="16dp">
 
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="350dp"
-            android:layout_height="370dp"
+            android:layout_height="300dp"
             android:layout_marginStart="2dp"
             android:layout_marginTop="110dp"
             android:layout_marginEnd="2dp"
             android:layout_marginBottom="132dp"
             app:layout_constraintBottom_toTopOf="@+id/rabbitButton"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.491"
+            app:layout_constraintHorizontal_bias="0.127"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.281"
+            app:layout_constraintVertical_bias="0.222"
             app:srcCompat="@android:drawable/ic_menu_slideshow" />
 
         <Button
             android:id="@+id/takePicture"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="52dp"
-            android:layout_marginBottom="24dp"
+            android:layout_marginStart="48dp"
+            android:layout_marginBottom="12dp"
             android:backgroundTint="#54871A"
             android:text="Take Picture"
             android:textColor="#FAFAFA"
@@ -113,47 +48,35 @@
             android:id="@+id/information"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="204dp"
-            android:layout_marginBottom="24dp"
+            android:layout_marginBottom="12dp"
             android:backgroundTint="#FDFDFD"
             android:text="INFORMATION"
             android:textColor="#090909"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.408"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <ImageButton
-            android:id="@+id/turtleButton"
-            android:layout_width="77dp"
-            android:layout_height="72dp"
-            android:layout_marginStart="100dp"
-            android:layout_marginBottom="24dp"
-            android:background="@drawable/button_select_states"
-            android:scaleType="fitCenter"
-            android:src="@drawable/turtle2"
-            app:layout_constraintBottom_toTopOf="@+id/information"
-            app:layout_constraintStart_toEndOf="@+id/backward" />
-
-        <ImageButton
-            android:id="@+id/rabbitButton"
-            android:layout_width="76dp"
-            android:layout_height="79dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="8dp"
-            android:adjustViewBounds="true"
-            android:background="@drawable/button_select_states"
-            android:scaleType="fitCenter"
-
-            android:src="@drawable/rabbit"
-            android:text="ToggleButton"
-            app:layout_constraintBottom_toTopOf="@+id/turtleButton"
-            app:layout_constraintEnd_toEndOf="parent" />
+        <Button
+            android:id="@+id/menuButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="540dp"
+            android:background="#69A525"
+            android:backgroundTint="#616161"
+            android:text="GO BACK"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="25dp"
+            android:layout_marginStart="472dp"
+            android:layout_marginTop="28dp"
             android:text="SCAN MODE"
             android:textColor="#050505"
             android:textSize="24sp"
@@ -161,22 +84,103 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <ImageButton
+            android:id="@+id/left_arrow"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="164dp"
+            android:layout_height="158dp"
+            android:layout_marginStart="360dp"
+            android:layout_marginBottom="124dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/left"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
         <Button
-            android:id="@+id/menuButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="8dp"
-            android:background="#69A525"
-            android:backgroundTint="#69B118"
-            android:text="MENU"
+            android:id="@+id/auto_mode"
+            android:layout_width="94dp"
+            android:layout_height="53dp"
+            android:layout_marginStart="488dp"
+            android:layout_marginBottom="10dp"
+            android:backgroundTint="@color/black"
+            android:text="Auto"
             android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/imageView"
-            app:layout_constraintStart_toEndOf="@+id/textView3"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.517" />
+
+        <ImageButton
+            android:id="@+id/forward_arrow"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="107dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="482dp"
+            android:layout_marginTop="72dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/up"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.007"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/right_arrow"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="159dp"
+            android:layout_height="137dp"
+            android:layout_marginStart="544dp"
+            android:layout_marginBottom="136dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/right"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageButton
+            android:id="@+id/backward_arrow"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="110dp"
+            android:layout_height="104dp"
+            android:layout_marginStart="482dp"
+            android:layout_marginBottom="72dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/down"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.007"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageButton
+            android:id="@+id/turtleButton"
+            android:layout_width="86dp"
+            android:layout_height="81dp"
+            android:layout_marginStart="72dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/button_select_states"
+            android:scaleType="fitCenter"
+            android:src="@drawable/turtle2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/rabbitButton" />
+
+        <ImageButton
+            android:id="@+id/rabbitButton"
+            android:layout_width="76dp"
+            android:layout_height="79dp"
+            android:layout_marginStart="420dp"
+            android:layout_marginBottom="16dp"
+            android:adjustViewBounds="true"
+            android:background="@drawable/button_select_states"
+            android:scaleType="fitCenter"
+            android:src="@drawable/rabbit"
+            android:text="ToggleButton"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

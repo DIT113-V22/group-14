@@ -68,3 +68,7 @@ render.experimental.xml
 *.hprof
 android/PlantholderApplication/local.properties
 *.properties
+
+
+# SMCE stuff
+GODOT/smcegd_mod_example/.import/

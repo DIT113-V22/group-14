@@ -2,6 +2,7 @@ package plantholder.application;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
@@ -13,7 +14,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import org.eclipse.paho.client.mqttv3.IMqttActionListener;
@@ -21,6 +21,11 @@ import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
 import org.eclipse.paho.client.mqttv3.IMqttToken;
 import org.eclipse.paho.client.mqttv3.MqttCallback;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.sql.SQLOutput;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "Plantholder";
@@ -39,14 +44,34 @@ public class MainActivity extends AppCompatActivity {
     private static final int QOS = 1;
     private static final int IMAGE_WIDTH = 320;
     private static final int IMAGE_HEIGHT = 240;
+    private static final int GREEN = Color.parseColor("#759d4b");
+
+
+    final Bitmap bm = Bitmap.createBitmap(IMAGE_WIDTH, IMAGE_HEIGHT, Bitmap.Config.ARGB_8888);
+
+
+    private static String imagesPath = "/storage/emulated/0/Download/PlantImage.png";
+
+    public static String getSavedImagePath(){
+        return imagesPath;
+    }
+
+
+    private static String decodedPlantId;
+
+    public static String getDecodedPlantId(){
+        return decodedPlantId;
+    }
 
     private MqttClient mMqttClient;
     private boolean isConnected = false;
+    private QrCodeProcessing QrCodeProcessing;
     private ImageView mCameraView;
 
     //New variable to save the last speed selected (turtle slower, rabbit faster or normal). The initial speed is the normal (30)
     private int speedMode = MOVEMENT_SPEED;
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,73 +79,105 @@ public class MainActivity extends AppCompatActivity {
         mMqttClient = new MqttClient(getApplicationContext(), MQTT_SERVER, TAG);
         mCameraView = findViewById(R.id.imageView);
 
-        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-
         getWindow().getDecorView().getWindowInsetsController().hide(
                 android.view.WindowInsets.Type.statusBars()
         );
 
         connectToMqttBroker();
+        QrCodeProcessing = new QrCodeProcessing();
 
         ImageButton turtleButton = findViewById(R.id.turtleButton);
         ImageButton rabbitButton = findViewById(R.id.rabbitButton);
-        Button moveForward = findViewById(R.id.forward);
-        Button moveBackward = findViewById(R.id.backward);
-        Button moveRight = findViewById(R.id.right);
-        Button moveLeft = findViewById(R.id.left);
-        Button menuButton = findViewById(R.id.menuButton);
+        ImageButton leftArrow = findViewById(R.id.left_arrow);
+        ImageButton rightArrow = findViewById(R.id.right_arrow);
+        ImageButton forwardArrow = findViewById(R.id.forward_arrow);
+        ImageButton backwardArrow = findViewById(R.id.backward_arrow);
+        Button autoPilot = findViewById(R.id.auto_mode);
+        Button menuButton = (Button) findViewById(R.id.menuButton);
+
+        autoPilot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                view.setSelected(!view.isSelected());
+                if(view.isSelected()){
+                    drive(speedMode, STRAIGHT_ANGLE, "Moving forward");
+                    view.setSelected(true);
+                    view.setBackgroundColor(GREEN);
+                }else{
+                    drive(IDLE_SPEED, STRAIGHT_ANGLE, "Stopping");
+                    view.setSelected(false);
+                    view.setBackgroundColor(Color.BLACK);
+                }
+            }
+        });
 
         menuButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, HomeScreen.class);
+                finish();
+            }
+        });
+
+        Button infoScreen = findViewById(R.id.information);
+        infoScreen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this,InformationScreen.class);
                 startActivity(intent);
             }
         });
 
-        moveForward.setOnTouchListener(new View.OnTouchListener() {
+        forwardArrow.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent event) {
                 if(event.getAction() == MotionEvent.ACTION_DOWN){
                     drive(speedMode, STRAIGHT_ANGLE, "Moving forward");
+                    view.setPressed(true);
                 }else if(event.getAction() == MotionEvent.ACTION_UP){
                     drive(IDLE_SPEED, STRAIGHT_ANGLE, "Stopping");
+                    view.setPressed(false);
                 }
                 return true;
             }
         });
 
-        moveBackward.setOnTouchListener(new View.OnTouchListener() {
+        backwardArrow.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent event) {
                 if(event.getAction() == MotionEvent.ACTION_DOWN){
                     drive(-speedMode, STRAIGHT_ANGLE, "Moving backward");
+                    view.setPressed(true);
                 }else if(event.getAction() == MotionEvent.ACTION_UP){
                     drive(IDLE_SPEED, STRAIGHT_ANGLE, "Stopping");
+                    view.setPressed(false);
                 }
                 return true;
             }
         });
 
-        moveLeft.setOnTouchListener(new View.OnTouchListener() {
+        leftArrow.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent event) {
                 if(event.getAction() == MotionEvent.ACTION_DOWN){
                     drive(TURNING_SPEED, -STEERING_ANGLE, "Moving forward left");
+                    view.setPressed(true);
                 }else if (event.getAction() == MotionEvent.ACTION_UP){
                     drive(IDLE_SPEED, STRAIGHT_ANGLE, "Stopping");
+                    view.setPressed(false);
                 }
                 return true;
             }
         });
 
-        moveRight.setOnTouchListener(new View.OnTouchListener() {
+        rightArrow.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent event) {
                 if(event.getAction() == MotionEvent.ACTION_DOWN){
                     drive(TURNING_SPEED, STEERING_ANGLE, "Moving forward right");
+                    view.setPressed(true);
                 }else if(event.getAction() == MotionEvent.ACTION_UP){
                     drive(IDLE_SPEED, STRAIGHT_ANGLE, "Stopping");
+                    view.setPressed(false);
                 }
                 return true;
             }
@@ -162,7 +219,14 @@ public class MainActivity extends AppCompatActivity {
         takePicture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this,StatusScreen.class);
+                try (FileOutputStream out = new FileOutputStream(imagesPath)) {
+                    bm.compress(Bitmap.CompressFormat.PNG, 100, out);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                decodedPlantId = (QrCodeProcessing.decodeQRImage(imagesPath));
+                Intent intent = new Intent(MainActivity.this, StatusScreen.class);
+                intent.putExtra("key", decodedPlantId);
                 startActivity(intent);
             }
         });
@@ -226,8 +290,6 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void messageArrived(String topic, MqttMessage message) throws Exception {
                     if (topic.equals("/smartcar/camera")) {
-                        final Bitmap bm = Bitmap.createBitmap(IMAGE_WIDTH, IMAGE_HEIGHT, Bitmap.Config.ARGB_8888);
-
                         final byte[] payload = message.getPayload();
                         final int[] colors = new int[IMAGE_WIDTH * IMAGE_HEIGHT];
 
