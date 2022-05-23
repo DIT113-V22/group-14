@@ -27,6 +27,7 @@ public class ForgotPassword extends AppCompatActivity {
     FirebaseDatabase firebaseDatabase;
     DatabaseReference firebaseReference;
     TextView userName;
+    String usernameEntered;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +54,7 @@ public class ForgotPassword extends AppCompatActivity {
         sendPass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String usernameEntered = userName.getText().toString();
+                usernameEntered = userName.getText().toString();
                 firebaseReference = firebaseDatabase.getReference("Users").child(usernameEntered).child("password");
                 retrivePassword();
             }
@@ -70,6 +71,7 @@ public class ForgotPassword extends AppCompatActivity {
                 if(snapshot.exists()){
                     Intent intent = new Intent(ForgotPassword.this, LoginScreen.class);
                     intent.putExtra("password", value);
+                    intent.putExtra("userName", usernameEntered);
                     startActivity(intent);
                     userName.setText(" ");
                 }else{
