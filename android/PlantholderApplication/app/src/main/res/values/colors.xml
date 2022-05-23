@@ -12,4 +12,5 @@
     <color name="unhealthy">#785f57</color>
     <color name="keeptrack">#da7b3a</color>
     <color name="healthy">#d0b139</color>
+    <color name="dark_green">#759d4b</color>
 </resources>

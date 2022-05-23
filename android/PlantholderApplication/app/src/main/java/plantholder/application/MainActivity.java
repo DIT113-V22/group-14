@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
                 if(view.isSelected()){
                     drive(speedMode, STRAIGHT_ANGLE, "Moving forward");
                     view.setSelected(true);
-                    view.setBackgroundColor(GREEN);
+                    view.setBackgroundColor();
                 }else{
                     drive(IDLE_SPEED, STRAIGHT_ANGLE, "Stopping");
                     view.setSelected(false);
