@@ -61,14 +61,13 @@ public class StatusScreen extends AppCompatActivity {
         viewTakenPicture.setImageBitmap(myBitmap);
 
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-
+ 
         //set id text to variable
         TextView textViewID = findViewById(R.id.plantIdTextView);
         textViewID.setText(scannedPlantId);
 
         //gets database snapshot and check if the variable id exists
         firebaseDatabase =  FirebaseDatabase.getInstance();
-
 
        try {
            firebaseReference = (firebaseDatabase.getReference("Plants").child(scannedPlantId).child("id"));
@@ -184,6 +183,8 @@ public class StatusScreen extends AppCompatActivity {
                     firebaseReference = firebaseDatabase.getReference("Plants").child(scannedPlantId).child("column");
                     TextView textViewColumn = findViewById(R.id.plantColumnTextView);
                     getdataLong(textViewColumn);
+                } else if(scannedPlantId.equals("Unreadable QR code")) {
+                    Toast.makeText(StatusScreen.this, "Unreadable QR code", Toast.LENGTH_SHORT).show();
                 } else {
                     changeToAddPlantScreen();
                 }
