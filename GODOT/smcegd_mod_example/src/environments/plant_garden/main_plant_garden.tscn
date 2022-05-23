@@ -1,19 +1,9 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://plant pots/plant3/2178073862-plant.glb" type="PackedScene" id=1]
 [ext_resource path="res://ground/grass plane.glb" type="PackedScene" id=2]
-[ext_resource path="res://plant pots/plant1/1305167209-unripePlant.glb" type="PackedScene" id=3]
 [ext_resource path="res://hedge/hedgecool.glb" type="PackedScene" id=4]
 [ext_resource path="res://src/environments/plant_garden/main_plant_garden.gd" type="Script" id=5]
-[ext_resource path="res://plant pots/plant5/4770449838-plant.glb" type="PackedScene" id=6]
-[ext_resource path="res://plant pots/plant8/5482574117-plant.glb" type="PackedScene" id=7]
-[ext_resource path="res://plant pots/plant2/1846973667-plant.glb" type="PackedScene" id=8]
-[ext_resource path="res://plant pots/plant4/2889314329-plant.glb" type="PackedScene" id=9]
-[ext_resource path="res://plant pots/plant6/5246850704-plant.glb" type="PackedScene" id=10]
-[ext_resource path="res://plant pots/plant10/9431245846-sickPlant.glb" type="PackedScene" id=11]
-[ext_resource path="res://plant pots/plant9/7522007913-plant.glb" type="PackedScene" id=12]
-[ext_resource path="res://plant pots/plant7/5314589770-plant.glb" type="PackedScene" id=13]
-[ext_resource path="res://Signs/s1/beautifulSign.glb" type="PackedScene" id=14]
+[ext_resource path="res://shed/shed.glb" type="PackedScene" id=7]
 [ext_resource path="res://farm/farm/farmBuilding.glb" type="PackedScene" id=15]
 
 [sub_resource type="ConcavePolygonShape" id=2]
@@ -31,20 +21,15 @@ extents = Vector3( 0.201215, 0.2168, 0.370733 )
 [sub_resource type="BoxShape" id=7]
 extents = Vector3( 0.204819, 0.198001, 0.662196 )
 
-[sub_resource type="BoxShape" id=8]
-extents = Vector3( 0.250877, 0.593044, 0.21455 )
-
-[sub_resource type="BoxShape" id=9]
-extents = Vector3( 0.339027, 0.260702, 0.205489 )
-
 [sub_resource type="BoxShape" id=10]
 extents = Vector3( 1, 1.18596, 1 )
 
 [node name="Plant Garden" type="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -32.3063, 0, -26.6838 )
 script = ExtResource( 5 )
 
 [node name="StaticBody" type="StaticBody" parent="."]
-transform = Transform( 1.64877, 0, 0, 0, 1, 0, 0, 0, 1.29041, 0, 0.23913, 0 )
+transform = Transform( 1.23709, 0, 0, 0, 1, 0, 0, 0, 1.29041, 0, 0.23913, 0 )
 
 [node name="grass plane" parent="StaticBody" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 40.478, -1.76421, -35.849 )
@@ -57,7 +42,7 @@ shape = SubResource( 2 )
 transform = Transform( 1, 0, 0, 0, 0.857068, 0.515203, 0, -0.515203, 0.857068, 0, 17.6375, 9.8625 )
 
 [node name="SpotLight6" type="SpotLight" parent="."]
-transform = Transform( -0.282512, 0.101896, 0.953837, 0.894711, -0.330609, 0.300317, 0.345948, 0.938251, 0.0022337, 71.1773, 18.0341, -67.3841 )
+transform = Transform( -0.282512, 0.101896, 0.953837, 0.894711, -0.330609, 0.300318, 0.345948, 0.938251, 0.00223355, 55.3482, 18.0341, -70.0299 )
 light_energy = 1.609
 light_indirect_energy = 3.593
 spot_range = 119.316
@@ -102,7 +87,7 @@ spot_angle = 81.29
 spot_angle_attenuation = 0.68302
 
 [node name="SpotLight5" type="SpotLight" parent="."]
-transform = Transform( 0.700973, -0.63475, -0.32516, 0.710349, 0.580759, 0.397647, -0.0635665, -0.509717, 0.857991, 55.7507, 40.9042, 27.6472 )
+transform = Transform( 0.709158, -0.70084, -0.0769354, 0.702511, 0.693133, 0.161383, -0.0597768, -0.168494, 0.983889, 52.8477, 8.4253, 46.4203 )
 light_energy = 0.707
 light_indirect_energy = 0.95
 spot_range = 159.348
@@ -199,58 +184,8 @@ transform = Transform( -50.5258, 0, -3.80227e-08, 0, 3.39805, 0, 3.72017e-05, 0,
 transform = Transform( 1, 0, -1.11022e-16, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 shape = SubResource( 7 )
 
-[node name="Plant-Row2" type="Spatial" parent="."]
-transform = Transform( 1, 0, -3.55271e-15, 0, 1, 0, 0, 0, 1, 19.5182, 9.53674e-07, -26.4397 )
-
-[node name="5246850704-plant" parent="Plant-Row2" instance=ExtResource( 10 )]
-transform = Transform( 0.444776, 0, 0.895642, 0, 1, 0, -0.895642, 0, 0.444776, -22.4702, -0.538265, -20.251 )
-
-[node name="5314589770-plant" parent="Plant-Row2" instance=ExtResource( 13 )]
-transform = Transform( 0.811227, 0, 0.584731, 0, 1, 0, -0.584731, 0, 0.811227, -22.4702, -0.505006, -32.8499 )
-
-[node name="5482574117-plant" parent="Plant-Row2" instance=ExtResource( 7 )]
-transform = Transform( 0.743845, 0, 0.668353, 0, 1, 0, -0.668353, 0, 0.743845, -22.4702, -0.557621, -46.3633 )
-
-[node name="7522007913-plant" parent="Plant-Row2" instance=ExtResource( 12 )]
-transform = Transform( 0.764742, 0, 0.644337, 0, 1, 0, -0.644337, 0, 0.764742, -22.7112, -0.521174, -60.3157 )
-
-[node name="9431245846-sickPlant" parent="Plant-Row2" instance=ExtResource( 11 )]
-transform = Transform( 0.905176, 0, 0.425037, 0, 1, 0, -0.425037, 0, 0.905176, -22.71, -0.5, -72.86 )
-
-[node name="StaticBody" type="StaticBody" parent="Plant-Row2"]
-transform = Transform( 8.74583, 0, 4.60005e-13, 0, 7.24101, 0, 0, 0, 138.226, -22.6191, 1.1467, -46.45 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Plant-Row2/StaticBody"]
-shape = SubResource( 8 )
-
-[node name="Plant-Row1" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 22.0709, 0, -26.4948 )
-
-[node name="1305167209-unripePlant" parent="Plant-Row1" instance=ExtResource( 3 )]
-transform = Transform( 0.262475, 0, -0.964939, 0, 1, 0, 0.964939, 0, 0.262475, -0.801998, -0.502, -24.104 )
-
-[node name="1846973667-plant" parent="Plant-Row1" instance=ExtResource( 8 )]
-transform = Transform( 0.425748, 0, -0.904842, 0, 1, 0, 0.904842, 0, 0.425748, -0.802406, -0.527771, -32.9549 )
-
-[node name="2178073862-plant" parent="Plant-Row1" instance=ExtResource( 1 )]
-transform = Transform( 0.455545, 0, -0.890213, 0, 1, 0, 0.890213, 0, 0.455545, -0.756256, -0.52736, -45.8748 )
-
-[node name="2889314329-plant" parent="Plant-Row1" instance=ExtResource( 9 )]
-transform = Transform( 0.520845, 0, -0.853651, 0, 1, 0, 0.853651, 0, 0.520845, -0.756001, -0.523984, -60.316 )
-
-[node name="4770449838-plant" parent="Plant-Row1" instance=ExtResource( 6 )]
-transform = Transform( 0.661874, 0, -0.749615, 0, 1, 0, 0.749615, 0, 0.661874, -0.756, -0.511, -72.86 )
-
-[node name="StaticBody" type="StaticBody" parent="Plant-Row1"]
-transform = Transform( 5.55086, 0, 0, 0, 8.60817, 0, 0, 0, 136.529, -0.900721, 1.266, -46.2387 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Plant-Row1/StaticBody"]
-shape = SubResource( 9 )
-
-[node name="Signs" type="Spatial" parent="."]
-
 [node name="farmBuilding" parent="." instance=ExtResource( 15 )]
-transform = Transform( 1.0929, 0, -1.84271, 0, 2.32958, 0, 2.02768, 0, 1.26267, 75.3938, 1.06835, -97.0456 )
+transform = Transform( 0.953996, 0, -2.95827, 0, 3.34772, 0, 3.16973, 0, 1.24633, 90.4138, 2.1776, -75.5946 )
 
 [node name="StaticBody2" type="StaticBody" parent="farmBuilding"]
 transform = Transform( 1, 0, 0, 0, 1, 0, -2.98023e-08, 0, 1, 0, 0, 0 )
@@ -259,5 +194,5 @@ transform = Transform( 1, 0, 0, 0, 1, 0, -2.98023e-08, 0, 1, 0, 0, 0 )
 transform = Transform( -0.940928, 0, 18.3684, 0, 4.82433, 0, -9.38724, 0, -0.721732, -4.68293, 4.08955, -4.53806 )
 shape = SubResource( 10 )
 
-[node name="beautifulSign" parent="." instance=ExtResource( 14 )]
-transform = Transform( -0.99962, 0, -0.0275726, 0, 1, 0, 0.0275726, 0, -0.99962, 20.9378, -0.536754, -46.8468 )
+[node name="shed" parent="." instance=ExtResource( 7 )]
+transform = Transform( 1.2004, 0, 0, 0, 1.06741, 0.0209424, 0, -0.022359, 0.999781, 9.598, -1.17, -61.14 )
