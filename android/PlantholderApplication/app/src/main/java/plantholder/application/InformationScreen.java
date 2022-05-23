@@ -45,7 +45,6 @@ public class InformationScreen extends AppCompatActivity  {
         //recyclerView.setAdapter(adapter);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
         plantList = new ArrayList<>();
         adapter = new PlantsAdapter(plantList);
@@ -61,8 +60,7 @@ public class InformationScreen extends AppCompatActivity  {
          back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(InformationScreen.this,HomeScreen.class);
-                startActivity(intent);
+                finish();
             }
         });
 
