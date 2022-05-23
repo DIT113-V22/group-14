@@ -48,8 +48,6 @@ public class AddPlantScreen extends AppCompatActivity {
         setContentView(R.layout.add_plant_screen);
         firebase = new Firebase();
 
-        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-
         // hide decorview
         getWindow().getDecorView().getWindowInsetsController().hide(
                 android.view.WindowInsets.Type.statusBars()
@@ -59,8 +57,7 @@ public class AddPlantScreen extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(AddPlantScreen.this, HomeScreen.class);
-                startActivity(intent);
+                finish();
             }
         });
 

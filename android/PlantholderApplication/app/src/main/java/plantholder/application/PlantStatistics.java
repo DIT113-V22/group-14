@@ -66,8 +66,7 @@ public class PlantStatistics extends AppCompatActivity {
         backToInfoBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(PlantStatistics.this,InformationScreen.class);
-                startActivity(intent);
+              finish();
             }
         });
 
