@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://plant pots/unripe-plants/unripe-tomato-plant.glb" type="PackedScene" id=1]
 [ext_resource path="res://ground/grass plane.glb" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://shed/shed.glb" type="PackedScene" id=7]
 [ext_resource path="res://plant pots/baby-plants/baby-tomato-plant.glb" type="PackedScene" id=14]
 [ext_resource path="res://farm/farm/farmBuilding.glb" type="PackedScene" id=15]
+[ext_resource path="res://Signs/1305167209/1305167209.glb" type="PackedScene" id=16]
 
 [sub_resource type="ConcavePolygonShape" id=2]
 data = PoolVector3Array( -10, 0.25, 10, 10, 0.25, 10, -10, -0.25, 10, 10, 0.25, 10, 10, -0.25, 10, -10, -0.25, 10, 10, 0.25, -10, -10, 0.25, -10, 10, -0.25, -10, -10, 0.25, -10, -10, -0.25, -10, 10, -0.25, -10, 10, 0.25, 10, 10, 0.25, -10, 10, -0.25, 10, 10, 0.25, -10, 10, -0.25, -10, 10, -0.25, 10, -10, 0.25, -10, -10, 0.25, 10, -10, -0.25, -10, -10, 0.25, 10, -10, -0.25, 10, -10, -0.25, -10, 10, 0.25, 10, -10, 0.25, 10, 10, 0.25, -10, -10, 0.25, 10, -10, 0.25, -10, 10, 0.25, -10, -10, -0.25, 10, 10, -0.25, 10, -10, -0.25, -10, 10, -0.25, 10, 10, -0.25, -10, -10, -0.25, -10 )
@@ -30,6 +31,9 @@ extents = Vector3( 1, 1.18596, 1 )
 
 [sub_resource type="BoxShape" id=8]
 extents = Vector3( 0.225739, 0.588456, 0.206319 )
+
+[sub_resource type="BoxShape" id=11]
+extents = Vector3( 0.234307, 0.225126, 0.19726 )
 
 [node name="Plant Garden" type="Spatial"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -32.3063, 0, -26.6838 )
@@ -283,3 +287,15 @@ transform = Transform( 5.59925, 0, 4.58055e-13, 0, 7.42391, 0, 0, 0, 134.53, 31.
 
 [node name="CollisionShape" type="CollisionShape" parent="Plant-Row-3/StaticBody"]
 shape = SubResource( 8 )
+
+[node name="baby-tomato-plant" parent="." instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 31.9207, -0.635461, 6.44914 )
+
+[node name="1305167209" parent="baby-tomato-plant" instance=ExtResource( 16 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.379723, 0.113831, 1.75739 )
+
+[node name="StaticBody" type="StaticBody" parent="baby-tomato-plant"]
+
+[node name="CollisionShape" type="CollisionShape" parent="baby-tomato-plant/StaticBody"]
+transform = Transform( 6.28699, 0, 0, 0, 11.4725, 0, 0, 0, 6.68444, 0.545067, 2.614, 0.14448 )
+shape = SubResource( 11 )
