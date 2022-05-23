@@ -14,7 +14,7 @@ const int leftDegrees = -75; // degrees to turn left used in serial steering
 const int rightDegrees = 75;  // degrees to turn right used in serial steering
 bool movingBackwards = false; //used in serial steering
 
-const auto distanceToObject = 45; //distance to object when the car stops
+auto distanceToObject = 45; //distance to object when the car stops
 bool frontDanger = false;
 bool rearDanger = false;
 int currentThrottle = 0;        //keeps track of current throttle/ "speed"
@@ -83,7 +83,6 @@ void setup() {
         wifiStatus = WiFi.status();
       }
 
-
       Serial.println("Connecting to MQTT broker");
       while (!mqtt.connect("arduino", "public", "public")) {
         Serial.print(".");
@@ -102,6 +101,11 @@ void setup() {
             } else {
              currentThrottle = message.toInt();
              car.setSpeed(currentThrottle);
+             if(currentThrottle > 35) {
+                distanceToObject = 75;
+             } else {
+                distanceToObject = 45;
+             }
             }
         } else if (topic == "/smartcar/control/steering") {
             currentSteeringAngle = message.toInt();
