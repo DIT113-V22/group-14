@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/beautifulSign.glb-9d8baaa824dbeb9730e53a7abf4a0c3d.scn"
+path="res://.import/5246850704.glb-443d6b40313f73bbb3526603f63db9e4.scn"
 
 [deps]
 
-source_file="res://Signs/s1/beautifulSign.glb"
-dest_files=[ "res://.import/beautifulSign.glb-9d8baaa824dbeb9730e53a7abf4a0c3d.scn" ]
+source_file="res://Signs/5246850704/5246850704.glb"
+dest_files=[ "res://.import/5246850704.glb-443d6b40313f73bbb3526603f63db9e4.scn" ]
 
 [params]
 
