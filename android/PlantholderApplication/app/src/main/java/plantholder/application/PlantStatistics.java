@@ -129,14 +129,11 @@ public class PlantStatistics extends AppCompatActivity {
                 }
 
              chart.addPieSlice(new PieModel("Healthy", healthyPercentage, Color.parseColor("#26912B")));
-             chart.addPieSlice(new PieModel("Unhealthy", unhealthyPercentage, Color.parseColor("#704C17")));
+             chart.addPieSlice(new PieModel("Unhealthy", unhealthyPercentage, Color.parseColor("#785f57")));
              chart.addPieSlice(new PieModel("Ripe", ripePercentage, Color.parseColor("#AF2D2A")));
-             chart.addPieSlice(new PieModel("Track", trackPercentage, Color.parseColor("#CC9D12")));
-
+             chart.addPieSlice(new PieModel("Track", trackPercentage, Color.parseColor("#da7b3a")));
 
              chart.startAnimation();
-
-
 
          }
 
