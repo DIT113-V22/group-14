@@ -52,7 +52,6 @@ public class PlantStatistics extends AppCompatActivity {
 
     private DatabaseReference databaseReference;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
