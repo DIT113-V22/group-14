@@ -181,6 +181,8 @@ public class StatusScreen extends AppCompatActivity {
                     firebaseReference = firebaseDatabase.getReference("Plants").child(scannedPlantId).child("column");
                     TextView textViewColumn = findViewById(R.id.plantColumnTextView);
                     getdataLong(textViewColumn);
+                } else if(scannedPlantId.equals("Unreadable QR code")) {
+                    Toast.makeText(StatusScreen.this, "Unreadable QR code", Toast.LENGTH_SHORT).show();
                 } else {
                     changeToAddPlantScreen();
                 }

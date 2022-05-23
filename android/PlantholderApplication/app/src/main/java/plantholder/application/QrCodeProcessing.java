@@ -22,8 +22,6 @@ import com.google.zxing.qrcode.QRCodeReader;
 public class QrCodeProcessing {
 
     public String decodeQRImage(String imagesPath) {
-
-
         Bitmap bMap = BitmapFactory.decodeFile(imagesPath);
         String decoded = null;
         int[] intArray = new int[bMap.getWidth() * bMap.getHeight()];
