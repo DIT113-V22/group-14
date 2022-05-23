@@ -34,6 +34,7 @@ public class LoginScreen extends AppCompatActivity {
     FirebaseDatabase firebaseDatabase;
     DatabaseReference firebaseReference;
     EditText passwordText;
+    EditText emailText;
 
     private static final int SNOW = Color.parseColor("#FFFAFA");
 
@@ -52,7 +53,7 @@ public class LoginScreen extends AppCompatActivity {
         );
 
         Button login = findViewById(R.id.login);
-        EditText emailText = findViewById(R.id.editTextTextEmailAddress);
+        emailText = findViewById(R.id.editTextTextEmailAddress);
         passwordText = findViewById(R.id.editTextTextPassword);
         CheckBox rememberMe = findViewById(R.id.checkBox);
         Button join = findViewById(R.id.joinbutton);
@@ -61,6 +62,10 @@ public class LoginScreen extends AppCompatActivity {
         //Set password to the password box that comes from the forgotten password screen.
         String message = getIntent().getStringExtra("password");
         passwordText.setText(message);
+
+        //Set user name to the email box that comes from the forgotten password screen.
+        String message1 = getIntent().getStringExtra("userName");
+        emailText.setText(message1);
 
         //method for hiding and showing password when clicking on the view toggle
         passwordText.setOnTouchListener(new View.OnTouchListener() {
