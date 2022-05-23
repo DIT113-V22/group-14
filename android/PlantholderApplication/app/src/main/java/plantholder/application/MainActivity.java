@@ -79,8 +79,6 @@ public class MainActivity extends AppCompatActivity {
         mMqttClient = new MqttClient(getApplicationContext(), MQTT_SERVER, TAG);
         mCameraView = findViewById(R.id.imageView);
 
-        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-
         getWindow().getDecorView().getWindowInsetsController().hide(
                 android.view.WindowInsets.Type.statusBars()
         );
@@ -116,8 +114,7 @@ public class MainActivity extends AppCompatActivity {
         menuButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, HomeScreen.class);
-                startActivity(intent);
+                finish();
             }
         });
 

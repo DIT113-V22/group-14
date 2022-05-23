@@ -32,7 +32,6 @@ public class ForgotPassword extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.forgot_password_screen);
-        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
         getWindow().getDecorView().getWindowInsetsController().hide(android.view.WindowInsets.Type.statusBars());
 

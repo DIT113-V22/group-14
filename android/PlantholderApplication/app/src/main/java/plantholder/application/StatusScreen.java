@@ -60,8 +60,6 @@ public class StatusScreen extends AppCompatActivity {
         Bitmap myBitmap = BitmapFactory.decodeFile(takenPicturePath, bmOptions);
         viewTakenPicture.setImageBitmap(myBitmap);
 
-        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-
         //set id text to variable
         TextView textViewID = findViewById(R.id.plantIdTextView);
         textViewID.setText(scannedPlantId);
@@ -79,13 +77,12 @@ public class StatusScreen extends AppCompatActivity {
 
        verifyPlantExistence();
 
-        //back button that brings you to the MainActivity screen
+        //back button that brings you to the previous screen
         Button back = findViewById(R.id.back);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(StatusScreen.this,MainActivity.class);
-                startActivity(intent);
+                finish();
             }
         });
         //Button to change plants health to unhealthy
