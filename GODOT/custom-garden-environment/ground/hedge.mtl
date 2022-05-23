@@ -1,0 +1,24 @@
+# Blender3D MTL File: hedge.blend
+# Material Count: 2
+newmtl hedge_IN
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.044588 0.044543 0.044543
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd hedge_tex.jpg
+
+
+newmtl hedge_OUT
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.052541 0.457535 0.123723
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 0.001000
+illum 1
+map_Kd hedge_alpha.tga
+
+
