@@ -57,12 +57,31 @@ public class CreateAccount extends AppCompatActivity {
                 String confirmPass = confirmPassword.getText().toString();
 
                 if (password.equals(confirmPass) ){
-                    firebase.writeNewUser(user, email, password);
-                    Intent intent = new Intent(CreateAccount.this, HomeScreen.class);
-                    startActivity(intent);
+                    createUser(user, email, password);
                 }else{
                     Toast.makeText(CreateAccount.this, "Password entered and confirmed are not the same", Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+    }
+
+    private void createUser(String user, String email, String password) {
+        DatabaseReference plantRef = FirebaseDatabase.getInstance().getReference("Users/" + user);
+        plantRef.addListenerForSingleValueEvent(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    Toast.makeText(CreateAccount.this, "Username already exists", Toast.LENGTH_SHORT).show();
+                } else {
+                    firebase.writeNewUser(user, email, password);
+                    Intent intent = new Intent(CreateAccount.this, HomeScreen.class);
+                    startActivity(intent);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
             }
         });
     }
