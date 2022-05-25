@@ -138,7 +138,7 @@ public class InformationScreen extends AppCompatActivity  {
 
                 @Override
                 public boolean onQueryTextSubmit(String query) {
-                    return true;
+                    return false;
                 }
 
                 @Override
