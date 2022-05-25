@@ -19,19 +19,23 @@ This base station will process the image and identify the specific plant with it
 When the user has finished updating the desired plants he/she should be able to have an updated overview of the status of their plants in the application.
 The database entries connected to the QR codes will contain information for that unique plant, such things at where it is located, its type and its health.
  
-
-
-## What kind of technology will we be using
+## What kind of technology will we be using?
 - Arduino IDE
 - C++
 - Java
 - Android Studio
 - SMCE
 - Godot
-- MQTT
+- Mosquitto MQTT Broker
+- Google Firebase
+- Blender
+
+## How to get started
+For starting the project we have created a guide to get you going:
+[Follow the link to our wiki](https://github.com/DIT113-V22/group-14/wiki/How-to-get-started)
 
 
-## Who are we
+## Who are we?
 [Erik Harring](https://github.com/harring)
 
 [Cynthia Tarwireyi](https://github.com/Cyn-Thea)
@@ -43,6 +47,11 @@ The database entries connected to the QR codes will contain information for that
 [Patricia Marklund](https://github.com/PatyMarklund)
 
 [Dragos Florinel Isar](https://github.com/DragosIsar)
+
+## Credits
+
+## License
+[MIT](https://github.com/DIT113-V22/group-14/blob/master/LICENSE)
 
 
 
