@@ -49,8 +49,8 @@ public class InformationScreen extends AppCompatActivity  {
         plantList = new ArrayList<>();
         adapter = new PlantsAdapter(plantList);
         recyclerView.setAdapter(adapter);
-       // adapter.notifyDataSetChanged();
-
+        // adapter.notifyDataSetChanged();
+        searchView.setQueryHint("Status of the plant");
 
         getWindow().getDecorView().getWindowInsetsController().hide(
                 android.view.WindowInsets.Type.statusBars()
@@ -138,6 +138,7 @@ public class InformationScreen extends AppCompatActivity  {
 
                 @Override
                 public boolean onQueryTextSubmit(String query) {
+                    searchView.clearFocus();
                     return false;
                 }
 
