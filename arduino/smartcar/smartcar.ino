@@ -15,17 +15,15 @@ const int rightDegrees = 75;  // degrees to turn right used in serial steering
 bool movingBackwards = false; //used in serial steering
 
 auto distanceToObject = 45; //distance to object when the car stops
-bool frontDanger = false;
-bool rearDanger = false;
+bool frontDanger = false;       //used to keep track if an object is close in front of the car
 int currentThrottle = 0;        //keeps track of current throttle/ "speed"
 int currentSteeringAngle = 0;   //keeps track of if we are turning or not
-
 
 MQTTClient mqtt;
 WiFiClient net;
 
-const char ssid[] = "";
-const char pass[] = "";
+const char ssid[] = "";         //settings for if you connect to a different network
+const char pass[] = "";         //used but empty
 
 // Copied from Dimitrios' Smartcar shield documentation, initiates the SmartCar
 ArduinoRuntime arduinoRuntime;
@@ -60,9 +58,8 @@ const auto maxDistance = 200;
 SR04 front(arduinoRuntime, triggerPin, echoPin, maxDistance);
 
 std::vector<char> frameBuffer;
-
+//code in setup runs once
 void setup() {
-  // put your setup code here, to run once:
     Serial.begin(9600); //starts and waits for some time to sensors to start
 
     //the following part connects to wifi and sends the camera feed over the broker
@@ -164,6 +161,7 @@ void handleInput()
 void loop() {
   handleInput();            //car controls via serial
 
+  //check connection to broker
   if (mqtt.connected()) {
       mqtt.loop();
       const auto currentTime = millis();
@@ -180,10 +178,8 @@ void loop() {
       if (currentTime - previousTransmission >= oneSecond) {
         previousTransmission = currentTime;
         auto frontDistance = front.getDistance();
-        // auto backDistance = rear.getDistance(); //for future reverse obstacle detection
 
-
-           // handles obstacle detection when steering over android
+           // handles obstacle detection when steering over broker
            if(frontDistance < distanceToObject && frontDistance > 0 && currentThrottle > 0 && currentSteeringAngle == 0) {
                 frontDanger = true;
                 car.setSpeed(0);
@@ -191,20 +187,9 @@ void loop() {
            } else {
                 frontDanger = false;
            }
-            /*
-              // for future reverse obstacle detection
-           if(rearDistanceDistance < distanceToObject && rearDistance > 0) {
-                   rearDanger = true;
-           } else {
-                   rearDanger = false;
-           }
-           */
-                //publishes front distance to broker, not currently used
-                mqtt.publish("/smartcar/ultrasound/front", String(frontDistance));
       }
     }
   #ifdef __SMCE__
-    delay(1);                 //delay for emulators sake
+    delay(1);                 //delay for emulators sake, do not remove
   #endif
   }
-
