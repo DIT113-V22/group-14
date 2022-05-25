@@ -86,8 +86,8 @@ public class MainActivity extends AppCompatActivity {
         connectToMqttBroker();
         QrCodeProcessing = new QrCodeProcessing();
 
-        ImageButton turtleButton = findViewById(R.id.turtleButton);
-        ImageButton rabbitButton = findViewById(R.id.rabbitButton);
+        ImageView turtleButton = findViewById(R.id.turtleButton);
+        ImageView rabbitButton = findViewById(R.id.rabbitButton);
         ImageButton leftArrow = findViewById(R.id.left_arrow);
         ImageButton rightArrow = findViewById(R.id.right_arrow);
         ImageButton forwardArrow = findViewById(R.id.forward_arrow);
@@ -95,12 +95,18 @@ public class MainActivity extends AppCompatActivity {
         Button autoPilot = findViewById(R.id.auto_mode);
         Button menuButton = (Button) findViewById(R.id.menuButton);
 
+        //Drives forward without pressing forward button. It drives slower or faster if the speed mode buttons are selected.
+        //Otherwise drives in the normal speed.
         autoPilot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 view.setSelected(!view.isSelected());
                 if(view.isSelected()){
-                    drive(speedMode, STRAIGHT_ANGLE, "Moving forward");
+                    if(turtleButton.isSelected() || rabbitButton.isSelected()) {
+                        drive(speedMode, STRAIGHT_ANGLE, "Moving forward");
+                    }else{
+                        drive(speedMode, STRAIGHT_ANGLE, "Moving forward");
+                    }
                     view.setSelected(true);
                     view.setBackgroundColor(GREEN);
                 }else{
@@ -133,6 +139,8 @@ public class MainActivity extends AppCompatActivity {
                 if(event.getAction() == MotionEvent.ACTION_DOWN){
                     drive(speedMode, STRAIGHT_ANGLE, "Moving forward");
                     view.setPressed(true);
+                    autoPilot.setSelected(false);
+                    autoPilot.setBackgroundColor(Color.BLACK);
                 }else if(event.getAction() == MotionEvent.ACTION_UP){
                     drive(IDLE_SPEED, STRAIGHT_ANGLE, "Stopping");
                     view.setPressed(false);
@@ -147,6 +155,8 @@ public class MainActivity extends AppCompatActivity {
                 if(event.getAction() == MotionEvent.ACTION_DOWN){
                     drive(-speedMode, STRAIGHT_ANGLE, "Moving backward");
                     view.setPressed(true);
+                    autoPilot.setSelected(false);
+                    autoPilot.setBackgroundColor(Color.BLACK);
                 }else if(event.getAction() == MotionEvent.ACTION_UP){
                     drive(IDLE_SPEED, STRAIGHT_ANGLE, "Stopping");
                     view.setPressed(false);
@@ -161,6 +171,8 @@ public class MainActivity extends AppCompatActivity {
                 if(event.getAction() == MotionEvent.ACTION_DOWN){
                     drive(TURNING_SPEED, -STEERING_ANGLE, "Moving forward left");
                     view.setPressed(true);
+                    autoPilot.setSelected(false);
+                    autoPilot.setBackgroundColor(Color.BLACK);
                 }else if (event.getAction() == MotionEvent.ACTION_UP){
                     drive(IDLE_SPEED, STRAIGHT_ANGLE, "Stopping");
                     view.setPressed(false);
@@ -175,6 +187,8 @@ public class MainActivity extends AppCompatActivity {
                 if(event.getAction() == MotionEvent.ACTION_DOWN){
                     drive(TURNING_SPEED, STEERING_ANGLE, "Moving forward right");
                     view.setPressed(true);
+                    autoPilot.setSelected(false);
+                    autoPilot.setBackgroundColor(Color.BLACK);
                 }else if(event.getAction() == MotionEvent.ACTION_UP){
                     drive(IDLE_SPEED, STRAIGHT_ANGLE, "Stopping");
                     view.setPressed(false);
@@ -189,10 +203,22 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 view.setSelected(!view.isSelected());
                 if(view.isSelected()){
-                    speedMode = LOWER_MOVEMENT_SPEED;
-                    view.setSelected(true);
-                    rabbitButton.setSelected(false);
+                    if(autoPilot.isSelected()){
+                        speedMode = LOWER_MOVEMENT_SPEED;
+                        view.setSelected(true);
+                        rabbitButton.setSelected(false);
+                        drive(speedMode, STRAIGHT_ANGLE, "Moving forward");
+                    }else{
+                        speedMode = LOWER_MOVEMENT_SPEED;
+                        view.setSelected(true);
+                        rabbitButton.setSelected(false);
+                    }
                 }else{
+                    if(autoPilot.isSelected()){
+                        speedMode = MOVEMENT_SPEED;
+                        view.setSelected(false);
+                        drive(speedMode, STRAIGHT_ANGLE, "Moving forward");
+                    }
                     view.setSelected(false);
                     speedMode = MOVEMENT_SPEED;
                 }
@@ -205,10 +231,22 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 view.setSelected(!view.isSelected());
                 if(view.isSelected()){
-                    speedMode = FASTER_MOVEMENT_SPEED;
-                    view.setSelected(true);
-                    turtleButton.setSelected(false);
+                    if(autoPilot.isSelected()){
+                        speedMode = FASTER_MOVEMENT_SPEED;
+                        view.setSelected(true);
+                        turtleButton.setSelected(false);
+                        drive(speedMode, STRAIGHT_ANGLE, "Moving forward");
+                    }else{
+                        speedMode = FASTER_MOVEMENT_SPEED;
+                        view.setSelected(true);
+                        turtleButton.setSelected(false);
+                    }
                 }else{
+                    if(autoPilot.isSelected()){
+                        speedMode = MOVEMENT_SPEED;
+                        view.setSelected(false);
+                        drive(speedMode, STRAIGHT_ANGLE, "Moving forward");
+                    }
                     view.setSelected(false);
                     speedMode = MOVEMENT_SPEED;
                 }
@@ -230,7 +268,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
     }
 
     @Override
