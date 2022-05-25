@@ -1,0 +1,281 @@
+{
+  "Plants": {
+    "1142897368": {
+      "column": 26,
+      "health": "Ripe",
+      "id": "1142897368",
+      "row": 14,
+      "species": "Tomato"
+    },
+    "1234512345": {
+      "column": 7,
+      "health": "Healthy",
+      "id": "1234512345",
+      "row": 2,
+      "species": "Tomato"
+    },
+    "1245784451": {
+      "column": 84,
+      "health": "Ripe",
+      "id": "1245784451",
+      "row": 25,
+      "species": "Tomato"
+    },
+    "1255555555": {
+      "column": 2,
+      "health": "Healthy",
+      "id": "1255555555",
+      "row": 1,
+      "species": "Tomato"
+    },
+    "1284611245": {
+      "column": 4,
+      "health": "Healthy",
+      "id": "1284611245",
+      "row": 45,
+      "species": "Grape"
+    },
+    "1305167209": {
+      "column": 1,
+      "health": "Unhealthy",
+      "id": "1305167209",
+      "row": 1,
+      "species": "Tomato"
+    },
+    "1487533542": {
+      "column": 323,
+      "health": "Keep Track",
+      "id": "1487533542",
+      "row": 6,
+      "species": "Tomato"
+    },
+    "1758468598": {
+      "column": 47,
+      "health": "Ripe",
+      "id": "1758468598",
+      "row": 12,
+      "species": "Grape"
+    },
+    "1844795935": {
+      "column": 48,
+      "health": "Keep Track",
+      "id": "1844795935",
+      "row": 25,
+      "species": "Grape"
+    },
+    "1846973667": {
+      "column": 41,
+      "health": "Ripe",
+      "id": "1846973667",
+      "row": 8,
+      "species": "Tomato"
+    },
+    "1887254955": {
+      "column": 52,
+      "health": "Keep Track",
+      "id": "1887254955",
+      "row": 26,
+      "species": "Tomato"
+    },
+    "2178073862": {
+      "column": 12,
+      "health": "Ripe",
+      "id": "2178073862",
+      "row": 24,
+      "species": "Tomato"
+    },
+    "2359957741": {
+      "column": 27,
+      "health": "Unhealthy",
+      "id": "2359957741",
+      "row": 32,
+      "species": "Grape"
+    },
+    "2441551878": {
+      "column": 223,
+      "health": "Unhealthy",
+      "id": "2441551878",
+      "row": 15,
+      "species": "Grape"
+    },
+    "2444587530": {
+      "column": 25,
+      "health": "Healthy",
+      "id": "2444587530",
+      "row": 23,
+      "species": "Tomato"
+    },
+    "2488659953": {
+      "column": 8,
+      "health": "Healthy",
+      "id": "2488659953",
+      "row": 1,
+      "species": "Tomato"
+    },
+    "2544625541": {
+      "column": 65,
+      "health": "Healthy",
+      "id": "2544625541",
+      "row": 12,
+      "species": "Tomato"
+    },
+    "2544876133": {
+      "column": 12,
+      "health": "Keep Track",
+      "id": "2544876133",
+      "row": 26,
+      "species": "Tomato"
+    },
+    "2889314329": {
+      "column": 19,
+      "health": "Healthy",
+      "id": "2889314329",
+      "row": 5,
+      "species": "Grape"
+    },
+    "3356642245": {
+      "column": 45,
+      "health": "Keep Track",
+      "id": "3356642245",
+      "row": 12,
+      "species": "Tomato"
+    },
+    "3445618755": {
+      "column": 47,
+      "health": "Keep Track",
+      "id": "3445618755",
+      "row": 18,
+      "species": "Grape"
+    },
+    "4770449838": {
+      "column": 56,
+      "health": "Healthy",
+      "id": "4770449838",
+      "row": 22,
+      "species": "Tomato"
+    },
+    "4855762214": {
+      "column": 5,
+      "health": "Unhealthy",
+      "id": "4855762214",
+      "row": 23,
+      "species": "Tomato"
+    },
+    "5246850704": {
+      "column": 47,
+      "health": "Keep Track",
+      "id": "5246850704",
+      "row": 32,
+      "species": "Tomato"
+    },
+    "5314589770": {
+      "column": 21,
+      "health": "Healthy",
+      "id": "5314589770",
+      "row": 14,
+      "species": "Tomato"
+    },
+    "5774821135": {
+      "column": 74,
+      "health": "Unhealthy",
+      "id": "5774821135",
+      "row": 48,
+      "species": "Grape"
+    },
+    "6582254312": {
+      "column": 52,
+      "health": "Healthy",
+      "id": "6582254312",
+      "row": 23,
+      "species": "Grape"
+    },
+    "6586112478": {
+      "column": 14,
+      "health": "Healthy",
+      "id": "6586112478",
+      "row": 12,
+      "species": "Grape"
+    },
+    "7522007913": {
+      "column": 2,
+      "health": "Keep Track",
+      "id": "7522007913",
+      "row": 85,
+      "species": "Grape"
+    },
+    "7523484744": {
+      "column": 96,
+      "health": "Healthy",
+      "id": "7523484744",
+      "row": 47,
+      "species": "Grape"
+    },
+    "7544822132": {
+      "column": 55,
+      "health": "Ripe",
+      "id": "7544822132",
+      "row": 2,
+      "species": "Grape"
+    },
+    "8542243159": {
+      "column": 21,
+      "health": "Ripe",
+      "id": "8542243159",
+      "row": 56,
+      "species": "Tomato"
+    },
+    "9191919191": {
+      "column": 1,
+      "health": "Healthy",
+      "id": "9191919191",
+      "row": 1,
+      "species": "Apple"
+    },
+    "9431245846": {
+      "column": 24,
+      "health": "Keep Track",
+      "id": "9431245846",
+      "row": 3,
+      "species": "Tomato"
+    },
+    "9558711254": {
+      "column": 12,
+      "health": "Unhealthy",
+      "id": "9558711254",
+      "row": 32,
+      "species": "Tomato"
+    }
+  },
+  "Users": {
+    "Dragos": {
+      "email": "dragos@dragos.com",
+      "password": "dragos",
+      "username": "Dragos"
+    },
+    "Ella": {
+      "email": "ella@test.com",
+      "password": "ella",
+      "username": "Ella"
+    },
+    "Harring": {
+      "email": "harring@user.com",
+      "password": "Test",
+      "username": "Harring"
+    },
+    "John": {
+      "email": "john@plantgenie.com",
+      "password": "Password1",
+      "username": "John"
+    },
+    "Patricia": {
+      "email": "patricia@user.com",
+      "password": "pass1",
+      "username": "Patricia"
+    },
+    "Testuser": {
+      "email": "user@test.com",
+      "password": "test",
+      "username": "Testuser"
+    }
+  }
+}
