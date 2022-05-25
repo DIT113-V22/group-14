@@ -63,10 +63,6 @@
             android:screenOrientation="sensorLandscape"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".Pop"
-            android:exported="false"
-            android:theme="@style/Theme.Plantholder.popupTheme" />
-        <activity
             android:name=".LoginScreen"
             android:configChanges="orientation"
             android:exported="true"

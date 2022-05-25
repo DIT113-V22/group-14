@@ -1,11 +1,9 @@
 package plantholder.application;
-import androidx.annotation.NonNull;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -48,22 +46,22 @@ public class AddPlantScreen extends AppCompatActivity {
         setContentView(R.layout.add_plant_screen);
         firebase = new Firebase();
 
-        // hide decorview
-        getWindow().getDecorView().getWindowInsetsController().hide(
-                android.view.WindowInsets.Type.statusBars()
-        );
+        // hide decor view
+        getWindow().getDecorView().getWindowInsetsController().hide(android.view.WindowInsets.Type.statusBars());
 
-        back = (Button) findViewById(R.id.buttonBack);
+        //Initialize buttons and edit text
+        back = findViewById(R.id.buttonBack);
+        editID = (findViewById(R.id.editTextID));
+        editColumn = (findViewById(R.id.editTextColumn));
+        editRow = (findViewById(R.id.editTextRow));
+
+        //Go back to the previous screen when pressing the back button
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
             }
         });
-
-        editID = (EditText) (findViewById(R.id.editTextID));
-        editColumn = (EditText) (findViewById(R.id.editTextColumn));
-        editRow = (EditText) (findViewById(R.id.editTextRow));
 
         //checks if intent sent over a key to input as ID
         Bundle extras = getIntent().getExtras();
@@ -96,6 +94,7 @@ public class AddPlantScreen extends AppCompatActivity {
                 selectedHealth = spinnerPlantHealth.getSelectedItem().toString();
                 selectedType = spinnerPlantType.getSelectedItem().toString();
                 addedID = editID.getText().toString();
+
                 if (editColumn.getText().toString().isEmpty()) {
                     addedColumn = -1;
                 } else {
@@ -114,18 +113,15 @@ public class AddPlantScreen extends AppCompatActivity {
                 } else if (addedColumn < 0) {
                     Toast.makeText(AddPlantScreen.this, "Please enter a column.", Toast.LENGTH_SHORT).show();
                 } else {
-
+                    //send the added ID to verify if it is existent
                     verifyPlantExistence(addedID);
-
                 }
             }
         });
-
     }
 
     //give the user an Alert with action if the inserted id already exists
     public void idExistAlert() {
-
         AlertDialog.Builder builder = new AlertDialog.Builder(AddPlantScreen.this); // (getActivity();)
         builder.setTitle("The inserted ID already exists! ");
         builder.setMessage("Do you want to continue and update this plant?");
@@ -135,6 +131,7 @@ public class AddPlantScreen extends AppCompatActivity {
                 toastUpdate();
             }
         });
+
         builder.setNeutralButton("No", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 Toast.makeText(AddPlantScreen.this, "Plant not updated.", Toast.LENGTH_LONG).show();
@@ -154,16 +151,15 @@ public class AddPlantScreen extends AppCompatActivity {
     }
 
     //creates a new plant in the database
-    void createPlant() {
+    public void createPlant() {
         firebase.writeNewPlant(addedID, selectedType, addedRow, addedColumn, selectedHealth);
 
-        //clean input in layout
+        //clean input in layout after creating the plant
         editID.setText("");
         editColumn.setText("");
         editRow.setText("");
         spinnerPlantType.setAdapter(adapter2);
         spinnerPlantHealth.setAdapter(adapter);
-
     }
 
     //This checks if the plant id already exists in the database

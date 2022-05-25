@@ -1,20 +1,17 @@
 package plantholder.application;
 
-
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
 public class HomeScreen extends AppCompatActivity {
-    private static final String TAG = "HomeScreen";
 
-    Button manualButton;
-    Button infoButton;
-    Button buttonAddPlant;
+    private Button scanButton;
+    private Button infoButton;
+    private Button buttonAddPlant;
     private Firebase firebase;
 
     @Override
@@ -23,13 +20,16 @@ public class HomeScreen extends AppCompatActivity {
         setContentView(R.layout.activity_home_screen);
         firebase = new Firebase();
 
-        getWindow().getDecorView().getWindowInsetsController().hide(
-                android.view.WindowInsets.Type.statusBars()
-        );
+        //hide decor view
+        getWindow().getDecorView().getWindowInsetsController().hide(android.view.WindowInsets.Type.statusBars());
 
-        manualButton = (Button) findViewById(R.id.manualButton);
+        //Initialize buttons
+        scanButton = (Button) findViewById(R.id.scanButton);
+        infoButton = (Button) findViewById(R.id.toInfoButton);
+        buttonAddPlant = (Button) findViewById(R.id.buttonAddPlant);
 
-        manualButton.setOnClickListener(new View.OnClickListener() {
+        //Send it to the main screen with the camera and drive controls
+        scanButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(HomeScreen.this, MainActivity.class);
@@ -37,8 +37,7 @@ public class HomeScreen extends AppCompatActivity {
             }
         });
 
-        infoButton = (Button) findViewById(R.id.toInfoButton);
-
+        //Sends to the screen with the table with information of all plants
         infoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -47,9 +46,7 @@ public class HomeScreen extends AppCompatActivity {
             }
         });
 
-
-        buttonAddPlant = (Button) findViewById(R.id.buttonAddPlant);
-
+        //Sends to the screen that adds plants manually
         buttonAddPlant.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -57,6 +54,5 @@ public class HomeScreen extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
     }
 }

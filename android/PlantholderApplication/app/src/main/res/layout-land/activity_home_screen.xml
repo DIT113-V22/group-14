@@ -8,7 +8,7 @@
     tools:context=".HomeScreen">
 
     <Button
-        android:id="@+id/manualButton"
+        android:id="@+id/scanButton"
         android:layout_width="115dp"
         android:layout_height="75dp"
         android:layout_alignParentEnd="true"
@@ -82,7 +82,7 @@
         android:layout_height="277dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="80dp"
-        app:layout_constraintStart_toEndOf="@+id/manualButton"
+        app:layout_constraintStart_toEndOf="@+id/scanButton"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/growth" />
 

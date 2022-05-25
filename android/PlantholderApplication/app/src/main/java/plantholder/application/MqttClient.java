@@ -5,8 +5,6 @@ import android.content.Context;
 import org.eclipse.paho.android.service.MqttAndroidClient;
 import org.eclipse.paho.client.mqttv3.*;
 
-// Adapted from: https://medium.com/swlh/android-and-mqtt-a-simple-guide-cb0cbba1931c
-
 public class MqttClient {
 
     private MqttAndroidClient mMqttAndroidClient;

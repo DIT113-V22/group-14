@@ -21,14 +21,13 @@ import com.google.zxing.qrcode.QRCodeReader;
 
 public class QrCodeProcessing {
 
+    //Method that translated the QR code that is recognized when taken the picture
     public String decodeQRImage(String imagesPath) {
         Bitmap bMap = BitmapFactory.decodeFile(imagesPath);
         String decoded = null;
         int[] intArray = new int[bMap.getWidth() * bMap.getHeight()];
-        bMap.getPixels(intArray, 0, bMap.getWidth(), 0, 0, bMap.getWidth(),
-                bMap.getHeight());
-        LuminanceSource source = new RGBLuminanceSource(bMap.getWidth(),
-                bMap.getHeight(), intArray);
+        bMap.getPixels(intArray, 0, bMap.getWidth(), 0, 0, bMap.getWidth(), bMap.getHeight());
+        LuminanceSource source = new RGBLuminanceSource(bMap.getWidth(), bMap.getHeight(), intArray);
         BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
 
         Reader reader = new QRCodeReader();

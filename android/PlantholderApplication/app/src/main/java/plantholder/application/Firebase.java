@@ -1,8 +1,6 @@
 package plantholder.application;
 
 import android.os.Bundle;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,15 +20,14 @@ public class Firebase extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
-
     }
 
+    //Import the database data through the link and stores in an instance of the FirebaseDatase
     public void getDatabase(){
         FirebaseDatabase database = FirebaseDatabase.getInstance("https://planty-9e09f-default-rtdb.europe-west1.firebasedatabase.app/");
         myDatabase = database.getReference("Plants");
         userDatabase = database.getReference("Users");
     }
-
 
     //Create new user method
     public void writeNewUser(String userName, String email, String password){
@@ -39,15 +36,14 @@ public class Firebase extends AppCompatActivity {
         userDatabase.child(userName).setValue(users);
     }
 
+    //Creates new plants method
     public void writeNewPlant(String ID,String species, int row, int column, String selectedHealth){
-
         getDatabase();
-
         Plants plant = new Plants(ID,species,row,column,selectedHealth);
         myDatabase.child(ID).setValue(plant);
-
     }
 
+    //Updated the status of the plant. Method called after picture taken from the QR code on the status screen
     public void updatePlantHealth(String ID, String status){
 
         firebaseDatabase =  FirebaseDatabase.getInstance();
@@ -66,7 +62,6 @@ public class Firebase extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
             }
-
         });
     }
 }
