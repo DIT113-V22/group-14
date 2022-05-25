@@ -6,11 +6,7 @@ import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.Dialog;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -25,13 +21,12 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 public class InformationScreen extends AppCompatActivity  {
-    RecyclerView recyclerView;
-    PlantsAdapter adapter;
-    ArrayList<Plants> plantList;
-    DatabaseReference database;
-    SearchView searchView;
-    Button plantStatsBtn;
-
+    private RecyclerView recyclerView;
+    private PlantsAdapter adapter;
+    private ArrayList<Plants> plantList;
+    private DatabaseReference database;
+    private SearchView searchView;
+    private Button plantStatsBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,34 +34,34 @@ public class InformationScreen extends AppCompatActivity  {
         setContentView(R.layout.activity_information_screen);
 
         database= FirebaseDatabase.getInstance().getReference("Plants");
+
+        //All initializations
         recyclerView = findViewById(R.id.showPlants);
         searchView = findViewById(R.id.searchView);
         plantStatsBtn = findViewById(R.id.plantStats);
-        //recyclerView.setAdapter(adapter);
+        Button back = findViewById(R.id.backMain);
+        plantStatsBtn = findViewById(R.id.plantStats);
+
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
         plantList = new ArrayList<>();
         adapter = new PlantsAdapter(plantList);
+
         recyclerView.setAdapter(adapter);
-        // adapter.notifyDataSetChanged();
         searchView.setQueryHint("Status of the plant");
 
-        getWindow().getDecorView().getWindowInsetsController().hide(
-                android.view.WindowInsets.Type.statusBars()
-        );
+        //hide decor view
+        getWindow().getDecorView().getWindowInsetsController().hide(android.view.WindowInsets.Type.statusBars());
 
-        Button back = findViewById(R.id.backMain);
-         back.setOnClickListener(new View.OnClickListener() {
+        //Sends back to the previous page when press back button
+        back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
             }
         });
 
-
-        plantStatsBtn = findViewById(R.id.plantStats);
-
+        //Sends to the statistics page
         plantStatsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -74,12 +69,12 @@ public class InformationScreen extends AppCompatActivity  {
                 startActivity(intent);
             }
         });
-
     }
 
-// populate table with data from the database
+    //Populate table with data from the database
     protected void onStart(){
         super.onStart();
+
         if(database != null){
             database.addValueEventListener(new ValueEventListener() {
                 @Override
@@ -89,50 +84,41 @@ public class InformationScreen extends AppCompatActivity  {
                         plantList = new ArrayList<>();
 
                         for(DataSnapshot dataSnapshot: snapshot.getChildren()) {
-
                             Plants plant = dataSnapshot.getValue(Plants.class);
                             plantList.add(plant);
                         }
-
                         PlantsAdapter  adapter1 = new PlantsAdapter(plantList);
                         recyclerView.setAdapter(adapter1);
-                        //adapter.notifyDataSetChanged();
-
                     }
                 }
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
                     Toast.makeText(InformationScreen.this, "No Data found", Toast.LENGTH_SHORT).show();
-
                 }
             });
         }
 
+        //if search view is empty populate the table with all plants infor
         if (searchView== null){
             database.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-
                     for(DataSnapshot dataSnapshot: snapshot.getChildren()){
-
                         Plants plant = dataSnapshot.getValue(Plants.class);
                         plantList.add(plant);
-
                     }
                     adapter.notifyDataSetChanged();
-
-
                 }
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
-
+                    Toast.makeText(InformationScreen.this, "No Data found", Toast.LENGTH_SHORT).show();
                 }
             });
         }
 
+        //if search view has something entered retrieve the info from that reference
         if(searchView != null){
             searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
 
@@ -155,14 +141,12 @@ public class InformationScreen extends AppCompatActivity  {
                     }
                     return true;
                 }
-            }
-            );
+            });
         }
-
     }
 
+    //Method that goes through the plants and set the results on the table
     private void search(String str){
-
         ArrayList<Plants> newPlantList = new ArrayList<>();
 
         for (Plants plant : plantList) {
@@ -172,11 +156,5 @@ public class InformationScreen extends AppCompatActivity  {
         }
         PlantsAdapter adapter2 = new PlantsAdapter(newPlantList);
         recyclerView.setAdapter(adapter2);
-       // adapter2.notifyDataSetChanged();
-
-
     }
-
-
-
 }

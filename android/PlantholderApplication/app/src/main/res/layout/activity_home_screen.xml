@@ -8,7 +8,7 @@
     tools:context=".HomeScreen">
 
     <Button
-        android:id="@+id/manualButton"
+        android:id="@+id/scanButton"
         android:layout_width="165dp"
         android:layout_height="60dp"
         android:layout_alignParentEnd="true"
@@ -37,7 +37,7 @@
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/manualButton"
+        app:layout_constraintTop_toBottomOf="@+id/scanButton"
         tools:ignore="MissingConstraints" />
 
     <Button
@@ -53,7 +53,7 @@
         android:textColor="#E0ECE0"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/manualButton"
+        app:layout_constraintBottom_toTopOf="@+id/scanButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
         app:layout_constraintVertical_bias="0.0" />

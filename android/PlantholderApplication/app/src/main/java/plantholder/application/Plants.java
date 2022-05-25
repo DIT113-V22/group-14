@@ -8,7 +8,7 @@ public class Plants {
     public Integer column;
     public String health;
 
-    public Plants(){} // needed for later
+    public Plants(){}
 
     public Plants (String id,String species,int row, int column, String health ){
         this.id = id;
@@ -16,7 +16,6 @@ public class Plants {
         this.row = row;
         this.column = column;
         this.health = health;
-
     }
 
     public String getID() {
@@ -38,5 +37,4 @@ public class Plants {
     public Integer getColumn() {
         return column;
     }
-
 }

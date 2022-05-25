@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -22,10 +21,8 @@ import org.eclipse.paho.client.mqttv3.IMqttToken;
 import org.eclipse.paho.client.mqttv3.MqttCallback;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 
-import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.sql.SQLOutput;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "Plantholder";
@@ -45,19 +42,21 @@ public class MainActivity extends AppCompatActivity {
     private static final int IMAGE_WIDTH = 320;
     private static final int IMAGE_HEIGHT = 240;
     private static final int GREEN = Color.parseColor("#759d4b");
+    //New variable to save the last speed selected (turtle slower, rabbit faster or normal). The initial speed is the normal (30)
+    private int speedMode = MOVEMENT_SPEED;
 
+    //Bitmap that saves the picture that was taken from the video
+    private final Bitmap bm = Bitmap.createBitmap(IMAGE_WIDTH, IMAGE_HEIGHT, Bitmap.Config.ARGB_8888);
 
-    final Bitmap bm = Bitmap.createBitmap(IMAGE_WIDTH, IMAGE_HEIGHT, Bitmap.Config.ARGB_8888);
-
-
+    //Path to where the image gets stored after pressed take picture on the Main screen
     private static String imagesPath = "/storage/emulated/0/Download/PlantImage.png";
 
+    private static String decodedPlantId;
+
+    //Gets the path of the image
     public static String getSavedImagePath(){
         return imagesPath;
     }
-
-
-    private static String decodedPlantId;
 
     public static String getDecodedPlantId(){
         return decodedPlantId;
@@ -68,9 +67,6 @@ public class MainActivity extends AppCompatActivity {
     private QrCodeProcessing QrCodeProcessing;
     private ImageView mCameraView;
 
-    //New variable to save the last speed selected (turtle slower, rabbit faster or normal). The initial speed is the normal (30)
-    private int speedMode = MOVEMENT_SPEED;
-
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,13 +75,13 @@ public class MainActivity extends AppCompatActivity {
         mMqttClient = new MqttClient(getApplicationContext(), MQTT_SERVER, TAG);
         mCameraView = findViewById(R.id.imageView);
 
-        getWindow().getDecorView().getWindowInsetsController().hide(
-                android.view.WindowInsets.Type.statusBars()
-        );
+        //Hide decor view
+        getWindow().getDecorView().getWindowInsetsController().hide(android.view.WindowInsets.Type.statusBars());
 
         connectToMqttBroker();
         QrCodeProcessing = new QrCodeProcessing();
 
+        //Initialize all the buttons
         ImageView turtleButton = findViewById(R.id.turtleButton);
         ImageView rabbitButton = findViewById(R.id.rabbitButton);
         ImageButton leftArrow = findViewById(R.id.left_arrow);
@@ -93,7 +89,9 @@ public class MainActivity extends AppCompatActivity {
         ImageButton forwardArrow = findViewById(R.id.forward_arrow);
         ImageButton backwardArrow = findViewById(R.id.backward_arrow);
         Button autoPilot = findViewById(R.id.auto_mode);
-        Button menuButton = (Button) findViewById(R.id.menuButton);
+        Button menuButton = findViewById(R.id.menuButton);
+        Button infoScreen = findViewById(R.id.information);
+        Button takePicture = findViewById(R.id.takePicture);
 
         //Drives forward without pressing forward button. It drives slower or faster if the speed mode buttons are selected.
         //Otherwise drives in the normal speed.
@@ -117,6 +115,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //Sends to the previous page
         menuButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -124,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button infoScreen = findViewById(R.id.information);
+        //Sends to the infor screen page
         infoScreen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -133,6 +132,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //Navigation button going forward. Moves forward only when is pressed. Deactivates Auto button when pressed
         forwardArrow.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent event) {
@@ -149,6 +149,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //Navigation button going backwards. Moves backwards only when is pressed. Deactivates Auto button when pressed
         backwardArrow.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent event) {
@@ -165,6 +166,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //Navigation button going left. Moves left only when is pressed. Deactivates Auto button when pressed
         leftArrow.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent event) {
@@ -181,6 +183,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //Navigation button going right. Moves right only when is pressed. Deactivates Auto button when pressed
         rightArrow.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent event) {
@@ -197,7 +200,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //action when the turtle button is clicked
+        //Set speed to lower speed when turtle button is clicked. Deselect rabbit button when turtle is selected.
+        //Changes the speed if auto button is selected.
         turtleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -225,7 +229,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //action when the rabbit button for faster is activated
+        //Set speed to faster speed when rabbit button is clicked. Deselect turtle button when rabbit is selected.
+        //Changes the speed if auto button is selected.
         rabbitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -253,7 +258,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button takePicture = findViewById(R.id.takePicture);
+        //Button takes a picture of the video and sends the picture to the status screen
         takePicture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -273,14 +278,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-
         connectToMqttBroker();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-
         mMqttClient.disconnect(new IMqttActionListener() {
             @Override
             public void onSuccess(IMqttToken asyncActionToken) {
@@ -293,6 +296,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    //Connection to mqtt broker
     private void connectToMqttBroker() {
         if (!isConnected) {
             mMqttClient.connect(TAG, "", new IMqttActionListener() {

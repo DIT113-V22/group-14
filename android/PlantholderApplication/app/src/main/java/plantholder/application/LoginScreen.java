@@ -16,7 +16,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -29,13 +28,12 @@ import java.util.Objects;
 
 public class LoginScreen extends AppCompatActivity {
 
-    boolean passwordVisible = false;
-    Firebase firebase;
-    FirebaseDatabase firebaseDatabase;
-    DatabaseReference firebaseReference;
-    EditText passwordText;
-    EditText emailText;
-
+    private boolean passwordVisible = false;
+    private Firebase firebase;
+    private FirebaseDatabase firebaseDatabase;
+    private DatabaseReference firebaseReference;
+    private EditText passwordText;
+    private EditText emailText;
     private static final int SNOW = Color.parseColor("#FFFAFA");
 
     @RequiresApi(api = Build.VERSION_CODES.R)
@@ -48,10 +46,10 @@ public class LoginScreen extends AppCompatActivity {
         firebase = new Firebase();
         firebaseDatabase =  FirebaseDatabase.getInstance();
 
-        getWindow().getDecorView().getWindowInsetsController().hide(
-                android.view.WindowInsets.Type.statusBars()
-        );
+        //Hide decor view
+        getWindow().getDecorView().getWindowInsetsController().hide(android.view.WindowInsets.Type.statusBars());
 
+        //All buttons initialization
         Button login = findViewById(R.id.login);
         emailText = findViewById(R.id.editTextTextEmailAddress);
         passwordText = findViewById(R.id.editTextTextPassword);
@@ -96,7 +94,7 @@ public class LoginScreen extends AppCompatActivity {
             }
         });
 
-        //Remember me check box, enter the default user name and password
+        //Remember me check box, enter the default user name and password for testing
         rememberMe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -127,7 +125,7 @@ public class LoginScreen extends AppCompatActivity {
             }
         });
 
-        //Button for joining as a new user
+       //Button for joining as a new user
        join.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -137,6 +135,7 @@ public class LoginScreen extends AppCompatActivity {
             }
         });
 
+       //Button that sends to the page where the user can retrieve a forgotten password
         forgotPass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -147,6 +146,7 @@ public class LoginScreen extends AppCompatActivity {
         });
     }
 
+    //Verify the user name entered and the password exist in the database
     private void verifyUserCredentials(String password) {
         firebaseReference.addValueEventListener(new ValueEventListener() {
 

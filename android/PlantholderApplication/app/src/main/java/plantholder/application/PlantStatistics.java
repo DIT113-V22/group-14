@@ -3,7 +3,6 @@ package plantholder.application;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -58,11 +57,19 @@ public class PlantStatistics extends AppCompatActivity {
         setContentView(R.layout.activity_plant_statistics);
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
-       //get the total number of plants registered in the database
+        //Initializes everything from XML
+        //Get the total number of plants registered in the database
         plantTotal = (TextView) findViewById(R.id.plantsumAmnt);
         chart = findViewById(R.id.pie_chart);
-
         backToInfoBtn = findViewById(R.id.backInfoButton);
+
+        //get the percentages of different plant health statuses
+        healthyPlant = (TextView) findViewById(R.id.healthyPlant);
+        unHealthyPlant = (TextView) findViewById(R.id.unhealthyPlant);
+        ripePlant = (TextView) findViewById(R.id.ripePlant);
+        trackPlant = (TextView) findViewById(R.id.trackPlant);
+
+        //Buttons goes back to the previous page
         backToInfoBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -70,11 +77,10 @@ public class PlantStatistics extends AppCompatActivity {
             }
         });
 
-        getWindow().getDecorView().getWindowInsetsController().hide(
-                android.view.WindowInsets.Type.statusBars()
-        );
+        //Hides decor view
+        getWindow().getDecorView().getWindowInsetsController().hide(android.view.WindowInsets.Type.statusBars());
 
-
+        //Gets database reference from plants
         databaseReference = FirebaseDatabase.getInstance().getReference("Plants");
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -89,20 +95,12 @@ public class PlantStatistics extends AppCompatActivity {
             }
         });
 
-        //get the percentages of different plant health statuses
-        healthyPlant = (TextView) findViewById(R.id.healthyPlant);
-        unHealthyPlant = (TextView) findViewById(R.id.unhealthyPlant);
-        ripePlant = (TextView) findViewById(R.id.ripePlant);
-        trackPlant = (TextView) findViewById(R.id.trackPlant);
-
-
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
          @Override
         public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot healthSnapshot : snapshot.getChildren()) {
 
                   switch(healthSnapshot.child("health").getValue(String.class)){
-
                       case "Healthy":
                             ++healthy;
                              break;
@@ -134,7 +132,6 @@ public class PlantStatistics extends AppCompatActivity {
              chart.addPieSlice(new PieModel("Track", trackPercentage, Color.parseColor("#da7b3a")));
 
              chart.startAnimation();
-
          }
 
                   @Override
@@ -144,7 +141,7 @@ public class PlantStatistics extends AppCompatActivity {
                 }
             );
 
-// get species population in %
+        //Get species population in %
         tomatoPlant = (TextView) findViewById(R.id.tomatoPlants);
         grapePlant = (TextView) findViewById(R.id.grapePlants);
         otherPlant = (TextView) findViewById(R.id.otherPlants);
@@ -183,6 +180,4 @@ public class PlantStatistics extends AppCompatActivity {
             }
         });
     }
-
-
 }

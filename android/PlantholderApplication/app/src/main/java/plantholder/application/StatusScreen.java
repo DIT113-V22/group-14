@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Build;
@@ -24,19 +23,17 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.io.IOException;
-
 // reference for the bitmap creation from
 // https://stackoverflow.com/questions/16804404/create-a-bitmap-drawable-from-file-path
 // by CodeShadow
 
 public class StatusScreen extends AppCompatActivity {
 
-    Firebase firebase;
-    FirebaseDatabase firebaseDatabase;
-    DatabaseReference firebaseReference;
-    String scannedPlantId = MainActivity.getDecodedPlantId();
-    String takenPicturePath = MainActivity.getSavedImagePath();
+    private Firebase firebase;
+    private FirebaseDatabase firebaseDatabase;
+    private DatabaseReference firebaseReference;
+    private String scannedPlantId = MainActivity.getDecodedPlantId();
+    private String takenPicturePath = MainActivity.getSavedImagePath();
     private ImageView viewTakenPicture;
     BitmapFactory.Options bmOptions = new BitmapFactory.Options();
 
@@ -45,15 +42,15 @@ public class StatusScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         firebase = new Firebase();
 
-        getWindow().getDecorView().getWindowInsetsController().hide(
-                android.view.WindowInsets.Type.statusBars()
-        );
+        //Hides decor view
+        getWindow().getDecorView().getWindowInsetsController().hide(android.view.WindowInsets.Type.statusBars());
 
         //Grabs any incoming sent with the intent, if it exists changes a variable
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             scannedPlantId = extras.getString("key");
         }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_status_screen);
         viewTakenPicture = findViewById(R.id.taken_picture_view);
@@ -67,13 +64,11 @@ public class StatusScreen extends AppCompatActivity {
         //gets database snapshot and check if the variable id exists
         firebaseDatabase =  FirebaseDatabase.getInstance();
 
-
        try {
            firebaseReference = (firebaseDatabase.getReference("Plants").child(scannedPlantId).child("id"));
-       } catch (
-        Exception e) {
-        e.printStackTrace();
-        }
+       } catch (Exception e) {
+            e.printStackTrace();
+       }
 
        verifyPlantExistence();
 
@@ -85,6 +80,7 @@ public class StatusScreen extends AppCompatActivity {
                 finish();
             }
         });
+
         //Button to change plants health to unhealthy
         Button unhealthy = findViewById(R.id.unhealthy);
         unhealthy.setOnClickListener(new View.OnClickListener() {
@@ -137,6 +133,7 @@ public class StatusScreen extends AppCompatActivity {
             }
         });
     }
+
     //gets the value from the database and sets the given textView as that value, longs only
     private void getdataLong(TextView textView) {
         firebaseDatabase =  FirebaseDatabase.getInstance();
