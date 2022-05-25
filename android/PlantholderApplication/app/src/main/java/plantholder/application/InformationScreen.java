@@ -139,7 +139,7 @@ public class InformationScreen extends AppCompatActivity  {
                 @Override
                 public boolean onQueryTextSubmit(String query) {
                     searchView.clearFocus();
-                    return true;
+                    return false;
                 }
 
                 @Override
