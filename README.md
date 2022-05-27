@@ -29,9 +29,9 @@ The user will then be able to update the plant's status in the app. When the use
 - Google Firebase
 - Blender
 
-## Diagrams
+## Architecture
 We developed diagrams that will provide an overview of our software architecture:
-[Follow this link to our wiki] (https://github.com/DIT113-V22/group-14/wiki/Diagrams)
+[Follow this link to our wiki](https://github.com/DIT113-V22/group-14/wiki/Diagrams)
 
 ## How to get started as a developer
 For starting the project we have created a guide to get you going:
@@ -55,7 +55,6 @@ To start using our system read :
 
 [Dragos Florinel Isar](https://github.com/DragosIsar)
 
-## Credits
 
 ## License
 The source code for the repository is licensed under the MIT license, refer to [LICENSE](https://github.com/DIT113-V22/group-14/blob/master/LICENSE) file our repository.
