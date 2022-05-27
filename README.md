@@ -18,6 +18,8 @@ The user will drive a smart car around their farm/greenhouse with the help of an
 
 The user will then be able to update the plant's status in the app. When the user has finished updating the desired plants he/she can visit the info screen and get a table containing all the information about the plants. This includes plant ID, plant health status, plant type, row and column where it is located.
 
+## Video presentation
+
 [![Watch the video](https://img.youtube.com/vi/Y6lPxBF4gQ0/maxresdefault.jpg)](https://youtu.be/Y6lPxBF4gQ0)
  
 ## What kind of technology will we be using?
