@@ -17,6 +17,8 @@ With the help of the data gathered it is possible for the user to ascertain that
 The user will drive a smart car around their farm/greenhouse with the help of an application where pots have already been marked with QR to identify them. The car has the capability to take photos of the plants with QR codes, decode it into a number and thus know which plant the car is looking at.
 
 The user will then be able to update the plant's status in the app. When the user has finished updating the desired plants he/she can visit the info screen and get a table containing all the information about the plants. This includes plant ID, plant health status, plant type, row and column where it is located.
+
+[![Watch the video](https://img.youtube.com/vi/Y6lPxBF4gQ0/maxresdefault.jpg)](https://youtu.be/Y6lPxBF4gQ0)
  
 ## What kind of technology will we be using?
 - Arduino IDE
@@ -29,16 +31,17 @@ The user will then be able to update the plant's status in the app. When the use
 - Google Firebase
 - Blender
 
-## Diagrams
-We developed diagrams that will provide an overview of our software architecture:
-[Follow this link to our wiki] (https://github.com/DIT113-V22/group-14/wiki/Diagrams)
+## Architecture
+We developed diagrams that will provide an overview of our software and hardware architecture:
+[Follow this link to our wiki](https://github.com/DIT113-V22/group-14/wiki/Diagrams)
+
 
 ## How to get started as a developer
 For starting the project we have created a guide to get you going:
 [Follow this link to our wiki](https://github.com/DIT113-V22/group-14/wiki/How-to-get-started)
 
 ## How to get started as a user
-To start using our system read :
+To start using our system read:
 [Follow this link to our wiki](https://github.com/DIT113-V22/group-14/wiki/User-Manual)
 
 
@@ -54,8 +57,6 @@ To start using our system read :
 [Patricia Marklund](https://github.com/PatyMarklund)
 
 [Dragos Florinel Isar](https://github.com/DragosIsar)
-
-## Credits
 
 ## License
 The source code for the repository is licensed under the MIT license, refer to [LICENSE](https://github.com/DIT113-V22/group-14/blob/master/LICENSE) file our repository.
