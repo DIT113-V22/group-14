@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Plantholder</string>
+    <string name="app_name">PlantGenie</string>
     <string name="set_health_status">Set health status</string>
     <string name="set_plant_type">Set plant type</string>
     <string name="row">Row</string>
