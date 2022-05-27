@@ -5,33 +5,33 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <Spinner
         android:id="@+id/spinnerPlantHealth"
         android:layout_width="274dp"
         android:layout_height="55dp"
-        android:layout_marginStart="385dp"
         android:layout_marginTop="30dp"
         android:contentDescription="@string/set_health_status"
         android:spinnerMode="dropdown"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/spinnerPlantType"
         app:layout_constraintTop_toBottomOf="@+id/spinnerPlantType" />
 
     <Spinner
         android:id="@+id/spinnerPlantType"
         android:layout_width="274dp"
         android:layout_height="55dp"
-        android:layout_marginStart="385dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="72dp"
         android:contentDescription="@string/set_plant_type"
         android:spinnerMode="dropdown"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextID" />
-
 
     <Button
         android:id="@+id/buttonSave"
         android:layout_width="115dp"
         android:layout_height="75dp"
+        android:layout_marginTop="30dp"
         android:backgroundTint="#4CAF50"
         android:gravity="center_vertical"
         android:shadowColor="#020101"
@@ -39,38 +39,41 @@
         android:text="@string/save"
         android:textAlignment="center"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="@+id/editTextColumn"
-        app:layout_constraintTop_toTopOf="@+id/buttonBack"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextColumn"
         tools:ignore="TextContrastCheck" />
 
     <Button
         android:id="@+id/buttonBack"
-        android:layout_width="115dp"
-        android:layout_height="75dp"
-        android:layout_marginTop="28dp"
-        android:backgroundTint="#4CAF50"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        android:backgroundTint="@color/grey"
         android:gravity="center_vertical"
         android:shadowColor="#020101"
         android:shadowRadius="5"
-        android:text="Back"
+        android:text="go back"
         android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="@+id/spinnerPlantHealth"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerPlantHealth"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="TextContrastCheck" />
 
     <EditText
         android:id="@+id/editTextRow"
         android:layout_width="274dp"
         android:layout_height="55dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="360dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="28dp"
         android:ems="10"
         android:hint="@string/row"
         android:inputType="number"
         android:maxLength="5"
         android:nextFocusForward="@id/editTextColumn"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextID" />
 
     <EditText
@@ -78,38 +81,37 @@
         android:layout_width="274dp"
         android:layout_height="55dp"
         android:layout_marginTop="30dp"
-        android:layout_marginEnd="360dp"
         android:ems="10"
         android:hint="@string/column"
         android:inputType="number"
         android:maxLength="5"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/editTextRow"
         app:layout_constraintTop_toBottomOf="@+id/editTextRow" />
 
     <EditText
         android:id="@+id/editTextID"
         android:layout_width="274dp"
         android:layout_height="55dp"
-        android:layout_marginEnd="360dp"
+        android:layout_marginTop="64dp"
         android:ems="10"
         android:gravity="center_vertical"
         android:hint="@string/id"
         android:inputType="number"
         android:maxLength="10"
         android:nextFocusForward="@id/editTextRow"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.176" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/engine"
         android:layout_width="126dp"
         android:layout_height="121dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
         android:contentDescription="@string/logo"
-        app:layout_constraintEnd_toEndOf="@+id/spinnerPlantType"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/editTextRow"
+        app:layout_constraintStart_toStartOf="@+id/editTextRow"
         app:srcCompat="@drawable/engine" />
 
 
